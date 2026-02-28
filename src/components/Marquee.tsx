@@ -16,7 +16,7 @@ export const LogoMarquee = () => {
   return (
     <section className="py-12 bg-background overflow-hidden border-b border-white/5">
       <div className="container mx-auto px-6 mb-8 text-center">
-        <p className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600">
+        <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#d4ff00]">
           Our Solutions Leverage Tools Trusted By
         </p>
       </div>
@@ -37,7 +37,7 @@ export const LogoMarquee = () => {
               className="flex items-center gap-3 text-zinc-500 hover:text-white transition-colors cursor-default grayscale hover:grayscale-0 opacity-40 hover:opacity-100"
             >
               <span className="text-2xl font-bold">{logo.icon}</span>
-              <span className="text-xl font-black tracking-tighter">{logo.name}</span>
+              <span className="text-xl font-black tracking-tighter italic">{logo.name}</span>
             </div>
           ))}
         </motion.div>

@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
+  --background: #000000;
   --foreground: #ffffff;
-  --accent: #00e5ff;
-  --accent-purple: #8b5cf6;
+  --accent: #d4ff00;
+  --accent-blue: #3b82f6;
   --muted: #a1a1aa;
   --card-bg: #0d0d0d;
   --border: #1a1a1a;
-  --selection: #00e5ff33;
+  --selection: #d4ff0033;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
-  --color-accent-purple: var(--accent-purple);
+  --color-accent-blue: var(--accent-blue);
   --color-muted: var(--muted);
   --color-card-bg: var(--card-bg);
   --color-border: var(--border);
@@ -54,19 +54,6 @@ body {
   position: relative;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.05;
-  pointer-events: none;
-  z-index: 9999;
-}
-
 ::selection {
   background: var(--selection);
   color: var(--accent);
@@ -78,14 +65,23 @@ body::before {
   }
 }
 
-/* Custom Utilities for VeeBran */
-.text-glow {
-  text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
-}
-
 .bg-grid {
   background-size: 40px 40px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Global Bottom Blur */
+.bottom-blur {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20vh;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 40%, transparent 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 50;
+  pointer-events: none;
 }

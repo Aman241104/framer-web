@@ -1,11 +1,12 @@
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
+import { About } from '@/components/About';
 import { LogoMarquee } from '@/components/Marquee';
 import { WhyUs } from '@/components/WhyUs';
 import { Mission } from '@/components/Mission';
-import { Works } from '@/components/Works';
 import { Stats } from '@/components/Stats';
 import { Services } from '@/components/Services';
+import { Pricing } from '@/components/Pricing';
 import { Founder } from '@/components/Founder';
 import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
@@ -14,14 +15,16 @@ import { Footer } from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-grid">
+    <main className="min-h-screen bg-black overflow-x-hidden">
       <Navbar />
       <Hero />
+      <About />
       <LogoMarquee />
+      <Services />
+      <Pricing />
       <WhyUs />
       <Mission />
       <Stats />
-      <Services />
       <Founder />
       <Testimonials />
       <FAQ />

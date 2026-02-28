@@ -2,24 +2,28 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, ChevronRight } from 'lucide-react';
+import { Minus, ChevronRight } from 'lucide-react';
 
 const faqs = [
   {
-    question: 'What Makes VeeBran Different From Other Automation Agencies?',
-    answer: 'We focus on a strategy-first approach, combining human creativity with AI efficiency to build custom solutions that actually move the needle.',
+    question: 'Who is VeeBran for?',
+    answer: 'Founders, coaches, consultants, and startup builders who want to grow smarter — not harder.',
   },
   {
-    question: 'How Does The LinkedIn First Approach Work?',
-    answer: 'We leverage LinkedIn as the primary channel for authority building and lead generation, then use automation to scale that impact across your sales funnel.',
+    question: 'What services do you offer?',
+    answer: 'Personal Branding with AI, Pre-Sales & Post-Sales Solutions, and Custom AI Tool Development.',
   },
   {
-    question: 'Can I Customize My Plan?',
-    answer: 'Yes. Every business is unique, and we tailor our workflows and AI agents to match your specific goals and budget.',
+    question: 'How do we get started?',
+    answer: "Simple — hit 'Get in Touch' and we'll schedule a free discovery call to understand your goals.",
   },
   {
-    question: 'Is This Only For Tech Businesses?',
-    answer: 'No. Any founder or brand looking to scale smarter and automate repetitive tasks can benefit from our AI-driven strategies.',
+    question: 'Do you work with clients outside India?',
+    answer: 'Yes. We work with founders and businesses globally.',
+  },
+  {
+    question: 'How is VeeBran different from a regular agency?',
+    answer: "We don't offer one-size-fits-all packages. Every engagement is scoped around your specific business and goals.",
   },
 ];
 
@@ -32,7 +36,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-6 flex items-center justify-between text-left hover:text-white transition-colors"
       >
-        <span className="text-xl md:text-2xl font-bold text-zinc-400 group-hover:text-white transition-colors tracking-tight">{question}</span>
+        <span className="text-xl md:text-2xl font-black text-zinc-400 group-hover:text-white transition-colors tracking-tight italic uppercase">{question}</span>
         {isOpen ? <Minus size={20} className="text-[#3b82f6]" /> : <ChevronRight size={20} className="text-zinc-600 group-hover:text-white" />}
       </button>
       <AnimatePresence>
@@ -43,7 +47,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden bg-white/5 rounded-2xl p-6 mb-6"
           >
-            <p className="text-zinc-500 leading-relaxed font-medium">{answer}</p>
+            <p className="text-zinc-500 leading-relaxed font-medium italic">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -55,24 +59,24 @@ export const FAQ = () => {
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-6 max-w-6xl">
-        <motion.h3
+        <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-orange-500 font-bold uppercase tracking-widest text-xs mb-4 text-center"
+          className="text-[#d4ff00] font-bold uppercase tracking-[0.4em] text-[10px] mb-6 text-center"
         >
-          Need to Know
-        </motion.h3>
+          Quick Answers
+        </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-black mb-20 text-[#3b82f6] text-center"
+          className="text-4xl md:text-6xl font-black mb-20 text-[#3b82f6] text-center italic uppercase"
         >
           Frequently Asked Questions
         </motion.h2>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col border-t border-white/5">
           {faqs.map((faq, index) => (
             <FAQItem key={index} {...faq} />
           ))}
