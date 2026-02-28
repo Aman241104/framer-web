@@ -40,13 +40,13 @@ const allTags = [
 
 export const Services = () => {
   return (
-    <section id="services" className="py-32 bg-background relative overflow-hidden border-t border-white/5">
+    <section id="services" className="pt-20 pb-32 bg-background relative overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-6 relative z-10 text-center">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-[#d4ff00] font-bold uppercase tracking-[0.4em] text-[10px] mb-6"
+          className="text-[#d4ff00] font-bold uppercase tracking-[0.4em] text-xs md:text-sm mb-6"
         >
           What We Do
         </motion.p>
@@ -80,18 +80,18 @@ export const Services = () => {
               className="p-10 rounded-[3rem] bg-[#0d0d0d] border border-white/5 flex flex-col items-center text-center group overflow-hidden hover:border-white/10 transition-all duration-500"
             >
               <h3 className="text-2xl font-black mb-10 tracking-tight leading-tight text-zinc-100 italic uppercase">{service.title}</h3>
-              
+
               <div className="w-full aspect-video rounded-[2rem] mb-10 relative overflow-hidden border border-white/5">
-                <Image 
-                  src={service.image} 
+                <Image
+                  src={service.image}
                   alt={service.title}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
-              
+
               <p className="text-sm text-zinc-500 font-medium leading-relaxed mb-8 italic">{service.description}</p>
-              
+
               <div className="flex flex-wrap justify-center gap-2 mb-10">
                 {service.tags.map((tag) => (
                   <span key={tag} className="text-[10px] font-black uppercase tracking-widest text-zinc-700 bg-white/5 px-3 py-1 rounded-full">{tag}</span>

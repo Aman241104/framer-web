@@ -33,7 +33,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >
         {children}
-        <div className="bottom-blur" />
       </body>
     </html>
   );

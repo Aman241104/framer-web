@@ -39,15 +39,18 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
         <span className="text-xl md:text-2xl font-black text-zinc-400 group-hover:text-white transition-colors tracking-tight italic uppercase">{question}</span>
         {isOpen ? <Minus size={20} className="text-[#3b82f6]" /> : <ChevronRight size={20} className="text-zinc-600 group-hover:text-white" />}
       </button>
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden bg-white/5 rounded-2xl p-6 mb-6"
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
           >
-            <p className="text-zinc-500 leading-relaxed font-medium italic">{answer}</p>
+            <div className="bg-white/5 rounded-2xl p-6 mb-6">
+              <p className="text-zinc-500 leading-relaxed font-medium italic">{answer}</p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

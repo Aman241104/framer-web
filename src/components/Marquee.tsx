@@ -14,9 +14,9 @@ const logos = [
 
 export const LogoMarquee = () => {
   return (
-    <section className="py-12 bg-background overflow-hidden border-b border-white/5">
+    <section className="py-10 bg-background overflow-hidden border-b border-white/5">
       <div className="container mx-auto px-6 mb-8 text-center">
-        <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#d4ff00]">
+        <p className="text-xs md:text-sm font-black uppercase tracking-[0.4em] text-[#d4ff00]">
           Our Solutions Leverage Tools Trusted By
         </p>
       </div>

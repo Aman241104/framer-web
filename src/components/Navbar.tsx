@@ -43,13 +43,19 @@ export const Navbar = () => {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
-            {['Why Us', 'Mission', 'Works', 'Services'].map((item) => (
+            {[
+              { name: 'Why Us', href: '/#why-us' },
+              { name: 'Mission', href: '/#mission' },
+              { name: 'Works', href: '/#works' },
+              { name: 'Services', href: '/#services' },
+              { name: 'Blog', href: '/blog' },
+            ].map((item) => (
               <Link
-                key={item}
-                href={`/#${item.toLowerCase().replace(' ', '-')}`}
+                key={item.name}
+                href={item.href}
                 className="text-sm font-medium text-[#8a8a8a] hover:text-white transition-colors py-2"
               >
-                {item}
+                {item.name}
               </Link>
             ))}
 
@@ -120,14 +126,21 @@ export const Navbar = () => {
             className="fixed inset-0 top-[85px] bg-[#0a0a0a]/95 backdrop-blur-3xl z-40 md:hidden mx-4 rounded-3xl border border-white/5 overflow-y-auto h-fit shadow-2xl"
           >
             <div className="flex flex-col p-8 items-center gap-6">
-              {['Why Us', 'Mission', 'Works', 'Services', 'Contact Us'].map((item) => (
+              {[
+                { name: 'Why Us', href: '/#why-us' },
+                { name: 'Mission', href: '/#mission' },
+                { name: 'Works', href: '/#works' },
+                { name: 'Services', href: '/#services' },
+                { name: 'Blog', href: '/blog' },
+                { name: 'Contact Us', href: '/contact' },
+              ].map((item) => (
                 <Link
-                  key={item}
-                  href={item === 'Contact Us' ? '/contact' : `/#${item.toLowerCase().replace(' ', '-')}`}
+                  key={item.name}
+                  href={item.href}
                   className="text-2xl font-medium text-[#8a8a8a] hover:text-white transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
-                  {item}
+                  {item.name}
                 </Link>
               ))}
               <div className="w-full h-px bg-white/5 my-2"></div>

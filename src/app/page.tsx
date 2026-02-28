@@ -12,11 +12,13 @@ import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
 import { CTA } from '@/components/CTA';
 import { Footer } from '@/components/Footer';
+import { ProgressBar } from '@/components/ProgressBar';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black overflow-x-hidden">
       <Navbar />
+      <ProgressBar />
       <Hero />
       <About />
       <LogoMarquee />

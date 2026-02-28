@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export const About = () => {
   return (
-    <section id="about" className="py-24 bg-background border-t border-white/5">
+    <section id="about" className="py-20 bg-background border-t border-white/5">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
