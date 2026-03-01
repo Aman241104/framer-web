@@ -164,16 +164,25 @@ export const Pricing = () => {
               <p className="text-zinc-500 font-medium">Positioning your brand for the premium market.</p>
             </div>
 
-            <div className="flex bg-[#0d0d0d] p-1.5 rounded-full border border-white/5">
+            <div className="relative flex bg-[#0d0d0d] p-1.5 rounded-full border border-white/5 w-full md:w-auto">
+              <motion.div
+                className="absolute top-1.5 bottom-1.5 rounded-full bg-[#3b82f6] shadow-lg"
+                initial={false}
+                animate={{
+                  left: pbTab === 'individual' ? '6px' : '50%',
+                  width: 'calc(50% - 6px)'
+                }}
+                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+              />
               <button
                 onClick={() => setPbTab('individual')}
-                className={`px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${pbTab === 'individual' ? 'bg-[#3b82f6] text-white shadow-lg' : 'text-zinc-500 hover:text-white'}`}
+                className={`relative z-10 w-1/2 px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-colors ${pbTab === 'individual' ? 'text-white' : 'text-zinc-500 hover:text-white'}`}
               >
                 Individual
               </button>
               <button
                 onClick={() => setPbTab('company')}
-                className={`px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all ${pbTab === 'company' ? 'bg-[#3b82f6] text-white shadow-lg' : 'text-zinc-500 hover:text-white'}`}
+                className={`relative z-10 w-1/2 px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-colors ${pbTab === 'company' ? 'text-white' : 'text-zinc-500 hover:text-white'}`}
               >
                 Company
               </button>
@@ -186,10 +195,26 @@ export const Pricing = () => {
                 <motion.div
                   key={plan.name}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  animate={
+                    plan.popular
+                      ? { opacity: 1, y: 0, boxShadow: ['0 0 20px rgba(59,130,246,0.1)', '0 0 50px rgba(59,130,246,0.3)', '0 0 20px rgba(59,130,246,0.1)'] }
+                      : { opacity: 1, y: 0 }
+                  }
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`p-10 rounded-[3rem] bg-[#0d0d0d] border ${plan.popular ? 'border-[#3b82f6]/50 shadow-[0_0_40px_rgba(59,130,246,0.1)]' : 'border-white/5'} flex flex-col relative overflow-hidden group`}
+                  transition={
+                    plan.popular
+                      ? {
+                        delay: index * 0.1,
+                        boxShadow: {
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: 'easeInOut'
+                        }
+                      }
+                      : { delay: index * 0.1 }
+                  }
+                  layout
+                  className={`p-10 rounded-[3rem] bg-[#0d0d0d] border ${plan.popular ? 'border-[#3b82f6]/50' : 'border-white/5'} flex flex-col relative overflow-hidden group hover:border-white/20 transition-all`}
                 >
                   {plan.popular && (
                     <div className="absolute top-0 right-0 bg-[#3b82f6] text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-bl-3xl">

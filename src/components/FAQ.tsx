@@ -42,10 +42,10 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            initial={{ height: 0, opacity: 0, filter: 'blur(10px)' }}
+            animate={{ height: 'auto', opacity: 1, filter: 'blur(0px)' }}
+            exit={{ height: 0, opacity: 0, filter: 'blur(10px)' }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             className="overflow-hidden"
           >
             <div className="bg-white/5 rounded-2xl p-6 mb-6">

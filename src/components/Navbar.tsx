@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import StarBorder from './StarBorder';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,7 +86,7 @@ export const Navbar = () => {
                       Contact
                     </Link>
                     <Link
-                      href="/terms"
+                      href="/terms-and-conditions"
                       className="block px-4 py-3 text-sm font-medium text-[#8a8a8a] hover:text-white hover:bg-white/5 rounded-xl transition-all"
                     >
                       Term & Conditions
@@ -98,14 +99,16 @@ export const Navbar = () => {
 
           {/* Right CTA */}
           <div className="hidden md:flex relative z-10">
-            <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.02, backgroundColor: '#262626' }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-2.5 bg-[#1a1a1a] text-[#ededed] font-medium text-[15px] rounded-[14px] transition-all hover:text-white"
+            <Link href="/contact" className="block">
+              <StarBorder
+                as="button"
+                className="rounded-[14px] font-medium transition-all"
+                color="#d4ff00"
+                speed="3s"
+                thickness={1}
               >
-                Let&apos;s Talk
-              </motion.button>
+                <span className="px-8 py-2.5 block text-[15px]">Let&apos;s Talk</span>
+              </StarBorder>
             </Link>
           </div>
 
@@ -145,18 +148,22 @@ export const Navbar = () => {
               ))}
               <div className="w-full h-px bg-white/5 my-2"></div>
               <Link
-                href="/terms"
+                href="/terms-and-conditions"
                 className="text-lg font-medium text-[#8a8a8a] hover:text-white transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Terms & Conditions
               </Link>
-              <Link href="/contact" className="w-full mt-4" onClick={() => setIsOpen(false)}>
-                <motion.button
-                  className="w-full py-4 bg-[#121212] border border-white/5 text-white font-medium text-lg rounded-2xl"
+              <Link href="/contact" className="w-full mt-4 block" onClick={() => setIsOpen(false)}>
+                <StarBorder
+                  as="button"
+                  className="w-full rounded-2xl font-medium transition-all"
+                  color="#d4ff00"
+                  speed="3s"
+                  thickness={1}
                 >
-                  Let&apos;s Talk
-                </motion.button>
+                  <span className="w-full py-4 block text-lg">Let&apos;s Talk</span>
+                </StarBorder>
               </Link>
             </div>
           </motion.div>

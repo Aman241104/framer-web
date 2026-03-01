@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { BlurText } from '@/components/react-bits/BlurText';
 
 const sections = [
   {
@@ -48,19 +49,15 @@ export default function TermsAndConditions() {
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
-      
+
       <section className="pt-40 pb-20 px-6 relative overflow-hidden">
         {/* Background dots */}
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:24px_24px]" />
-        
+
         <div className="container mx-auto max-w-4xl relative z-10 text-center mb-20">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black italic tracking-tighter text-white uppercase mb-8"
-          >
-            Term & Conditions
-          </motion.h1>
+          <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter uppercase mb-8 flex justify-center text-white">
+            <BlurText text="TERMS & CONDITIONS" delay={40} />
+          </h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -73,7 +70,7 @@ export default function TermsAndConditions() {
         </div>
 
         <div className="container mx-auto max-w-4xl relative z-10">
-          <div className="flex flex-col gap-12 text-left">
+          <div className="flex flex-col gap-6 text-left">
             {sections.map((section, index) => (
               <motion.div
                 key={index}
@@ -81,15 +78,23 @@ export default function TermsAndConditions() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
+                className="bg-[#0d0d0d]/60 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-[2rem] hover:border-white/10 transition-all shadow-xl"
               >
-                <h2 className="text-xl font-black italic mb-4 text-white uppercase tracking-tight">{section.title}</h2>
-                <p className="text-zinc-500 font-medium italic leading-relaxed text-sm">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-[#3b82f6]/10 border border-[#3b82f6]/20 flex items-center justify-center text-[#3b82f6] font-black italic">
+                    {index + 1}
+                  </div>
+                  <h2 className="text-xl md:text-2xl font-black italic text-white uppercase tracking-tight">
+                    {section.title.replace(/^\d+\.\s*/, '')}
+                  </h2>
+                </div>
+                <p className="text-zinc-400 font-medium italic leading-relaxed text-sm md:text-base pl-14">
                   {section.content}
                 </p>
               </motion.div>
             ))}
           </div>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

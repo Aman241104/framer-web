@@ -4,14 +4,34 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
-import { PixelBlast } from './PixelBlast';
+import FaultyTerminal from './FaultyTerminal';
 import { BlurText } from './react-bits/BlurText';
 
 export const Hero = () => {
   return (
     <section className="relative min-h-[95vh] flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden">
-      {/* Dynamic Pixel Blast Background */}
-      <PixelBlast />
+      {/* Dynamic Terminal Background */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <FaultyTerminal
+          scale={1.2}
+          gridMul={[3, 2]}
+          digitSize={1.5}
+          timeScale={0.1}
+          pause={false}
+          scanlineIntensity={0.5}
+          glitchAmount={1}
+          flickerAmount={1}
+          noiseAmp={1}
+          chromaticAberration={0}
+          dither={0}
+          curvature={0.1}
+          tint="#d4ff00"
+          mouseReact
+          mouseStrength={0.5}
+          pageLoadAnimation
+          brightness={0.6}
+        />
+      </div>
 
       <div className="container mx-auto px-6 text-center z-10">
         <motion.div
