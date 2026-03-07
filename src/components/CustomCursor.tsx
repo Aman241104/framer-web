@@ -49,20 +49,9 @@ export const CustomCursor = () => {
 
     return (
         <>
-            {/* Inner Dot */}
-            <motion.div
-                className="fixed top-0 left-0 w-3 h-3 rounded-full bg-[#d4ff00] pointer-events-none z-[9999]"
-                style={{ mixBlendMode: 'difference' }}
-                animate={{
-                    x: mousePosition.x - 6,
-                    y: mousePosition.y - 6,
-                    scale: isHovering ? 2.5 : 1,
-                }}
-                transition={{ type: 'spring', stiffness: 1000, damping: 40, mass: 0.1 }}
-            />
             {/* Outer Trailing Circle */}
             <motion.div
-                className="fixed top-0 left-0 w-10 h-10 rounded-full border border-[#3b82f6]/50 pointer-events-none z-[9998] hidden sm:block"
+                className="fixed top-0 left-0 w-10 h-10 rounded-full border border-[white]/50 pointer-events-none z-[9998] hidden sm:block"
                 animate={{
                     x: mousePosition.x - 20,
                     y: mousePosition.y - 20,

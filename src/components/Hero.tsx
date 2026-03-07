@@ -2,70 +2,113 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
-import FaultyTerminal from './FaultyTerminal';
-import { BlurText } from './react-bits/BlurText';
+import BackgroundDotsXlFramerComponent from '@/framer/element/background-dots-xl';
+import LabelFramerComponent from '@/framer/element/label';
+import ScrollArrowFramerComponent from '@/framer/element/scroll-arrow';
+import ButtonFramerComponent from '@/framer/button/button';
+import RunningStrokeFramerComponent from '@/framer/button/running-stroke';
+
+const BackgroundDots = BackgroundDotsXlFramerComponent as any;
+const Label = LabelFramerComponent as any;
+const ScrollArrow = ScrollArrowFramerComponent as any;
+const Button = ButtonFramerComponent as any;
+const RunningStroke = RunningStrokeFramerComponent as any;
+
+const logos = [
+  {
+    name: 'jasper',
+    icon: (
+      <div className="flex items-center gap-2">
+        <div className="w-5 h-5 rounded-full border-2 border-white flex items-center justify-center">
+          <div className="w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_8px_white]" />
+        </div>
+        <span className="text-white text-[20px] font-bold tracking-tight">Jasper</span>
+      </div>
+    ),
+  },
+  {
+    name: 'chatgpt',
+    icon: (
+      <div className="flex items-center gap-2">
+        <svg width="22" height="22" viewBox="0 0 24 24" className="fill-white">
+          <path d="M22.28 9.82a5.98 5.98 0 0 0-.51-4.91 6.04 6.04 0 0 0-6.51-2.9 6.06 6.06 0 0 0-10.28 2.17 5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.51 2.9 5.98 5.98 0 0 0 10.28-2.17 5.99 5.99 0 0 0 4-2.9 6.05 6.05 0 0 0-.74-7.1zm-9.02 12.61a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.79.79 0 0 0 .39-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.05v5.58a4.5 4.5 0 0 1-4.49 4.5zm-9.66-4.13a4.47 4.47 0 0 1-.53-3.01l.14.08 4.78 2.76a.77.77 0 0 0 .78 0l5.84-3.37v2.33a.08.08 0 0 1-.03.06l-4.83 2.79a4.5 4.5 0 0 1-6.15-1.64zM2.34 7.9a4.48 4.48 0 0 1 2.37-1.97v5.67c0 .28.15.53.39.68l5.81 3.35-2.02 1.17a.08.08 0 0 1-.07 0l-4.83-2.79a4.5 4.5 0 0 1-1.65-6.11zm16.6 3.86l-5.84-3.37 2.02-1.17a.08.08 0 0 1 .07 0l4.83 2.79a4.5 4.5 0 0 1-.68 8.1v-5.67a.79.79 0 0 0-.4-.68zm2.01-3.03l-.14-.08-4.77-2.78a.78.78 0 0 0-.79 0L9.41 9.23v-2.33a.07.07 0 0 1 .03-.06l4.83-2.79a4.5 4.5 0 0 1 6.68 4.66zM8.31 12.86l-2.02-1.16a.08.08 0 0 1-.04-.06V5.56a4.5 4.5 0 0 1 7.38-3.45l-.14.08-4.78 2.76a.79.79 0 0 0-.4.68v6.73zM9.4 10.5l2.6-1.5 2.61 1.5v3l-2.6 1.5-2.61-1.5v-3z" />
+        </svg>
+        <span className="text-white text-[20px] font-bold tracking-tighter">ChatGPT</span>
+      </div>
+    ),
+  },
+  {
+    name: 'make',
+    icon: (
+      <div className="flex items-center gap-2">
+        <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-6 w-auto fill-white">
+          <circle cx="20" cy="12" r="4" fill="white" />
+          <circle cx="12" cy="20" r="4" fill="white" />
+          <circle cx="28" cy="20" r="4" fill="white" />
+          <circle cx="20" cy="28" r="4" fill="white" />
+        </svg>
+        <span className="text-white text-[22px] font-bold tracking-tighter">make</span>
+      </div>
+    ),
+  },
+  {
+    name: 'lemlist',
+    icon: (
+      <div className="flex items-center gap-2">
+        <div className="w-5 h-5 rounded bg-[#4353FF] flex items-center justify-center text-white text-[10px] font-black">L</div>
+        <span className="text-white text-[20px] font-bold tracking-tighter lowercase">lemlist</span>
+      </div>
+    ),
+  },
+  {
+    name: 'perplexity',
+    icon: (
+      <div className="flex items-center gap-1.5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" className="mb-0.5">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 2v20M2 12h20" strokeWidth="1.5" />
+        </svg>
+        <span className="text-white text-[20px] font-bold tracking-tighter">perplexity</span>
+      </div>
+    ),
+  },
+];
 
 export const Hero = () => {
+  const BackgroundDotsComp = BackgroundDots?.Responsive || BackgroundDots;
+  const LabelComp = Label?.Responsive || Label;
+  const ScrollArrowComp = ScrollArrow?.Responsive || ScrollArrow;
+  const RunningStrokeComp = RunningStroke?.Responsive || RunningStroke;
+
   return (
-    <section className="relative min-h-[95vh] flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden">
-      {/* Dynamic Terminal Background */}
-      <div className="absolute inset-0 z-0 opacity-40">
-        <FaultyTerminal
-          scale={1.2}
-          gridMul={[3, 2]}
-          digitSize={1.5}
-          timeScale={0.1}
-          pause={false}
-          scanlineIntensity={0.5}
-          glitchAmount={1}
-          flickerAmount={1}
-          noiseAmp={1}
-          chromaticAberration={0}
-          dither={0}
-          curvature={0.1}
-          tint="#d4ff00"
-          mouseReact
-          mouseStrength={0.5}
-          pageLoadAnimation
-          brightness={0.6}
-        />
+    <section className="relative pt-48 pb-[120px] flex flex-col items-center z-10 overflow-hidden">
+      {/* Hero Background Dots - Absolute to this section only */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.12] blur-[1px] dot-mask">
+        {BackgroundDotsComp && <BackgroundDotsComp />}
       </div>
 
-      <div className="container mx-auto px-6 text-center z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-10"
-        >
-          <span className="w-2 h-2 rounded-full bg-[#10b981] shadow-[0_0_8px_#10b981]" />
-          <span className="text-[10px] font-black tracking-[0.2em] text-zinc-400 uppercase">We Are Online To Chat</span>
-        </motion.div>
+      <div className="container mx-auto text-center relative z-10">
+        <div className="flex flex-col items-center mb-10">
+          {LabelComp && <LabelComp label="AI Driven Automation" variant="Secondary" />}
+        </div>
 
-        <h1 className="text-5xl md:text-[90px] font-black italic tracking-tighter mb-8 leading-[1] md:leading-[0.9] uppercase flex flex-col items-center justify-center -mt-4">
-          <BlurText
-            text="Branding & Automation"
-            delay={50}
-            className="text-[#d4ff00]"
-          />
-          <BlurText
-            text="That Moves"
-            delay={50}
-            className="text-[#3b82f6]"
-          />
-          <BlurText
-            text="Business Forward."
-            delay={50}
-            className="text-white"
-          />
-        </h1>
-
-        <motion.p
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-lg md:text-2xl text-zinc-500 max-w-4xl mx-auto mb-12 leading-relaxed font-medium italic"
+          className="text-[41px] md:text-[72px] font-extrabold tracking-[-0.02em] mb-8 leading-[1.05] flex flex-col items-center justify-center relative z-10"
+        >
+          <span className="bg-gradient-to-r from-[#d9ff00] to-[#1aa8ff] bg-clip-text text-transparent">Branding & Automation</span>
+          <span className="bg-gradient-to-r from-[#d9ff00] to-[#1aa8ff] bg-clip-text text-transparent">That Moves</span>
+          <span className="bg-gradient-to-r from-[#d9ff00] to-[#1aa8ff] bg-clip-text text-transparent">Business Forward.</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-white/65 text-[16px] md:text-[18px] max-w-[520px] mx-auto mb-10 leading-relaxed font-medium relative z-10"
         >
           We blend human-first strategy with AI-powered systems to grow your brand, automate your sales, and help you scale with clarity.
         </motion.p>
@@ -74,15 +117,46 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-col items-center gap-4"
+          className="flex flex-col items-center gap-4 mb-20 relative z-10"
         >
           <Link href="/contact">
-            <button className="flex items-center gap-3 px-10 py-5 rounded-full bg-[#d4ff00] text-black text-xl font-black uppercase tracking-widest hover:bg-[#c4ed00] transition-all group">
-              Get in Touch
-              <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </button>
+            {RunningStrokeComp && (
+              <RunningStrokeComp 
+                buttonText="Get in Touch" 
+              />
+            )}
           </Link>
         </motion.div>
+
+        {/* Scroll Arrow */}
+        <div className="flex justify-center mb-20">
+          {ScrollArrowComp && <ScrollArrowComp variant="Variant 1" link="#uTrHOqYco" />}
+        </div>
+
+        {/* Trusted Row */}
+        <div className="w-full max-w-5xl mx-auto relative z-10">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="text-[#f59e0b] text-center text-[14px] font-bold uppercase tracking-[0.12em] mb-12"
+          >
+            Our Solutions Leverage Tools Trusted By
+          </motion.p>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+            {logos.map((logo, index) => (
+              <motion.div
+                key={logo.name}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + index * 0.1 }}
+                className="opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-default"
+              >
+                {logo.icon}
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

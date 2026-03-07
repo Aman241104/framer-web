@@ -10,7 +10,7 @@ export const BlogHeader = () => {
                 <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-[#d4ff00] font-bold uppercase tracking-[0.4em] text-xs md:text-sm mb-6"
+                    className="text-[white] font-bold uppercase tracking-[0.4em] text-xs md:text-sm mb-6"
                 >
                     Insights & Strategies
                 </motion.p>
@@ -18,7 +18,7 @@ export const BlogHeader = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="text-5xl md:text-7xl font-black mb-8 text-[#3b82f6] tracking-tight uppercase italic"
+                    className="text-5xl md:text-7xl font-black mb-8 text-[white] tracking-tight uppercase italic"
                 >
                     The VeeBran Blog.
                 </motion.h1>

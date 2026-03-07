@@ -5,6 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ArrowUpRight, Target, Bot, Users, Building2 } from 'lucide-react';
 import Link from 'next/link';
 
+import ButtonFramerComponent from '@/framer/button/button';
+
+const Button = ButtonFramerComponent as any;
+
 const personalBranding = {
   individual: [
     {
@@ -84,7 +88,7 @@ const salesSolutions = [
     name: 'Pre-Sales',
     price: '₹35,000',
     period: '/mo',
-    icon: <Target className="w-6 h-6 text-[#3b82f6]" />,
+    icon: <Target className="w-6 h-6 text-[white]" />,
     features: [
       'Market Research',
       'Target Persona Building',
@@ -97,7 +101,7 @@ const salesSolutions = [
     name: 'Post-Sales',
     price: '₹25,000',
     period: '/mo',
-    icon: <Users className="w-6 h-6 text-[#d4ff00]" />,
+    icon: <Users className="w-6 h-6 text-[white]" />,
     features: [
       'Onboarding Preparations',
       'Documentation & Quotations',
@@ -110,7 +114,7 @@ const salesSolutions = [
     name: 'Training',
     price: '$25',
     period: '/hr',
-    icon: <Building2 className="w-6 h-6 text-purple-500" />,
+    icon: <Building2 className="w-6 h-6 text-white" />,
     features: [
       'End-to-end Sales Cycle',
       'Lead Generation to Closing',
@@ -135,14 +139,14 @@ export const Pricing = () => {
   const [pbTab, setPbTab] = useState<'individual' | 'company'>('individual');
 
   return (
-    <section id="pricing" className="py-32 bg-background relative overflow-hidden border-t border-white/5">
+    <section id="pricing" className="py-[120px] bg-black relative overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-24">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[#d4ff00] font-bold uppercase tracking-[0.4em] text-[10px] mb-6"
+            className="text-zinc-500 font-bold uppercase tracking-[0.4em] text-[10px] mb-6"
           >
             Investment
           </motion.p>
@@ -150,9 +154,9 @@ export const Pricing = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-7xl font-black mb-8 text-white tracking-tight uppercase italic"
+            className="text-[48px] font-extrabold mb-8 text-white tracking-[-0.03em] uppercase italic leading-tight"
           >
-            Transparent Pricing. <span className="text-[#3b82f6]">No Fluff.</span>
+            Transparent Pricing. <span className="text-zinc-500">No Fluff.</span>
           </motion.h2>
         </div>
 
@@ -166,7 +170,7 @@ export const Pricing = () => {
 
             <div className="relative flex bg-[#0d0d0d] p-1.5 rounded-full border border-white/5 w-full md:w-auto">
               <motion.div
-                className="absolute top-1.5 bottom-1.5 rounded-full bg-[#3b82f6] shadow-lg"
+                className="absolute top-1.5 bottom-1.5 rounded-full bg-white shadow-lg"
                 initial={false}
                 animate={{
                   left: pbTab === 'individual' ? '6px' : '50%',
@@ -176,20 +180,20 @@ export const Pricing = () => {
               />
               <button
                 onClick={() => setPbTab('individual')}
-                className={`relative z-10 w-1/2 px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-colors ${pbTab === 'individual' ? 'text-white' : 'text-zinc-500 hover:text-white'}`}
+                className={`relative z-10 w-1/2 px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-colors ${pbTab === 'individual' ? 'text-black' : 'text-zinc-500 hover:text-white'}`}
               >
                 Individual
               </button>
               <button
                 onClick={() => setPbTab('company')}
-                className={`relative z-10 w-1/2 px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-colors ${pbTab === 'company' ? 'text-white' : 'text-zinc-500 hover:text-white'}`}
+                className={`relative z-10 w-1/2 px-8 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-colors ${pbTab === 'company' ? 'text-black' : 'text-zinc-500 hover:text-white'}`}
               >
                 Company
               </button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             <AnimatePresence mode="wait">
               {personalBranding[pbTab].map((plan, index) => (
                 <motion.div
@@ -197,8 +201,8 @@ export const Pricing = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={
                     plan.popular
-                      ? { opacity: 1, y: 0, boxShadow: ['0 0 20px rgba(59,130,246,0.1)', '0 0 50px rgba(59,130,246,0.3)', '0 0 20px rgba(59,130,246,0.1)'] }
-                      : { opacity: 1, y: 0 }
+                      ? { opacity: 1, y: 0, scale: 1.06, border: '2px solid #1aa8ff', boxShadow: ['0 20px 60px rgba(0,120,255,0.2)', '0 20px 60px rgba(0,120,255,0.35)', '0 20px 60px rgba(0,120,255,0.2)'] }
+                      : { opacity: 1, y: 0, scale: 1 }
                   }
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={
@@ -214,10 +218,10 @@ export const Pricing = () => {
                       : { delay: index * 0.1 }
                   }
                   layout
-                  className={`p-10 rounded-[3rem] bg-[#0d0d0d] border ${plan.popular ? 'border-[#3b82f6]/50' : 'border-white/5'} flex flex-col relative overflow-hidden group hover:border-white/20 transition-all`}
+                  className={`p-10 rounded-[3rem] bg-[#0d0d0d] border ${plan.popular ? 'border-[#1aa8ff]' : 'border-white/5'} flex flex-col relative overflow-hidden group hover:border-[#1aa8ff]/50 transition-all`}
                 >
                   {plan.popular && (
-                    <div className="absolute top-0 right-0 bg-[#3b82f6] text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-bl-3xl">
+                    <div className="absolute top-0 right-0 bg-[#1aa8ff] text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-bl-3xl">
                       Most Popular
                     </div>
                   )}
@@ -233,17 +237,20 @@ export const Pricing = () => {
                   <div className="flex flex-col gap-4 mb-10">
                     {plan.features.map((feature) => (
                       <div key={feature} className="flex items-start gap-3">
-                        <Check className="w-4 h-4 text-[#d4ff00] shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-white shrink-0 mt-0.5" />
                         <span className="text-zinc-400 text-sm font-medium">{feature}</span>
                       </div>
                     ))}
                   </div>
 
-                  <Link href="/contact" className="mt-auto">
-                    <button className={`w-full py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all flex items-center justify-center gap-2 ${plan.popular ? 'bg-[#d4ff00] text-black hover:bg-white' : 'bg-white/5 text-white hover:bg-white/10'}`}>
-                      Select Plan <ArrowUpRight size={14} />
-                    </button>
-                  </Link>
+                  <div className="mt-auto">
+                    <Button.Responsive 
+                      labelButton="Select Plan" 
+                      variant={plan.popular ? "Primary" : "Accent"} 
+                      link="/contact" 
+                      className="w-full"
+                    />
+                  </div>
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -257,18 +264,24 @@ export const Pricing = () => {
             <p className="text-zinc-500 font-medium">End-to-end sales systems for sustainable revenue.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             {salesSolutions.map((plan, index) => (
               <motion.div
                 key={plan.name}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0,
+                  scale: index === 1 ? 1.06 : 1,
+                  border: index === 1 ? '2px solid #1aa8ff' : '1px solid rgba(255,255,255,0.05)',
+                  boxShadow: index === 1 ? '0 20px 60px rgba(0,120,255,0.35)' : 'none'
+                }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-10 rounded-[3rem] bg-[#0d0d0d] border border-white/5 flex flex-col group"
+                className={`p-10 rounded-[3rem] bg-[#0d0d0d] border ${index === 1 ? 'border-[#1aa8ff]' : 'border-white/5'} flex flex-col group transition-all hover:border-[#1aa8ff]/50`}
               >
                 <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
-                  {plan.icon}
+                  <div className="text-white">{plan.icon}</div>
                 </div>
                 <h4 className="text-xl font-black text-white uppercase italic mb-4">{plan.name}</h4>
                 <div className="flex items-baseline gap-1 mb-8">
@@ -279,17 +292,20 @@ export const Pricing = () => {
                 <div className="flex flex-col gap-4 mb-10">
                   {plan.features.map((feature) => (
                     <div key={feature} className="flex items-start gap-3">
-                      <div className="w-1 h-1 rounded-full bg-[#3b82f6] mt-2 shrink-0" />
+                      <div className="w-1 h-1 rounded-full bg-zinc-500 mt-2 shrink-0" />
                       <span className="text-zinc-400 text-sm font-medium italic">{feature}</span>
                     </div>
                   ))}
                 </div>
 
-                <Link href="/contact" className="mt-auto">
-                  <button className="w-full py-4 bg-white/5 text-white border border-white/10 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-white hover:text-black transition-all">
-                    Inquire Now
-                  </button>
-                </Link>
+                <div className="mt-auto">
+                  <Button.Responsive 
+                    labelButton="Inquire Now" 
+                    variant={index === 1 ? "Primary" : "Accent"} 
+                    link="/contact" 
+                    className="w-full"
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
@@ -297,45 +313,49 @@ export const Pricing = () => {
 
         {/* 3. AI Development Section */}
         <div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="p-12 md:p-20 rounded-[4rem] bg-[#0d0d0d] border border-white/5 relative overflow-hidden"
-          >
-            {/* Background Accent */}
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-600/5 blur-[100px] rounded-full pointer-events-none" />
+          <div className="mb-16">
+            <h3 className="text-3xl font-black text-white uppercase italic mb-2">3. Custom AI Tool Development</h3>
+            <p className="text-zinc-500 font-medium italic mb-10 leading-relaxed">
+              Every business is unique. We build tailored AI agents, workflow automations, and custom models designed specifically for your stack.
+            </p>
+          </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
-              <div>
-                <div className="w-16 h-16 rounded-3xl bg-purple-600/10 border border-purple-600/20 flex items-center justify-center mb-10">
-                  <Bot className="w-8 h-8 text-purple-500" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            {aiTools.tiers.map((tier, index) => (
+              <motion.div
+                key={tier.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0,
+                  scale: index === 1 ? 1.06 : 1,
+                  border: index === 1 ? '2px solid #1aa8ff' : '1px solid rgba(255,255,255,0.05)',
+                  boxShadow: index === 1 ? '0 20px 60px rgba(0,120,255,0.35)' : 'none'
+                }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`p-10 rounded-[3rem] bg-[#0d0d0d] border ${index === 1 ? 'border-[#1aa8ff]' : 'border-white/5'} flex flex-col group transition-all hover:border-[#1aa8ff]/50`}
+              >
+                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
+                  <Bot className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-4xl md:text-5xl font-black text-white uppercase italic mb-6">3. Custom AI Tool Development</h3>
-                <p className="text-xl text-zinc-500 font-medium italic mb-10 leading-relaxed">
-                  Every business is unique. We build tailored AI agents, workflow automations, and custom models designed specifically for your stack.
-                </p>
-                <Link href="/contact">
-                  <button className="flex items-center gap-3 px-10 py-5 bg-[#3b82f6] text-white font-black uppercase tracking-widest text-xs rounded-2xl hover:bg-white hover:text-black transition-all">
-                    Start Your Custom Build <ArrowUpRight size={18} />
-                  </button>
-                </Link>
-              </div>
+                <h4 className="text-xl font-black text-white uppercase italic mb-4">{tier.name}</h4>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="text-4xl font-black text-white italic">{tier.price}</span>
+                </div>
+                <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-8">{tier.info}</p>
 
-              <div className="flex flex-col gap-4 justify-center">
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-zinc-600 mb-4">Benchmark Pricing</p>
-                {aiTools.tiers.map((tier) => (
-                  <div key={tier.name} className="flex items-center justify-between p-6 rounded-2xl bg-white/5 border border-white/10 group hover:border-purple-600/30 transition-all">
-                    <div className="flex flex-col">
-                      <span className="text-white font-black uppercase italic tracking-tight">{tier.name}</span>
-                      <span className="text-zinc-600 text-[10px] font-bold uppercase tracking-widest">{tier.info}</span>
-                    </div>
-                    <span className="text-2xl font-black text-[#d4ff00] italic">{tier.price}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+                <div className="mt-auto">
+                  <Button.Responsive 
+                    labelButton="Inquire Now" 
+                    variant={index === 1 ? "Primary" : "Accent"} 
+                    link="/contact" 
+                    className="w-full"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

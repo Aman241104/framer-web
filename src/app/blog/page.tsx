@@ -1,6 +1,10 @@
 import { BlogHeader } from '@/components/BlogHeader';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { Sparkles, Calendar, Clock, ArrowRight } from 'lucide-react';
+import NavigationFramerComponent from '@/framer/section/navigation';
+import FooterFramerComponent from '@/framer/section/footer';
+
+const Navigation = NavigationFramerComponent as any;
+const FooterFramer = FooterFramerComponent as any;
 import { CTA } from '@/components/CTA';
 import { getAllPosts } from '@/lib/blog';
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -13,7 +17,7 @@ export default function BlogIndex() {
 
     return (
         <main className="min-h-screen bg-black overflow-x-hidden">
-            <Navbar />
+            <Navigation />
             <ProgressBar />
             <BlogHeader />
 
@@ -103,7 +107,7 @@ export default function BlogIndex() {
             </section>
 
             <CTA />
-            <Footer />
+            <FooterFramer className="w-full relative z-10 mt-32" />
         </main>
     );
 }

@@ -3,37 +3,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Linkedin, Twitter, Target, Cpu, MessageSquareText, Presentation } from 'lucide-react';
+import LabelFramerComponent from '@/framer/element/label';
+import StatisticFramerComponent from '@/framer/section-work/statistic';
+
+const Label = LabelFramerComponent as any;
+const Statistic = StatisticFramerComponent as any;
 
 export const Founder = () => {
   return (
-    <section className="py-24 bg-background border-t border-white/5 overflow-hidden">
+    <section className="py-[120px] bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-[#d4ff00] font-bold uppercase tracking-widest text-xs mb-4"
-        >
-          Our Team
-        </motion.p>
+        <div className="flex flex-col items-center mb-12">
+          <Label.Responsive label="Our Team" variant="Secondary" />
+        </div>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-black mb-20 text-[#3b82f6] italic uppercase"
+          className="text-4xl md:text-[56px] font-bold mb-20 text-[#3B82F6] tracking-tight uppercase"
         >
           MEET THE FOUNDER
         </motion.h2>
 
-        <div className="flex flex-col md:flex-row items-center gap-16 bg-[#0a0a0a] border border-white/5 p-8 md:p-16 rounded-[4rem] max-w-7xl mx-auto relative overflow-hidden text-left">
-          {/* Card Grid Background */}
-          <div className="absolute inset-0 z-0 bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:24px_24px]" />
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[60px] max-w-6xl mx-auto text-left items-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="w-full aspect-square md:w-[450px] md:h-[450px] rounded-[3rem] bg-zinc-800 overflow-hidden shrink-0 relative z-10"
+            className="w-full md:max-w-[420px] ml-auto aspect-[4/5] relative z-10 rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
@@ -43,44 +41,40 @@ export const Founder = () => {
             />
           </motion.div>
 
-          <div className="flex-1 relative z-10">
+          <div className="w-full relative z-10 flex flex-col justify-center">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="flex flex-col gap-5"
             >
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-2">
                 <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 10L20 30L30 10" stroke="#3b82f6" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M15 15L20 25L25 15" stroke="#d4ff00" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M5 10L20 35L35 10" stroke="#3B82F6" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M12 10L20 25L28 10" stroke="#D9FF00" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span className="text-xl font-bold tracking-tight text-white italic">VeeBran</span>
+                <span className="text-[20px] font-black tracking-tighter text-white leading-none">VeeBran</span>
               </div>
-              <h2 className="text-2xl md:text-4xl font-black mb-10 leading-snug text-white italic tracking-tight">
-                My Mission Is Simple: Help You Achieve <br />
-                Your Boldest Business Goals Through <br />
-                Clarity, Creativity, And Tech That Actually <br />
-                Works.
+              <h2 className="text-2xl md:text-[32px] font-bold mb-10 leading-snug text-white tracking-tight italic">
+                My Mission Is Simple: Help You Achieve Your Boldest Business Goals Through Clarity, Creativity, And Tech That Actually Works.
               </h2>
-              
+
               <div className="flex flex-col mb-12">
-                <span className="text-blue-600 font-black text-lg">Vishva Ambasana</span>
-                <span className="text-zinc-600 font-medium text-xs uppercase tracking-widest">Founder & Chief Executive Officer</span>
+                <span className="text-[#3B82F6] font-bold text-[20px]">Vishva Ambasana</span>
+                <span className="text-zinc-500 font-medium text-[16px]">Founder & Chief Executive Officer</span>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-12 pt-12 border-t border-white/10">
-                 <div className="flex flex-col">
-                    <span className="text-5xl font-black text-white mb-2 italic">73%</span>
-                    <span className="text-zinc-600 font-medium text-[10px] uppercase tracking-widest leading-relaxed max-w-[140px]">
-                       Sales increase in <br /> first 3 month
-                    </span>
-                 </div>
-                 <div className="flex flex-col">
-                    <span className="text-5xl font-black text-white mb-2 italic">2X</span>
-                    <span className="text-zinc-600 font-medium text-[10px] uppercase tracking-widest leading-relaxed max-w-[140px]">
-                       Faster customer <br /> resolutions
-                    </span>
-                 </div>
+              <div className="flex flex-row gap-12 pt-12 border-t border-white/10">
+                <Statistic.Responsive
+                  amount="73%"
+                  title="Sales increase in first 3 month."
+                  variant="Variant 2"
+                />
+                <Statistic.Responsive
+                  amount="2X"
+                  title="Faster customer resolutions."
+                  variant="Variant 2"
+                />
               </div>
             </motion.div>
           </div>

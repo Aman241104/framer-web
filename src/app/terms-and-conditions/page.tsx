@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import NavigationFramerComponent from '@/framer/section/navigation';
+import FooterFramerComponent from '@/framer/section/footer';
+
+const Navigation = NavigationFramerComponent as any;
+const FooterFramer = FooterFramerComponent as any;
 import { BlurText } from '@/components/react-bits/BlurText';
 
 const sections = [
@@ -48,7 +51,7 @@ const sections = [
 export default function TermsAndConditions() {
   return (
     <main className="min-h-screen bg-black text-white">
-      <Navbar />
+      <Navigation />
 
       <section className="pt-40 pb-20 px-6 relative overflow-hidden">
         {/* Background dots */}
@@ -106,7 +109,7 @@ export default function TermsAndConditions() {
         </div>
       </section>
 
-      <Footer />
+      <FooterFramer className="w-full relative z-10 mt-32" />
     </main>
   );
 }
