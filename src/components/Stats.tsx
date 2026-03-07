@@ -19,7 +19,7 @@ export const Stats = () => {
         </div>
         <div className="flex flex-col items-center mb-16">
           <h2 className="text-4xl md:text-[48px] font-bold text-[#3B82F6] tracking-tight">
-            Real Clients. Real Growth.
+            Real Work. Real Results.
           </h2>
         </div>
         <div className="relative grid grid-cols-2 md:flex md:flex-row justify-between items-center w-full max-w-6xl mx-auto gap-y-16 md:gap-y-0 capitalize-stats py-4">

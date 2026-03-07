@@ -25,8 +25,8 @@ const instrumentSans = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "VeeBran | Strategy, Systems & AI",
-  description: "We help you grow with strategy, systems, and AI automation.",
+  title: "VeeBran | Personal Branding, Sales & AI Tools for Founders",
+  description: "VeeBran helps founders, coaches, and consultants grow with AI-powered personal branding, sales systems, and custom automation. Get in touch today.",
 };
 
 export default function RootLayout({

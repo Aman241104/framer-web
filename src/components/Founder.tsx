@@ -64,7 +64,8 @@ export const Founder = () => {
                 <span className="text-zinc-500 font-medium text-[16px]">Founder & Chief Executive Officer</span>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 pt-12 border-t border-white/10">
+              <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 pt-12 relative w-full items-start">
+                <div className="absolute top-0 left-0 w-full md:w-[200%] h-px bg-gradient-to-r from-white/30 via-white/5 to-transparent"></div>
                 <div className="flex items-center gap-4">
                   <span className="text-4xl md:text-[48px] font-black text-white" style={{ textShadow: '0 0 20px rgba(255,255,255,0.1)' }}>73%</span>
                   <span className="text-[#afafaf] text-sm md:text-base font-medium tracking-wide max-w-[120px] leading-snug">Sales increase in first 3 months.</span>

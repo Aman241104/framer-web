@@ -37,6 +37,7 @@ export const Testimonials = () => {
           </>
         )}
       </div>
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
     </section>
   );
 };
