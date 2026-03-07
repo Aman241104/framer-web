@@ -48,6 +48,20 @@ export const About = () => {
                 Whether you&apos;re just starting out or ready to grow faster  -  we make it simple, strategic, and real.
               </p>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              className="mt-4 rounded-3xl overflow-hidden shadow-2xl border border-white/10 relative h-[400px]"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/veebran-assets/image_23.jpg"
+                alt="VeeBran Consulting Meeting"
+                className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+              />
+            </motion.div>
           </div>
 
         </div>

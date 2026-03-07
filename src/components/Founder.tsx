@@ -34,7 +34,7 @@ export const Founder = () => {
             className="w-full md:max-w-[420px] ml-auto aspect-[4/5] relative z-10 rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
-              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1000&auto=format&fit=crop"
+              src="/founder.jpg"
               alt="Vishva Ambasana"
               fill
               className="object-cover"
