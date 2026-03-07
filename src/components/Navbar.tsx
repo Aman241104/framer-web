@@ -92,8 +92,8 @@ const Navbar = () => {
 
           {/* Right: CTA + Hamburger */}
           <div className="flex items-center gap-3 h-full shrink-0">
-            {/* Let's Talk button (always visible) */}
-            <Link href="/contact" className="nav-talk-wrap group">
+            {/* Let's Talk button (desktop only) */}
+            <Link href="/contact" className="hidden md:inline-flex nav-talk-wrap group">
               <div className="nav-talk-border"></div>
               <div className="nav-talk-glow"></div>
               <div className="nav-talk-btn">
