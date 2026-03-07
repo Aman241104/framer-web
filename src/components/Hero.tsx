@@ -1,7 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
 import BackgroundDotsXlFramerComponent from '@/framer/element/background-dots-xl';
 import LabelFramerComponent from '@/framer/element/label';
@@ -79,8 +81,43 @@ export const Hero = () => {
   const LabelComp = Label?.Responsive || Label;
   const RunningStrokeComp = RunningStroke?.Responsive || RunningStroke;
 
+  const containerRef = useRef<HTMLElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({ delay: 0.1 });
+    tl.fromTo('.hero-text-line',
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out' }
+    );
+  }, { scope: containerRef });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!buttonRef.current) return;
+    const rect = buttonRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    gsap.to(buttonRef.current, {
+      x: x * 0.3,
+      y: y * 0.3,
+      duration: 0.4,
+      ease: 'power2.out'
+    });
+  };
+
+  const handleMouseLeave = () => {
+    if (!buttonRef.current) return;
+    gsap.to(buttonRef.current, {
+      x: 0,
+      y: 0,
+      duration: 0.7,
+      ease: 'elastic.out(1, 0.3)'
+    });
+  };
+
   return (
-    <section className="relative pt-48 pb-[180px] flex flex-col items-center z-10 overflow-hidden">
+    <section ref={containerRef} className="relative pt-48 pb-[180px] flex flex-col items-center z-10 overflow-hidden">
       {/* Hero Background Dots - Absolute to this section only */}
       <div className="absolute inset-0 z-0 pointer-events-none w-full h-full flex justify-center overflow-hidden opacity-50">
         {BackgroundDotsComp && <BackgroundDotsComp className="w-full h-full object-cover" />}
@@ -94,16 +131,13 @@ export const Hero = () => {
           </div>
         </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
+        <h1
           className="text-[41px] md:text-[72px] font-extrabold tracking-[-0.02em] mb-8 leading-[1.05] flex flex-col items-center justify-center relative z-10"
         >
-          <span className="bg-gradient-to-r from-[#10B981] to-[#FBBF24] bg-clip-text text-transparent">Branding & Automation</span>
-          <span className="text-[#3B82F6]">That Moves</span>
-          <span className="bg-gradient-to-r from-[#10B981] to-[#FBBF24] bg-clip-text text-transparent">Business Forward.</span>
-        </motion.h1>
+          <span className="hero-text-line bg-gradient-to-r from-[#10B981] to-[#FBBF24] bg-clip-text text-transparent opacity-0 translate-y-4">Branding & Automation</span>
+          <span className="hero-text-line text-[#3B82F6] opacity-0 translate-y-4">That Moves</span>
+          <span className="hero-text-line bg-gradient-to-r from-[#10B981] to-[#FBBF24] bg-clip-text text-transparent opacity-0 translate-y-4">Business Forward.</span>
+        </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -121,11 +155,14 @@ export const Hero = () => {
           className="flex flex-col items-center gap-4 relative z-10 mb-24"
         >
           <Link
+            ref={buttonRef}
             href="/contact"
-            className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-[#050505] text-white text-base font-medium hover:bg-white/10 transition-colors shadow-lg"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="group flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-[#050505] text-white text-base font-medium hover:bg-white/10 transition-colors shadow-lg"
           >
             Learn More
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <polyline points="19 12 12 19 5 12"></polyline>
             </svg>

@@ -1,7 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { Brain, ThumbsUp, Users } from 'lucide-react';
 import LabelFramerComponent from '@/framer/element/label';
 
@@ -16,21 +19,115 @@ const particles = [
   { top: '20%', left: '70%', delay: '0.8s' },
 ];
 
-const FloatingParticles = () => (
-  <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-    {particles.map((p, i) => (
-      <div
-        key={i}
-        className="absolute w-[3px] h-[3px] bg-white rounded-full opacity-[0.25] motion-safe:animate-pulse"
-        style={{
-          top: p.top,
-          left: p.left,
-          animationDelay: p.delay
-        }}
-      />
-    ))}
-  </div>
-);
+const FloatingParticles = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const dots = gsap.utils.toArray('.floating-dot');
+    dots.forEach((dot: any) => {
+      gsap.to(dot, {
+        x: 'random(-20, 20)',
+        y: 'random(-20, 20)',
+        duration: 'random(3, 6)',
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: 'random(0, 2)'
+      });
+    });
+  }, { scope: containerRef });
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      {particles.map((p, i) => (
+        <div
+          key={i}
+          className="floating-dot absolute w-[3px] h-[3px] bg-white rounded-full opacity-[0.4]"
+          style={{
+            top: p.top,
+            left: p.left,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+const SpotlightCard = ({ feature, index }: any) => {
+  const divRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+    const rect = divRef.current.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="h-full w-full"
+    >
+      <Tilt
+        tiltMaxAngleX={3}
+        tiltMaxAngleY={3}
+        perspective={1000}
+        transitionSpeed={1500}
+        scale={1.01}
+        gyroscope={true}
+        className="h-full w-full"
+      >
+        <div
+          ref={divRef}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setOpacity(1)}
+          onMouseLeave={() => setOpacity(0)}
+          className="flex flex-col items-center text-center p-6 md:p-8 rounded-[24px] md:rounded-[32px] bg-[#111111] border border-white/5 shadow-2xl group transition-all duration-300 h-full relative overflow-hidden"
+        >
+          {/* Spotlight Glow */}
+          <div
+            className="pointer-events-none absolute -inset-[1px] opacity-0 transition duration-300 z-0"
+            style={{
+              opacity,
+              background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(59,130,246,0.1), transparent 40%)`,
+            }}
+          />
+
+          <div className="w-full aspect-[4/3] rounded-[20px] bg-[#0A0A0A] border border-white/5 mb-8 relative overflow-hidden flex items-center justify-center relative z-10">
+            {/* Background Grid */}
+            <div
+              className="absolute inset-0 opacity-20 pointer-events-none"
+              style={{
+                backgroundImage: 'linear-gradient(to right, #ffffff1a 1px, transparent 1px), linear-gradient(to bottom, #ffffff1a 1px, transparent 1px)',
+                backgroundSize: '24px 24px',
+                maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
+                WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)'
+              }}
+            />
+
+            <FloatingParticles />
+
+            {/* Image/Icon Area */}
+            <div className="relative z-10 w-20 h-20 rounded-full bg-[#0055FF] flex items-center justify-center shadow-[0_0_40px_rgba(0,85,255,0.4)] before:absolute before:inset-[-20%] before:rounded-full before:bg-[#0055FF] before:blur-[30px] before:opacity-30 before:-z-10 group-hover:before:opacity-60 before:transition-opacity before:duration-500">
+              {feature.icon}
+            </div>
+          </div>
+
+          <h3 className="text-[20px] md:text-[22px] font-medium text-white mb-4 leading-snug tracking-tight whitespace-pre-line relative z-10">
+            {feature.title}
+          </h3>
+          <p className="text-[#a1a1aa] text-[15px] leading-relaxed max-w-[300px] relative z-10">
+            {feature.description}
+          </p>
+        </div>
+      </Tilt>
+    </motion.div>
+  );
+};
 
 const features = [
   {
@@ -100,41 +197,7 @@ export const WhyUs = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1200px] mx-auto px-4 md:px-0">
           {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="flex flex-col items-center text-center p-6 md:p-8 rounded-[24px] md:rounded-[32px] bg-[#111111] border border-white/5 shadow-2xl group transition-all duration-300 hover:border-white/10"
-            >
-              <div className="w-full aspect-[4/3] rounded-[20px] bg-[#0A0A0A] border border-white/5 mb-8 relative overflow-hidden flex items-center justify-center">
-                {/* Background Grid */}
-                <div
-                  className="absolute inset-0 opacity-20 pointer-events-none"
-                  style={{
-                    backgroundImage: 'linear-gradient(to right, #ffffff1a 1px, transparent 1px), linear-gradient(to bottom, #ffffff1a 1px, transparent 1px)',
-                    backgroundSize: '24px 24px',
-                    maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
-                    WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)'
-                  }}
-                />
-
-                <FloatingParticles />
-
-                {/* Image/Icon Area */}
-                <div className="relative z-10 w-20 h-20 rounded-full bg-[#0055FF] flex items-center justify-center shadow-[0_0_40px_rgba(0,85,255,0.4)] relative before:absolute before:inset-[-20%] before:rounded-full before:bg-[#0055FF] before:blur-[30px] before:opacity-30 before:-z-10 group-hover:before:opacity-60 before:transition-opacity before:duration-500">
-                  {feature.icon}
-                </div>
-              </div>
-
-              <h3 className="text-[20px] md:text-[22px] font-medium text-white mb-4 leading-snug tracking-tight whitespace-pre-line">
-                {feature.title}
-              </h3>
-              <p className="text-[#a1a1aa] text-[15px] leading-relaxed max-w-[300px]">
-                {feature.description}
-              </p>
-            </motion.div>
+            <SpotlightCard key={index} feature={feature} index={index} />
           ))}
         </div>
       </div>

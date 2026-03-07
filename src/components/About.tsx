@@ -1,11 +1,48 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const About = () => {
+  const containerRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    gsap.utils.toArray('.about-text').forEach((el: any) => {
+      gsap.fromTo(el,
+        { color: '#52525b' }, // zinc-600
+        {
+          color: '#ffffff',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 80%',
+            end: 'bottom 60%',
+            scrub: true,
+          }
+        }
+      );
+    });
+
+    gsap.fromTo('.about-image',
+      { clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' },
+      {
+        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+        ease: 'power3.inOut',
+        duration: 1.5,
+        scrollTrigger: {
+          trigger: '.about-image-container',
+          start: 'top 75%',
+        }
+      }
+    );
+  }, { scope: containerRef });
+
   return (
-    <section id="about" className="py-32 bg-transparent border-t border-white/5 relative overflow-hidden">
+    <section id="about" ref={containerRef} className="py-32 bg-transparent border-t border-white/5 relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
 
@@ -41,27 +78,24 @@ export const About = () => {
               viewport={{ once: true, margin: "-10%" }}
               className="p-8 md:p-12 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-md"
             >
-              <p className="text-lg md:text-2xl text-zinc-400 font-medium leading-relaxed italic mb-8">
-                VeeBran is a business consulting partner for founders, coaches, and startup builders. We work at the intersection of personal branding, sales, and AI  -  helping you show up confidently, attract the right clients, and build systems that scale.
+              <p className="about-text text-lg md:text-2xl text-zinc-600 font-medium leading-relaxed italic mb-8">
+                VeeBran is a business consulting partner for founders, coaches, and startup builders. We work at the intersection of personal branding, sales, and AI - helping you show up confidently, attract the right clients, and build systems that scale.
               </p>
-              <p className="text-lg md:text-2xl text-zinc-400 font-medium leading-relaxed italic">
-                Whether you&apos;re just starting out or ready to grow faster  -  we make it simple, strategic, and real.
+              <p className="about-text text-lg md:text-2xl text-zinc-600 font-medium leading-relaxed italic">
+                Whether you&apos;re just starting out or ready to grow faster - we make it simple, strategic, and real.
               </p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              className="mt-4 rounded-3xl overflow-hidden shadow-2xl border border-white/10 relative h-[400px]"
+            <div
+              className="about-image-container mt-4 rounded-3xl overflow-hidden shadow-2xl border border-white/10 relative h-[400px]"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/veebran-assets/image_23.jpg"
                 alt="VeeBran Consulting Meeting"
-                className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                className="about-image w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
               />
-            </motion.div>
+            </div>
           </div>
 
         </div>
