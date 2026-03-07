@@ -22,28 +22,23 @@ export const Stats = () => {
             Real Clients. Real Growth.
           </h2>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-6xl mx-auto gap-8 md:gap-0 capitalize-stats">
+        <div className="relative grid grid-cols-2 md:flex md:flex-row justify-between items-center w-full max-w-6xl mx-auto gap-y-16 md:gap-y-0 capitalize-stats py-4">
           {StatisticComp && (
             <>
-              <StatisticComp
-                amount="10+"
-                title="Brands Automated"
-              />
+              {/* Mobile Cross Dividers */}
+              <div className="absolute top-0 bottom-0 left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/30 to-transparent md:hidden pointer-events-none"></div>
+              <div className="absolute top-1/2 left-8 right-8 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent md:hidden pointer-events-none"></div>
+
+              <div className="w-full md:w-auto flex justify-center"><StatisticComp amount="10+" title="Brands Automated" /></div>
               <div className="hidden md:block w-px h-24 bg-gradient-to-b from-transparent via-white/40 to-transparent"></div>
-              <StatisticComp
-                amount="4.9"
-                title="Rating out of 5"
-              />
+
+              <div className="w-full md:w-auto flex justify-center"><StatisticComp amount="4.9" title="Rating out of 5" /></div>
               <div className="hidden md:block w-px h-24 bg-gradient-to-b from-transparent via-white/40 to-transparent"></div>
-              <StatisticComp
-                amount="7k+"
-                title="AI Powered Messages"
-              />
+
+              <div className="w-full md:w-auto flex justify-center order-4 md:order-none"><StatisticComp amount="7k+" title="AI-Powered Messages" /></div>
               <div className="hidden md:block w-px h-24 bg-gradient-to-b from-transparent via-white/40 to-transparent"></div>
-              <StatisticComp
-                amount="95%"
-                title="Client Retention"
-              />
+
+              <div className="w-full md:w-auto flex justify-center order-3 md:order-none"><StatisticComp amount="95%" title="Client Retention" /></div>
             </>
           )}
         </div>
