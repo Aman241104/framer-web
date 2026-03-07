@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Target, TrendingUp, Cpu, Workflow, MessageSquareText, Presentation } from 'lucide-react';
+import Link from 'next/link';
 import { BlurText } from './react-bits/BlurText';
 import LabelFramerComponent from '@/framer/element/label';
 import ButtonFramerComponent from '@/framer/button/button';
@@ -12,7 +13,7 @@ const Button = ButtonFramerComponent as any;
 
 export const Mission = () => {
   return (
-    <section id="eCxvIfBt6" className="py-[120px] bg-transparent relative overflow-hidden">
+    <section id="eCxvIfBt6" className="pt-[20px] pb-[40px] bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-6xl relative z-10 text-center">
 
         <div className="flex flex-col items-center mb-12">
@@ -38,11 +39,13 @@ export const Mission = () => {
           viewport={{ once: true }}
           className="mt-12 flex justify-center"
         >
-          <Button.Responsive 
-            labelButton="Book A Call" 
-            variant="Primary" 
-            link="/contact" 
-          />
+          <Link href="/contact" className="text-[#10B981] font-bold text-lg hover:text-[#FBBF24] transition-colors flex items-center gap-2">
+            Book A Call
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </Link>
         </motion.div>
 
         <motion.div

@@ -5,13 +5,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import BackgroundDotsXlFramerComponent from '@/framer/element/background-dots-xl';
 import LabelFramerComponent from '@/framer/element/label';
-import ScrollArrowFramerComponent from '@/framer/element/scroll-arrow';
 import ButtonFramerComponent from '@/framer/button/button';
 import RunningStrokeFramerComponent from '@/framer/button/running-stroke';
+import { LogoMarquee } from '@/components/Marquee';
 
 const BackgroundDots = BackgroundDotsXlFramerComponent as any;
 const Label = LabelFramerComponent as any;
-const ScrollArrow = ScrollArrowFramerComponent as any;
 const Button = ButtonFramerComponent as any;
 const RunningStroke = RunningStrokeFramerComponent as any;
 
@@ -78,19 +77,21 @@ const logos = [
 export const Hero = () => {
   const BackgroundDotsComp = BackgroundDots?.Responsive || BackgroundDots;
   const LabelComp = Label?.Responsive || Label;
-  const ScrollArrowComp = ScrollArrow?.Responsive || ScrollArrow;
   const RunningStrokeComp = RunningStroke?.Responsive || RunningStroke;
 
   return (
-    <section className="relative pt-48 pb-[120px] flex flex-col items-center z-10 overflow-hidden">
+    <section className="relative pt-48 pb-[180px] flex flex-col items-center z-10 overflow-hidden">
       {/* Hero Background Dots - Absolute to this section only */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.12] blur-[1px] dot-mask">
-        {BackgroundDotsComp && <BackgroundDotsComp />}
+      <div className="absolute inset-0 z-0 pointer-events-none w-full h-full flex justify-center overflow-hidden opacity-50">
+        {BackgroundDotsComp && <BackgroundDotsComp className="w-full h-full object-cover" />}
       </div>
 
       <div className="container mx-auto text-center relative z-10">
         <div className="flex flex-col items-center mb-10">
-          {LabelComp && <LabelComp label="AI Driven Automation" variant="Secondary" />}
+          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-[rgba(33,33,33,0.4)] backdrop-blur-md text-sm font-medium text-white/80 shrink-0">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            We Are Online To Chat
+          </div>
         </div>
 
         <motion.h1
@@ -99,9 +100,9 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-[41px] md:text-[72px] font-extrabold tracking-[-0.02em] mb-8 leading-[1.05] flex flex-col items-center justify-center relative z-10"
         >
-          <span className="bg-gradient-to-r from-[#d9ff00] to-[#1aa8ff] bg-clip-text text-transparent">Branding & Automation</span>
-          <span className="bg-gradient-to-r from-[#d9ff00] to-[#1aa8ff] bg-clip-text text-transparent">That Moves</span>
-          <span className="bg-gradient-to-r from-[#d9ff00] to-[#1aa8ff] bg-clip-text text-transparent">Business Forward.</span>
+          <span className="bg-gradient-to-r from-[#10B981] to-[#FBBF24] bg-clip-text text-transparent">Branding & Automation</span>
+          <span className="text-[#3B82F6]">That Moves</span>
+          <span className="bg-gradient-to-r from-[#10B981] to-[#FBBF24] bg-clip-text text-transparent">Business Forward.</span>
         </motion.h1>
 
         <motion.p
@@ -117,47 +118,27 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-col items-center gap-4 mb-20 relative z-10"
+          className="flex flex-col items-center gap-4 relative z-10 mb-24"
         >
-          <Link href="/contact">
-            {RunningStrokeComp && (
-              <RunningStrokeComp 
-                buttonText="Get in Touch" 
-              />
-            )}
+          <Link
+            href="/contact"
+            className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-[#050505] text-white text-base font-medium hover:bg-white/10 transition-colors shadow-lg"
+          >
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
           </Link>
         </motion.div>
 
-        {/* Scroll Arrow */}
-        <div className="flex justify-center mb-20">
-          {ScrollArrowComp && <ScrollArrowComp variant="Variant 1" link="#uTrHOqYco" />}
-        </div>
-
-        {/* Trusted Row */}
-        <div className="w-full max-w-5xl mx-auto relative z-10">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="text-[#f59e0b] text-center text-[14px] font-bold uppercase tracking-[0.12em] mb-12"
-          >
-            Our Solutions Leverage Tools Trusted By
-          </motion.p>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-            {logos.map((logo, index) => (
-              <motion.div
-                key={logo.name}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 + index * 0.1 }}
-                className="opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-default"
-              >
-                {logo.icon}
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </div>
+
+      {/* Logos inserted into bottom of Hero Background */}
+      <div className="absolute bottom-6 w-full z-0">
+        <LogoMarquee />
+      </div>
+
     </section>
   );
 };

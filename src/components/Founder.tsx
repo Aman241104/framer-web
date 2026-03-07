@@ -12,7 +12,7 @@ const Statistic = StatisticFramerComponent as any;
 
 export const Founder = () => {
   return (
-    <section className="py-[120px] bg-transparent relative overflow-hidden">
+    <section className="pt-[20px] pb-[40px] bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 text-center">
         <div className="flex flex-col items-center mb-12">
           <Label.Responsive label="Our Team" variant="Secondary" />
@@ -34,7 +34,7 @@ export const Founder = () => {
             className="w-full md:max-w-[420px] ml-auto aspect-[4/5] relative z-10 rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1000&auto=format&fit=crop"
               alt="Vishva Ambasana"
               fill
               className="object-cover"
@@ -64,17 +64,15 @@ export const Founder = () => {
                 <span className="text-zinc-500 font-medium text-[16px]">Founder & Chief Executive Officer</span>
               </div>
 
-              <div className="flex flex-row gap-12 pt-12 border-t border-white/10">
-                <Statistic.Responsive
-                  amount="73%"
-                  title="Sales increase in first 3 month."
-                  variant="Variant 2"
-                />
-                <Statistic.Responsive
-                  amount="2X"
-                  title="Faster customer resolutions."
-                  variant="Variant 2"
-                />
+              <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 pt-12 border-t border-white/10">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl md:text-[48px] font-black text-white" style={{ textShadow: '0 0 20px rgba(255,255,255,0.1)' }}>73%</span>
+                  <span className="text-[#afafaf] text-sm md:text-base font-medium tracking-wide max-w-[120px] leading-snug">Sales increase in first 3 months.</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl md:text-[48px] font-black text-white" style={{ textShadow: '0 0 20px rgba(255,255,255,0.1)' }}>2X</span>
+                  <span className="text-[#afafaf] text-sm md:text-base font-medium tracking-wide max-w-[120px] leading-snug">Faster customer resolutions.</span>
+                </div>
               </div>
             </motion.div>
           </div>

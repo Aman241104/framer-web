@@ -65,32 +65,41 @@ const logos = [
 
 export const LogoMarquee = () => {
   return (
-    <section className="py-24 bg-[#020617] overflow-hidden relative border-t border-white/5">
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-[#E5A800] text-center text-[14px] font-bold uppercase tracking-[0.2em] mb-12"
-        >
+    <div className="w-full flex justify-center pb-8 pt-0 z-0 opacity-80 overflow-hidden">
+      <div className="flex flex-col items-center w-full max-w-[1400px]">
+        <p className="text-[#E5A800] text-center text-[12px] md:text-[14px] font-bold uppercase tracking-[0.2em] mb-10">
           Our Solutions Leverage Tools Trusted By
-        </motion.p>
+        </p>
 
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-          {logos.map((logo, index) => (
-            <motion.div
-              key={logo.name}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-            >
-              {logo.icon}
-            </motion.div>
-          ))}
+        {/* Horizontal Marquee Container */}
+        <div className="w-full relative flex items-center overflow-hidden h-[40px]">
+          {/* Fading Edges */}
+          <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+
+          <motion.div
+            animate={{
+              x: ["0%", "-50%"]
+            }}
+            transition={{
+              repeat: Infinity,
+              ease: "linear",
+              duration: 25,
+            }}
+            className="flex items-center w-max"
+          >
+            {/* Duplicated exactly for a perfect -50% seamless loop. Padding is used instead of gap for accurate width calculation */}
+            {[...logos, ...logos, ...logos, ...logos, ...logos, ...logos].map((logo, index) => (
+              <div
+                key={`${logo.name}-${index}`}
+                className="opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 flex items-center justify-center shrink-0 px-8 md:px-12"
+              >
+                {logo.icon}
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };

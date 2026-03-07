@@ -139,7 +139,7 @@ export const Pricing = () => {
   const [pbTab, setPbTab] = useState<'individual' | 'company'>('individual');
 
   return (
-    <section id="pricing" className="py-[120px] bg-black relative overflow-hidden border-t border-white/5">
+    <section id="pricing" className="pt-[40px] pb-[60px] bg-black relative overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-24">
           <motion.p
@@ -154,7 +154,7 @@ export const Pricing = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[48px] font-extrabold mb-8 text-white tracking-[-0.03em] uppercase italic leading-tight"
+            className="text-[48px] font-extrabold mb-8 text-white tracking-[-0.03em] uppercase leading-tight"
           >
             Transparent Pricing. <span className="text-zinc-500">No Fluff.</span>
           </motion.h2>
@@ -164,7 +164,7 @@ export const Pricing = () => {
         <div className="mb-32">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16">
             <div className="text-left">
-              <h3 className="text-3xl font-black text-white uppercase italic mb-2">1. Personal Branding with AI</h3>
+              <h3 className="text-3xl font-black text-white uppercase mb-2">1. Personal Branding with AI</h3>
               <p className="text-zinc-500 font-medium">Positioning your brand for the premium market.</p>
             </div>
 
@@ -228,10 +228,10 @@ export const Pricing = () => {
                   <div className="mb-8">
                     <h4 className="text-zinc-400 text-xs font-black uppercase tracking-widest mb-4">{plan.name}</h4>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-5xl font-black text-white italic">{plan.price}</span>
+                      <span className="text-5xl font-black text-white">{plan.price}</span>
                       <span className="text-zinc-600 text-sm font-bold uppercase">{plan.period}</span>
                     </div>
-                    <p className="text-zinc-500 text-sm mt-4 italic">{plan.description}</p>
+                    <p className="text-zinc-500 text-sm mt-4">{plan.description}</p>
                   </div>
 
                   <div className="flex flex-col gap-4 mb-10">
@@ -244,10 +244,10 @@ export const Pricing = () => {
                   </div>
 
                   <div className="mt-auto">
-                    <Button.Responsive 
-                      labelButton="Select Plan" 
-                      variant={plan.popular ? "Primary" : "Accent"} 
-                      link="/contact" 
+                    <Button.Responsive
+                      labelButton="Select Plan"
+                      variant={plan.popular ? "Primary" : "Accent"}
+                      link="/contact"
                       className="w-full"
                     />
                   </div>
@@ -260,7 +260,7 @@ export const Pricing = () => {
         {/* 2. Sales Solutions Section */}
         <div className="mb-32">
           <div className="mb-16">
-            <h3 className="text-3xl font-black text-white uppercase italic mb-2">2. Sales & Engagement Solutions</h3>
+            <h3 className="text-3xl font-black text-white uppercase mb-2">2. Sales & Engagement Solutions</h3>
             <p className="text-zinc-500 font-medium">End-to-end sales systems for sustainable revenue.</p>
           </div>
 
@@ -269,8 +269,8 @@ export const Pricing = () => {
               <motion.div
                 key={plan.name}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ 
-                  opacity: 1, 
+                whileInView={{
+                  opacity: 1,
                   y: 0,
                   scale: index === 1 ? 1.06 : 1,
                   border: index === 1 ? '2px solid #1aa8ff' : '1px solid rgba(255,255,255,0.05)',
@@ -283,9 +283,9 @@ export const Pricing = () => {
                 <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
                   <div className="text-white">{plan.icon}</div>
                 </div>
-                <h4 className="text-xl font-black text-white uppercase italic mb-4">{plan.name}</h4>
+                <h4 className="text-xl font-black text-white uppercase mb-4">{plan.name}</h4>
                 <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-4xl font-black text-white italic">{plan.price}</span>
+                  <span className="text-4xl font-black text-white">{plan.price}</span>
                   <span className="text-zinc-600 text-sm font-bold uppercase">{plan.period}</span>
                 </div>
 
@@ -293,16 +293,16 @@ export const Pricing = () => {
                   {plan.features.map((feature) => (
                     <div key={feature} className="flex items-start gap-3">
                       <div className="w-1 h-1 rounded-full bg-zinc-500 mt-2 shrink-0" />
-                      <span className="text-zinc-400 text-sm font-medium italic">{feature}</span>
+                      <span className="text-zinc-400 text-sm font-medium">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="mt-auto">
-                  <Button.Responsive 
-                    labelButton="Inquire Now" 
-                    variant={index === 1 ? "Primary" : "Accent"} 
-                    link="/contact" 
+                  <Button.Responsive
+                    labelButton="Inquire Now"
+                    variant={index === 1 ? "Primary" : "Accent"}
+                    link="/contact"
                     className="w-full"
                   />
                 </div>
@@ -314,8 +314,8 @@ export const Pricing = () => {
         {/* 3. AI Development Section */}
         <div>
           <div className="mb-16">
-            <h3 className="text-3xl font-black text-white uppercase italic mb-2">3. Custom AI Tool Development</h3>
-            <p className="text-zinc-500 font-medium italic mb-10 leading-relaxed">
+            <h3 className="text-3xl font-black text-white uppercase mb-2">3. Custom AI Tool Development</h3>
+            <p className="text-zinc-500 font-medium mb-10 leading-relaxed">
               Every business is unique. We build tailored AI agents, workflow automations, and custom models designed specifically for your stack.
             </p>
           </div>
@@ -325,8 +325,8 @@ export const Pricing = () => {
               <motion.div
                 key={tier.name}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ 
-                  opacity: 1, 
+                whileInView={{
+                  opacity: 1,
                   y: 0,
                   scale: index === 1 ? 1.06 : 1,
                   border: index === 1 ? '2px solid #1aa8ff' : '1px solid rgba(255,255,255,0.05)',
@@ -339,17 +339,17 @@ export const Pricing = () => {
                 <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
                   <Bot className="w-6 h-6 text-white" />
                 </div>
-                <h4 className="text-xl font-black text-white uppercase italic mb-4">{tier.name}</h4>
+                <h4 className="text-xl font-black text-white uppercase mb-4">{tier.name}</h4>
                 <div className="flex items-baseline gap-1 mb-4">
-                  <span className="text-4xl font-black text-white italic">{tier.price}</span>
+                  <span className="text-4xl font-black text-white">{tier.price}</span>
                 </div>
                 <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-8">{tier.info}</p>
 
                 <div className="mt-auto">
-                  <Button.Responsive 
-                    labelButton="Inquire Now" 
-                    variant={index === 1 ? "Primary" : "Accent"} 
-                    link="/contact" 
+                  <Button.Responsive
+                    labelButton="Inquire Now"
+                    variant={index === 1 ? "Primary" : "Accent"}
+                    link="/contact"
                     className="w-full"
                   />
                 </div>

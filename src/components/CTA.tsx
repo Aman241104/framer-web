@@ -2,51 +2,64 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
-import LabelFramerComponent from '@/framer/element/label';
 import ButtonFramerComponent from '@/framer/button/button';
 
-const Label = LabelFramerComponent as any;
 const Button = ButtonFramerComponent as any;
 
 export const CTA = () => {
-  const LabelComp = Label?.Responsive || Label;
-  const ButtonComp = Button?.Responsive || Button;
-
   return (
     <section id="contact" className="py-[120px] px-6 bg-transparent border-t border-white/5">
       <div className="container mx-auto">
-        <div className="relative rounded-3xl bg-gradient-to-b from-[#111] to-[#0a0a0a] border border-white/10 p-12 md:p-[70px] text-center overflow-hidden group hover:border-white/20 transition-all duration-700 shadow-[0_40px_80px_rgba(0,0,0,0.65),0_0_40px_rgba(59,130,246,0.1)]">
+        <div className="relative rounded-[40px] bg-gradient-to-b from-[#111] to-[#0a0a0a] border border-white/10 p-12 md:p-[80px] text-center overflow-hidden hover:border-white/20 transition-all duration-700 shadow-2xl">
           {/* Card Grid Background */}
-          <div className="absolute inset-0 z-0 bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:24px_24px]" />
+          <div className="absolute inset-0 z-0 opacity-20"
+            style={{
+              backgroundImage: 'radial-gradient(circle at center, white 1px, transparent 1px)',
+              backgroundSize: '32px 32px'
+            }}
+          />
 
           <div className="relative z-10 flex flex-col items-center">
-            <div className="flex flex-col items-center mb-12">
-              {LabelComp && <LabelComp label="Join The Future" variant="Secondary" />}
+            {/* Logo Lockup replacing Label */}
+            <div className="flex flex-col items-center mb-10">
+              <div className="flex items-center gap-2 mb-2">
+                <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 10L20 35L35 10" stroke="#3B82F6" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M12 10L20 25L28 10" stroke="#10B981" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="text-[24px] font-black tracking-tighter text-white leading-none">VeeBran</span>
+              </div>
+              <span className="text-[#afafaf] text-sm uppercase tracking-[0.2em] font-bold">Business Consulting</span>
             </div>
+
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-8xl font-black mb-12 tracking-tighter italic text-[#3B82F6] uppercase leading-none"
+              className="text-4xl md:text-[80px] font-black mb-12 tracking-tighter italic uppercase leading-none text-transparent"
+              style={{
+                WebkitTextStroke: '1px rgba(255,255,255,0.4)',
+                backgroundImage: 'linear-gradient(to bottom, #ffffff, #888888)',
+                WebkitBackgroundClip: 'text'
+              }}
             >
               LET&apos;S SUCCEED TOGETHER
             </motion.h2>
 
-            <p className="text-zinc-500 italic max-w-xl mx-auto mb-16 text-xl font-bold uppercase tracking-widest">
+            <p className="text-zinc-500 italic max-w-xl mx-auto mb-16 text-lg md:text-xl font-bold uppercase tracking-widest leading-relaxed">
               Let&apos;s talk about what&apos;s possible for your business. <br />
               No pressure  -  just a real conversation.
             </p>
 
             <div className="flex justify-center">
-              {ButtonComp && (
-                <ButtonComp 
-                  labelButton="Get in Touch" 
-                  variant="Primary" 
-                  link="/contact" 
-                />
-              )}
+              <Link href="/contact" className="text-[#10B981] font-bold text-lg hover:text-[#FBBF24] transition-colors flex items-center gap-2">
+                Book A Call
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </Link>
             </div>
           </div>
         </div>

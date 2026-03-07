@@ -2,37 +2,34 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Users, Layers } from 'lucide-react';
+import { Brain, ThumbsUp, Users } from 'lucide-react';
 import LabelFramerComponent from '@/framer/element/label';
-import ServiceCardFramerComponent from '@/framer/section-service/service-card';
 
 const Label = LabelFramerComponent as any;
-const ServiceCard = ServiceCardFramerComponent as any;
 
 const features = [
   {
     title: 'AI-Driven, But Human-Led',
     description: 'We blend the power of automation with strategy, storytelling, and emotional intelligence - so your brand feels real, not robotic.',
-    variant: 'Desktop Service Widget - A'
+    icon: <Brain className="w-6 h-6 text-[#3B82F6]" />
   },
   {
     title: 'Personal Branding Meets Sales Execution',
     description: "We don't stop at making you look good - we build smart systems that bring in leads, nurture them, and help you close faster.",
-    variant: 'Desktop Service Widget - B'
+    icon: <ThumbsUp className="w-6 h-6 text-[#3B82F6]" />
   },
   {
     title: 'Custom Tools, Not Cookie-Cutter Tactics',
     description: 'Every business is different. That\'s why we build tailored AI workflows and branded automations that actually fit your style, speed, and goals.',
-    variant: 'Desktop Service Widget - C'
+    icon: <Users className="w-6 h-6 text-[#3B82F6]" />
   }
 ];
 
 export const WhyUs = () => {
   const LabelComp = Label?.Responsive || Label;
-  const ServiceCardComp = ServiceCard?.Responsive || ServiceCard;
 
   return (
-    <section id="uTrHOqYco" className="py-[120px] bg-transparent overflow-hidden relative">
+    <section id="uTrHOqYco" className="pt-[20px] pb-[40px] bg-transparent overflow-hidden relative">
       <div className="container mx-auto px-6 text-center">
         <div className="flex flex-col items-center mb-12">
           {LabelComp && <LabelComp label="Why VeeBran?" variant="Secondary" />}
@@ -56,14 +53,32 @@ export const WhyUs = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {features.map((feature, index) => (
-            ServiceCardComp && (
-              <ServiceCardComp
-                key={index}
-                variant={feature.variant}
-                title={feature.title}
-                text={feature.description}
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="flex flex-col items-center text-center p-8 rounded-[24px] bg-[#0A0A0A] border border-white/5 relative overflow-hidden group hover:border-white/10 transition-colors shadow-2xl"
+            >
+              {/* Subtle grid background */}
+              <div
+                className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                style={{
+                  backgroundImage: 'radial-gradient(circle at center, white 1px, transparent 1px)',
+                  backgroundSize: '24px 24px'
+                }}
               />
-            )
+              <div className="w-14 h-14 rounded-2xl bg-[#3B82F6]/10 flex items-center justify-center mb-6 border border-[#3B82F6]/20 relative z-10 group-hover:bg-[#3B82F6]/20 transition-colors">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4 relative z-10">
+                {feature.title}
+              </h3>
+              <p className="text-[#afafaf] text-sm leading-relaxed relative z-10">
+                {feature.description}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>

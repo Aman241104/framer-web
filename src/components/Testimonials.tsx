@@ -12,7 +12,7 @@ export const Testimonials = () => {
   const LabelComp = Label?.Responsive || Label;
 
   return (
-    <section id="testimonials" className="py-[120px] container mx-auto px-6 relative z-10 scroll-mt-32">
+    <section id="testimonials" className="pt-[20px] pb-[60px] container mx-auto px-6 relative z-10 scroll-mt-32">
       <div className="flex flex-col items-center mb-20">
         {LabelComp && <LabelComp label="What Our Clients Say" variant="Secondary" />}
       </div>

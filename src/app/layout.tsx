@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import "@/framer/styles.css";
-import { CustomCursor } from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
@@ -38,9 +37,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${instrumentSans.variable} font-sans antialiased cursor-none`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${instrumentSans.variable} font-sans antialiased`}
       >
-        <CustomCursor />
         <Navbar />
         {children}
       </body>

@@ -1678,7 +1678,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																"var(--extracted-r6o4lv, var(--token-af2f9c5a-7d1a-4f00-8c29-d477b6a07b93, rgb(133, 133, 133)))",
 														}}
 													>
-														{'Copyright "VeeBran". All right reserved.'}
+														{'Copyright "VeeBran". All rights reserved.'}
 													</motion.p>
 												</React.Fragment>
 											</RichTextWithFX>
