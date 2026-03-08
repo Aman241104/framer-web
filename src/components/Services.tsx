@@ -48,7 +48,7 @@ export const Services = () => {
   }, { scope: containerRef });
 
   return (
-    <section id="ACBgSFIb5" ref={containerRef} className="pt-[40px] pb-[60px] container mx-auto px-6 relative z-10 scroll-mt-32">
+    <section id="services" ref={containerRef} className="pt-[40px] pb-[60px] container mx-auto px-6 relative z-10 scroll-mt-32">
       <div className="flex flex-col items-center mb-12">
         {LabelComp && <LabelComp label="Our Services" variant="Secondary" />}
       </div>

@@ -12,12 +12,11 @@ export default function ContactPage() {
 
       {/* Hero Header */}
       <section className="pt-40 pb-16 px-6 text-center">
-        <p className="text-[#E5A800] text-sm md:text-base font-medium mb-4">Let's Talk</p>
         <h1 className="text-4xl md:text-5xl font-extrabold text-[#3B82F6] tracking-tight mb-4">
-          We're Here To Help
+          Let's Talk
         </h1>
-        <p className="text-[#A6A6A6] text-sm md:text-base">
-          Our team is ready to support you with expert advice & solutions.
+        <p className="text-[#A6A6A6] text-sm md:text-base max-w-2xl mx-auto">
+          Tell us a little about your business and what you're working on. We'll take it from there.
         </p>
       </section>
 
@@ -28,49 +27,41 @@ export default function ContactPage() {
           <div className="absolute inset-x-0 bottom-0 h-[300px] bg-gradient-to-t from-white/[0.02] to-transparent pointer-events-none" />
 
           <form className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* First Name */}
+            {/* Full Name */}
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-white/90">First Name *</label>
+              <label className="text-sm font-medium text-white/90">Name</label>
               <input
                 type="text"
-                placeholder="David"
+                placeholder="David Johnson"
                 className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E5A800]/50 transition-colors"
-              />
-            </div>
-
-            {/* Last Name */}
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-white/90">Last Name *</label>
-              <input
-                type="text"
-                placeholder="Johnson"
-                className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E5A800]/50 transition-colors"
-              />
-            </div>
-
-            {/* Contact Number */}
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-white/90">Contact Number *</label>
-              <input
-                type="tel"
-                placeholder="+XX XXXXX-XXXXX"
-                className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E5A800]/50 transition-colors"
+                required
               />
             </div>
 
             {/* Email */}
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-white/90">Email *</label>
+              <label className="text-sm font-medium text-white/90">Email</label>
               <input
                 type="email"
                 placeholder="example@mail.com"
+                className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E5A800]/50 transition-colors"
+                required
+              />
+            </div>
+
+            {/* Phone */}
+            <div className="flex flex-col gap-2 md:col-span-2 lg:col-span-1">
+              <label className="text-sm font-medium text-white/90">Phone</label>
+              <input
+                type="tel"
+                placeholder="+91 XXXXX XXXXX"
                 className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E5A800]/50 transition-colors"
               />
             </div>
 
             {/* Company Name */}
-            <div className="flex flex-col gap-2 md:col-span-2">
-              <label className="text-sm font-medium text-white/90">Company Name *</label>
+            <div className="flex flex-col gap-2 md:col-span-2 lg:col-span-1">
+              <label className="text-sm font-medium text-white/90">Company Name</label>
               <input
                 type="text"
                 placeholder="Ex. StartoMania"
@@ -78,45 +69,34 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Select Service */}
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-white/90">Select Service *</label>
-              <div className="relative">
-                <select className="appearance-none w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 text-white/30 focus:text-white focus:outline-none focus:border-[#E5A800]/50 transition-colors cursor-pointer">
-                  <option value="" disabled selected>Select Your Service</option>
-                  <option value="branding">Personal Branding</option>
-                  <option value="automation">AI Automation</option>
-                  <option value="consulting">Strategy Consulting</option>
-                </select>
-                <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-white/30">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </div>
-              </div>
+            {/* Website */}
+            <div className="flex flex-col gap-2 md:col-span-2 lg:col-span-1">
+              <label className="text-sm font-medium text-white/90">Website</label>
+              <input
+                type="url"
+                placeholder="https://example.com"
+                className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E5A800]/50 transition-colors"
+              />
             </div>
 
-            {/* Project Budget */}
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-white/90">Project Budget *</label>
-              <div className="relative">
-                <select className="appearance-none w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 text-white/30 focus:text-white focus:outline-none focus:border-[#E5A800]/50 transition-colors cursor-pointer">
-                  <option value="" disabled selected>Select Your Range</option>
-                  <option value="small">&lt; $5,000</option>
-                  <option value="medium">$5,000 - $10,000</option>
-                  <option value="large">$10,000+</option>
-                </select>
-                <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-white/30">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </div>
-              </div>
+            {/* Position */}
+            <div className="flex flex-col gap-2 md:col-span-2 lg:col-span-1">
+              <label className="text-sm font-medium text-white/90">Position</label>
+              <input
+                type="text"
+                placeholder="Founder, CEO, etc."
+                className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E5A800]/50 transition-colors"
+              />
             </div>
 
-            {/* Project Details */}
+            {/* What are you looking for? */}
             <div className="flex flex-col gap-2 md:col-span-2">
-              <label className="text-sm font-medium text-white/90">Project Details</label>
+              <label className="text-sm font-medium text-white/90">What are you looking for?</label>
               <textarea
-                placeholder="Tell us more about your project"
+                placeholder="Tell us what you're working on and how we can help"
                 rows={4}
                 className="w-full bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#E5A800]/50 transition-colors resize-none"
+                required
               ></textarea>
             </div>
 
@@ -126,11 +106,12 @@ export default function ContactPage() {
                 type="button"
                 className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#D4FF00] hover:bg-[#bce600] text-black font-bold text-sm transition-colors"
               >
-                Submit
+                Send Message
               </button>
-              <p className="text-white/40 text-xs">
-                We will contact you within 24 business hours.
-              </p>
+              <div className="text-white/40 text-xs text-center sm:text-right">
+                <p>Or WhatsApp us directly: +91 88668 33360</p>
+                <p>Mail us at vishva@veebran.com</p>
+              </div>
             </div>
           </form>
         </div>

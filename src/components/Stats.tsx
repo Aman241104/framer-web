@@ -12,7 +12,7 @@ export const Stats = () => {
   const LabelComp = Label?.Responsive || Label;
 
   return (
-    <section id="a8kgD6gFC" className="py-[60px] bg-black border-y border-white/5 relative z-10 scroll-mt-32">
+    <section id="works" className="py-[60px] bg-black border-y border-white/5 relative z-10 scroll-mt-32">
       <div className="container mx-auto px-6 text-center">
         <div className="flex flex-col items-center mb-20">
           {LabelComp && <LabelComp label="When VeeBran Steps In" variant="Secondary" />}

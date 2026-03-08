@@ -21,13 +21,13 @@ export const Testimonials = () => {
           <>
             <TestimonialCardComp
               text='"VeeBran completely changed the way we approached LinkedIn. From content to outreach, their systems run like clockwork"'
-              name1="Noam"
-              detail="Founder"
+              name1="Nirav"
+              detail="CEO"
             />
             <TestimonialCardComp
               text='"The AI workflows Vishva and her team built saved us 15+ hours a week. What felt like chaos is now structured, and scalable"'
-              name1="Nirav"
-              detail="CEO"
+              name1="Noam"
+              detail="Founder"
             />
             <TestimonialCardComp
               text='"VeeBran made personal branding effortless. Now, I get consistent inbound leads just from LinkedIn."'
@@ -38,6 +38,6 @@ export const Testimonials = () => {
         )}
       </div>
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-    </section>
+    </section >
   );
 };

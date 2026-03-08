@@ -198,17 +198,21 @@ const Navbar = () => {
                   </Link>
                 </motion.div>
 
-                <div className="pt-2">
+                <div className="pt-2 flex w-full">
                   <Link
                     href="/contact"
                     onClick={closeMobileMenu}
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-white text-black text-[15px] font-semibold hover:bg-white/90 transition-colors"
+                    className="nav-talk-wrap group w-full flex"
                   >
-                    Let's Talk
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="19" x2="19" y2="5"></line>
-                      <polyline points="9 5 19 5 19 15"></polyline>
-                    </svg>
+                    <div className="nav-talk-border"></div>
+                    <div className="nav-talk-glow"></div>
+                    <div className="nav-talk-btn w-full flex justify-center py-3">
+                      <span>Let's Talk</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="19" x2="19" y2="5"></line>
+                        <polyline points="9 5 19 5 19 15"></polyline>
+                      </svg>
+                    </div>
                   </Link>
                 </div>
               </div>

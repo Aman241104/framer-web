@@ -7,20 +7,24 @@ const Label = LabelFramerComponent as any;
 
 const faqs = [
   {
-    question: "What makes VeeBran different from other automation agencies?",
-    answer: "We combine deep AI expertise with a personal touch—ensuring every solution is tailored, transparent, and impactful."
+    question: "Who is VeeBran for?",
+    answer: "Founders, coaches, consultants, and startup builders who want to grow smarter — not harder."
   },
   {
-    question: "How does the LinkedIn First Approach work?",
-    answer: "We use AI-driven insights to craft your LinkedIn profile, create engaging content, and build authentic connections that drive real business results."
+    question: "What services do you offer?",
+    answer: "Personal Branding with AI, Pre-Sales & Post-Sales Solutions, and Custom AI Tool Development."
   },
   {
-    question: "Can I customize my plan?",
-    answer: "Absolutely! Every business is unique. Let's discuss your needs and create a plan that fits."
+    question: "How do we get started?",
+    answer: "Simple — hit 'Get in Touch' and we'll schedule a free discovery call to understand your goals."
   },
   {
-    question: "Is this only for tech businesses?",
-    answer: "Nope. We work with coaches, agencies, creators, SaaS founders, eComm brands, and more."
+    question: "Do you work with clients outside India?",
+    answer: "Yes. We work with founders and businesses globally."
+  },
+  {
+    question: "How is VeeBran different from a regular agency?",
+    answer: "We don't offer one-size-fits-all packages. Every engagement is scoped around your specific business and goals."
   }
 ];
 
@@ -35,7 +39,7 @@ export const FAQ = () => {
   return (
     <section id="faq" className="pt-[40px] pb-[60px] container mx-auto px-6 relative z-10 scroll-mt-32">
       <div className="flex flex-col items-center mb-12">
-        {LabelComp && <LabelComp label="Need to Know" variant="Secondary" />}
+        {LabelComp && <LabelComp label="Quick Answers" variant="Secondary" />}
       </div>
       <div className="text-center mb-20">
         <h2 className="text-4xl md:text-[48px] font-bold text-[#3B82F6] tracking-tight">

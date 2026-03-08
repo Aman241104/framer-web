@@ -173,7 +173,7 @@ export const WhyUs = () => {
   const LabelComp = Label?.Responsive || Label;
 
   return (
-    <section id="uTrHOqYco" className="pt-[20px] pb-[40px] bg-transparent overflow-hidden relative">
+    <section id="why-us" className="pt-[20px] pb-[40px] bg-transparent overflow-hidden relative">
       <div className="container mx-auto px-6 text-center">
         <div className="flex flex-col items-center mb-12">
           {LabelComp && <LabelComp label="Why VeeBran?" variant="Secondary" />}
