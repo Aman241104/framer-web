@@ -11,8 +11,8 @@ export const Footer = () => {
   if (!FooterComponent) return null;
 
   return (
-    <footer className="relative z-10 flex justify-center pb-8 pt-12">
-      <FooterComponent className="w-full max-w-[1200px] relative z-10" />
-    </footer>
+    <div className="w-full relative z-10 flex justify-center pt-24 pb-12">
+      <FooterComponent className="w-full max-w-[1240px]" />
+    </div>
   );
 };

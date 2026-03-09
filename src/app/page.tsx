@@ -6,7 +6,7 @@ import { WhyUs } from '@/components/WhyUs';
 import { Mission } from '@/components/Mission';
 import ScrollArrowFramerComponent from '@/framer/element/scroll-arrow';
 import { Stats } from '@/components/Stats';
-import { Works } from '@/components/Works';
+
 import { Services } from '@/components/Services';
 import { Founder } from '@/components/Founder';
 import { Testimonials } from '@/components/Testimonials';
@@ -23,8 +23,7 @@ export default function Home() {
       <Hero />
       <WhyUs />
       <Mission />
-      <Works />
-      <div className="flex justify-center pt-2 pb-6 bg-black relative z-10 gap-0 -mt-10">
+      <div className="flex justify-center pt-4 pb-4 bg-black relative z-10 -mt-20">
         {ScrollArrowComp && <ScrollArrowComp variant="Variant 1" link="#stats" />}
       </div>
       <Stats />

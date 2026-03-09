@@ -20,26 +20,26 @@ export const Stats = () => {
   const LabelComp = Label?.Responsive || Label;
 
   return (
-    <section id="works" className="py-[60px] bg-black border-y border-white/5 relative z-10 scroll-mt-32">
+    <section id="stats" className="py-[60px] bg-black border-y border-white/5 relative z-10 scroll-mt-32">
       <div className="container mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
           className="flex flex-col items-center mb-20"
         >
           {LabelComp && <LabelComp label="When VeeBran Steps In" variant="Secondary" />}
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
           className="flex flex-col items-center mb-16"
         >
-          <h2 className="text-4xl md:text-[48px] font-bold text-[#3B82F6] tracking-tight">
+          <h2 className="text-4xl md:text-[48px] font-bold text-[#3B82F6] tracking-tight uppercase">
             Real Work. Real Results.
           </h2>
         </motion.div>
@@ -56,9 +56,9 @@ export const Stats = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
-                    whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.25, 1, 0.5, 1] }}
+                    whileHover={{ scale: 1.05, transition: { duration: 0.2, ease: "easeOut" } }}
                     className="w-full md:w-auto flex justify-center"
                   >
                     <StatisticComp amount={stat.amount} title={stat.title} />

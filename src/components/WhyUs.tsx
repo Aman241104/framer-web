@@ -175,25 +175,35 @@ export const WhyUs = () => {
   return (
     <section id="why-us" className="pt-[20px] pb-[40px] bg-transparent overflow-hidden relative scroll-mt-32">
       <div className="container mx-auto px-6 text-center">
-        <div className="flex flex-col items-center mb-12">
-          {LabelComp && <LabelComp label="Why VeeBran?" variant="Secondary" />}
-        </div>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-[56px] font-bold mb-4 max-w-4xl mx-auto tracking-tight leading-[1.1] text-white"
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+            }
+          }}
+          className="flex flex-col items-center mb-16"
         >
-          Experience The Benefits <br /> Of Our Expertise
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-zinc-500 mb-16 text-sm md:text-[15px]"
-        >
-          Strategies that drive impactful and powerful results
-        </motion.p>
+          <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="mb-12">
+            {LabelComp && <LabelComp label="Why VeeBran?" variant="Secondary" />}
+          </motion.div>
+          <motion.h2
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } } }}
+            className="text-4xl md:text-[56px] font-bold mb-4 max-w-4xl mx-auto tracking-tight leading-[1.1] text-white uppercase"
+          >
+            Experience The Benefits <br /> Of Our Expertise
+          </motion.h2>
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] } } }}
+            className="text-zinc-500 text-sm md:text-[15px]"
+          >
+            Strategies that drive impactful and powerful results
+          </motion.p>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1200px] mx-auto px-4 md:px-0">
           {features.map((feature, index) => (

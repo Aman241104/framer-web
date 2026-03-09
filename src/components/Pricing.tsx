@@ -226,12 +226,8 @@ export const Pricing = () => {
                     </div>
                   )}
                   <div className="mb-8">
-                    <h4 className="text-zinc-400 text-xs font-black uppercase tracking-widest mb-4">{plan.name}</h4>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-5xl font-black text-white">{plan.price}</span>
-                      <span className="text-zinc-600 text-sm font-bold uppercase">{plan.period}</span>
-                    </div>
-                    <p className="text-zinc-500 text-sm mt-4">{plan.description}</p>
+                    <h4 className="text-white text-2xl font-black uppercase tracking-tight mb-3">{plan.name}</h4>
+                    <p className="text-zinc-500 text-sm">{plan.description}</p>
                   </div>
 
                   <div className="flex flex-col gap-4 mb-10">
@@ -283,11 +279,7 @@ export const Pricing = () => {
                 <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
                   <div className="text-white">{plan.icon}</div>
                 </div>
-                <h4 className="text-xl font-black text-white uppercase mb-4">{plan.name}</h4>
-                <div className="flex items-baseline gap-1 mb-8">
-                  <span className="text-4xl font-black text-white">{plan.price}</span>
-                  <span className="text-zinc-600 text-sm font-bold uppercase">{plan.period}</span>
-                </div>
+                <h4 className="text-2xl font-black text-white uppercase mb-3">{plan.name}</h4>
 
                 <div className="flex flex-col gap-4 mb-10">
                   {plan.features.map((feature) => (
@@ -339,10 +331,7 @@ export const Pricing = () => {
                 <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
                   <Bot className="w-6 h-6 text-white" />
                 </div>
-                <h4 className="text-xl font-black text-white uppercase mb-4">{tier.name}</h4>
-                <div className="flex items-baseline gap-1 mb-4">
-                  <span className="text-4xl font-black text-white">{tier.price}</span>
-                </div>
+                <h4 className="text-2xl font-black text-white uppercase mb-3">{tier.name}</h4>
                 <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-8">{tier.info}</p>
 
                 <div className="mt-auto">

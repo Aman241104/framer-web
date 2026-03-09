@@ -178,21 +178,21 @@ var transition2 = {
 };
 var transition3 = {
 	damping: 70,
-	delay: 0.2,
+	delay: 0.05,
 	mass: 1,
 	stiffness: 210,
 	type: "spring",
 };
 var transition4 = {
 	damping: 70,
-	delay: 0.4,
+	delay: 0.1,
 	mass: 1,
 	stiffness: 210,
 	type: "spring",
 };
 var transition5 = {
 	damping: 70,
-	delay: 0.6,
+	delay: 0.15,
 	mass: 1,
 	stiffness: 210,
 	type: "spring",
@@ -216,14 +216,14 @@ var transition6 = {
 };
 var transition7 = {
 	damping: 70,
-	delay: 1,
+	delay: 0.2,
 	mass: 1,
 	stiffness: 210,
 	type: "spring",
 };
 var transition8 = {
 	damping: 70,
-	delay: 1.2,
+	delay: 0.25,
 	mass: 1,
 	stiffness: 210,
 	type: "spring",
@@ -1161,43 +1161,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																	</motion.p>
 																</React.Fragment>
 															</RichText>
-															<RichText
-																__fromCanvasComponent={true}
-																className={"framer-ut20ew"}
-																fonts={["Inter"]}
-																layoutDependency={layoutDependency}
-																layoutId={"ns9Q6VHAa"}
-																verticalAlignment={"top"}
-																withExternalLayout={true}
-															>
-																<React.Fragment>
-																	<motion.p
-																		className={"framer-styles-preset-12wg37s"}
-																		data-styles-preset={"n3IP9A5BI"}
-																		style={{
-																			"--framer-text-alignment": "center",
-																		}}
-																	>
-																		<Link
-																			href={"/#works"}
-																			motionChild={true}
-																			nodeId={"ns9Q6VHAa"}
-																			openInNewTab={false}
-																			scopeId={"iH9yd5Wn7"}
-																			smoothScroll={false}
-																		>
-																			<motion.a
-																				className={
-																					"framer-styles-preset-rzeatr"
-																				}
-																				data-styles-preset={"NUFyQ_G3b"}
-																			>
-																				{"Works"}
-																			</motion.a>
-																		</Link>
-																	</motion.p>
-																</React.Fragment>
-															</RichText>
+
 														</motion.div>
 														<motion.div
 															className={"framer-128cvz7"}
@@ -1465,41 +1429,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 															</motion.p>
 														</React.Fragment>
 													</RichText>
-													<RichText
-														__fromCanvasComponent={true}
-														className={"framer-wcg4kj"}
-														fonts={["Inter"]}
-														layoutDependency={layoutDependency}
-														layoutId={"suIScO2xN"}
-														verticalAlignment={"top"}
-														withExternalLayout={true}
-													>
-														<React.Fragment>
-															<motion.p
-																className={"framer-styles-preset-1237v2y"}
-																data-styles-preset={"wRTC8eDCA"}
-																style={{
-																	"--framer-text-alignment": "center",
-																}}
-															>
-																<Link
-																	href={"/#works"}
-																	motionChild={true}
-																	nodeId={"suIScO2xN"}
-																	openInNewTab={false}
-																	scopeId={"iH9yd5Wn7"}
-																	smoothScroll={false}
-																>
-																	<motion.a
-																		className={"framer-styles-preset-rzeatr"}
-																		data-styles-preset={"NUFyQ_G3b"}
-																	>
-																		{"Works"}
-																	</motion.a>
-																</Link>
-															</motion.p>
-														</React.Fragment>
-													</RichText>
+
 												</motion.div>
 												<motion.div
 													className={"framer-16itjwm"}
