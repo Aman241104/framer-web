@@ -6,12 +6,12 @@ import { Footer } from '@/components/Footer';
 import { FAQ } from '@/components/FAQ';
 import { motion } from 'framer-motion';
 
-const fadeUp = {
+const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.6, delay: i * 0.1, ease: "easeOut" },
   }),
 };
 
@@ -171,8 +171,8 @@ export default function ContactPage() {
                   onFocus={() => setFocused(field.label)}
                   onBlur={() => setFocused(null)}
                   className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === field.label
-                      ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
-                      : 'border-white/8 hover:border-white/15'
+                    ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
+                    : 'border-white/8 hover:border-white/15'
                     }`}
                 />
               </motion.div>
@@ -194,8 +194,8 @@ export default function ContactPage() {
                 onFocus={() => setFocused('message')}
                 onBlur={() => setFocused(null)}
                 className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 resize-none ${focused === 'message'
-                    ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
-                    : 'border-white/8 hover:border-white/15'
+                  ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
+                  : 'border-white/8 hover:border-white/15'
                   }`}
               />
             </motion.div>

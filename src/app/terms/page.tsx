@@ -5,12 +5,12 @@ import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { motion } from 'framer-motion';
 
-const fadeUp = {
+const fadeUp: any = {
     hidden: { opacity: 0, y: 24 },
     visible: (i = 0) => ({
         opacity: 1,
         y: 0,
-        transition: { duration: 0.55, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.55, delay: i * 0.07, ease: "easeOut" },
     }),
 };
 
