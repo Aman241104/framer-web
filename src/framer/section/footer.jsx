@@ -940,6 +940,18 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												data-framer-name={"Link Row 2"}
 												layoutDependency={layoutDependency}
 												layoutId={"SN7Rd3em2"}
+												{...addPropertyOverrides(
+													{
+														JiIq5YNIP: {
+															style: { flexDirection: "column", gap: 12 },
+														},
+														OYezazs8l: {
+															style: { flexDirection: "column", gap: 12 },
+														},
+													},
+													baseVariant,
+													gestureVariant,
+												)}
 											>
 												<RichText
 													__fromCanvasComponent={true}

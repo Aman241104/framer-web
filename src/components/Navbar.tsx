@@ -22,6 +22,25 @@ const Navbar = () => {
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/#')) {
+      e.preventDefault();
+      const id = href.replace('/#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = 80; // Adjust for navbar height
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+      closeMobileMenu();
+    }
+  };
+
   return (
     <>
       <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-[854px]">
@@ -160,7 +179,7 @@ const Navbar = () => {
                   >
                     <Link
                       href={item.href}
-                      onClick={closeMobileMenu}
+                      onClick={(e) => handleScroll(e, item.href)}
                       className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/5 transition-all text-[15px] font-medium"
                     >
                       {item.label}
