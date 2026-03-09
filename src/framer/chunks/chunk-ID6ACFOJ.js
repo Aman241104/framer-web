@@ -7,7 +7,7 @@ var routes = {
     "path": "/contact"
   },
   "Po_UhMe4P": {
-    "path": "/terms-and-conditions"
+    "path": "/terms"
   },
   "augiA20Il": {
     "path": "/"

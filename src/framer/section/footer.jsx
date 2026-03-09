@@ -1105,10 +1105,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																		}}
 																	>
 																		<Link
-																			href={{
-																				hash: ":uTrHOqYco",
-																				webPageId: "augiA20Il",
-																			}}
+																			href={"/#why-us"}
 																			motionChild={true}
 																			nodeId={"tObjE2Cvs"}
 																			openInNewTab={false}
@@ -1145,10 +1142,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																		}}
 																	>
 																		<Link
-																			href={{
-																				hash: ":eCxvIfBt6",
-																				webPageId: "augiA20Il",
-																			}}
+																			href={"/#mission"}
 																			motionChild={true}
 																			nodeId={"oDN67fggP"}
 																			openInNewTab={false}
@@ -1185,10 +1179,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																		}}
 																	>
 																		<Link
-																			href={{
-																				hash: ":a8kgD6gFC",
-																				webPageId: "augiA20Il",
-																			}}
+																			href={"/#works"}
 																			motionChild={true}
 																			nodeId={"ns9Q6VHAa"}
 																			openInNewTab={false}
@@ -1232,10 +1223,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																		}}
 																	>
 																		<Link
-																			href={{
-																				hash: ":ACBgSFIb5",
-																				webPageId: "augiA20Il",
-																			}}
+																			href={"/#services"}
 																			motionChild={true}
 																			nodeId={"tEMG3F35b"}
 																			openInNewTab={false}
@@ -1425,10 +1413,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																}}
 															>
 																<Link
-																	href={{
-																		hash: ":uTrHOqYco",
-																		webPageId: "augiA20Il",
-																	}}
+																	href={"/#why-us"}
 																	motionChild={true}
 																	nodeId={"HaAIStTws"}
 																	openInNewTab={false}
@@ -1463,10 +1448,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																}}
 															>
 																<Link
-																	href={{
-																		hash: ":eCxvIfBt6",
-																		webPageId: "augiA20Il",
-																	}}
+																	href={"/#mission"}
 																	motionChild={true}
 																	nodeId={"K7Aje3uxz"}
 																	openInNewTab={false}
@@ -1501,10 +1483,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																}}
 															>
 																<Link
-																	href={{
-																		hash: ":a8kgD6gFC",
-																		webPageId: "augiA20Il",
-																	}}
+																	href={"/#works"}
 																	motionChild={true}
 																	nodeId={"suIScO2xN"}
 																	openInNewTab={false}
@@ -1546,10 +1525,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																}}
 															>
 																<Link
-																	href={{
-																		hash: ":ACBgSFIb5",
-																		webPageId: "augiA20Il",
-																	}}
+																	href={"/#services"}
 																	motionChild={true}
 																	nodeId={"ZFeR_0q7P"}
 																	openInNewTab={false}
