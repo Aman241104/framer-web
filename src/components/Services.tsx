@@ -1,20 +1,49 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Tilt from 'react-parallax-tilt';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import ServiceSmallFramerComponent from '@/framer/section-service/service-small';
 import LabelFramerComponent from '@/framer/element/label';
+import ServiceModal, { ServiceData } from './ServiceModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ServiceSmall = ServiceSmallFramerComponent as any;
 const Label = LabelFramerComponent as any;
 
+const servicesData: ServiceData[] = [
+  {
+    id: "personal-branding",
+    title: "Personal Branding With<br />AI",
+    description: "Enhance your LinkedIn presence and influence with AI-driven content and optimization. Build a LinkedIn presence and personal brand that attracts clients — consistently and on autopilot.",
+    tags: ["LinkedIn", "Content", "Thought Leadership"],
+    image: "/service-1.png",
+    glowColor: "bg-blue-600",
+  },
+  {
+    id: "ai-sales",
+    title: "AI-Powered Sales &<br />Marketing",
+    description: "Boost sales and marketing results through intelligent automation from leads to campaigns. From finding the right leads to keeping your best clients — we build the system that runs your revenue.",
+    tags: ["Lead Generation", "Sales", "Client Retention"],
+    image: "/service-2.png",
+    glowColor: "bg-amber-500",
+  },
+  {
+    id: "custom-ai",
+    title: "Custom AI Tools<br />Development",
+    description: "Access bespoke AI solutions for workflow automation, data analysis, and customer engagement. We build AI tools and automation workflows tailored to your business — so you do more with less.",
+    tags: ["AI Tools", "Automation", "Workflows"],
+    image: "/service-3.png",
+    glowColor: "bg-blue-500",
+  }
+];
+
 export const Services = () => {
   const containerRef = useRef<HTMLElement>(null);
+  const [selectedService, setSelectedService] = useState<ServiceData | null>(null);
   const ServiceSmallComp = ServiceSmall?.Responsive || ServiceSmall;
   const LabelComp = Label?.Responsive || Label;
 
@@ -62,83 +91,63 @@ export const Services = () => {
       </div>
 
       <div className="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 w-full max-w-6xl mx-auto">
-        <Tilt
-          tiltMaxAngleX={5}
-          tiltMaxAngleY={5}
-          perspective={1000}
-          transitionSpeed={1500}
-          scale={1.02}
-          gyroscope={true}
-          className="service-card-wrapper opacity-0 translate-y-16"
-        >
-          <div className="bg-[#121212] rounded-[28px] p-8 md:p-10 flex flex-col items-center text-center transition-shadow duration-300 hover:shadow-2xl hover:bg-[#161616] border border-white/5 h-full relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-[60%] bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_10%,transparent_100%)] pointer-events-none z-0"></div>
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[40%] bg-blue-600/15 blur-[50px] rounded-full pointer-events-none z-0 group-hover:bg-blue-500/30 transition-colors duration-700"></div>
+        {servicesData.map((service, index) => {
+          // Dynamic shadow colors derived from glowColor class for Tilt wrapper
+          const shadowColorMap: Record<string, string> = {
+            'bg-blue-600': 'rgba(59,130,246,0.1)',
+            'bg-amber-500': 'rgba(245,158,11,0.1)',
+            'bg-blue-500': 'rgba(59,130,246,0.1)'
+          };
 
-            <h3 className="text-xl md:text-[22px] font-medium text-white mb-6 leading-snug tracking-tight relative z-10">
-              Personal Branding With<br />AI
-            </h3>
-            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-8 border border-white/10 shadow-[0_0_30px_rgba(59,130,246,0.1)] relative z-10">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/service-1.png" alt="Personal Branding" className="ken-burns-img w-full h-full object-cover origin-center scale-[1.05]" />
-            </div>
-            <p className="text-[#a1a1aa] text-sm md:text-[15px] leading-relaxed max-w-[280px] relative z-10">
-              Enhance your LinkedIn presence and influence with AI-driven content and optimization.
-            </p>
-          </div>
-        </Tilt>
+          return (
+            <Tilt
+              key={service.id}
+              tiltMaxAngleX={5}
+              tiltMaxAngleY={5}
+              perspective={1000}
+              transitionSpeed={1500}
+              scale={1.02}
+              gyroscope={true}
+              className="service-card-wrapper opacity-0 translate-y-16 cursor-pointer"
+            >
+              <div
+                className="bg-[#121212] rounded-[28px] p-8 md:p-10 flex flex-col items-center text-center transition-shadow duration-300 hover:shadow-2xl hover:bg-[#161616] border border-white/5 h-full relative overflow-hidden group"
+                onClick={() => setSelectedService(service)}
+              >
+                <div className="absolute top-0 left-0 w-full h-[60%] bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_10%,transparent_100%)] pointer-events-none z-0"></div>
 
-        <Tilt
-          tiltMaxAngleX={5}
-          tiltMaxAngleY={5}
-          perspective={1000}
-          transitionSpeed={1500}
-          scale={1.02}
-          gyroscope={true}
-          className="service-card-wrapper opacity-0 translate-y-16"
-        >
-          <div className="bg-[#121212] rounded-[28px] p-8 md:p-10 flex flex-col items-center text-center transition-shadow duration-300 hover:shadow-2xl hover:bg-[#161616] border border-white/5 h-full relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-[60%] bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_10%,transparent_100%)] pointer-events-none z-0"></div>
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[40%] bg-amber-500/15 blur-[50px] rounded-full pointer-events-none z-0 group-hover:bg-amber-500/30 transition-colors duration-700"></div>
+                {/* Dynamic Glow */}
+                <div className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[40%] ${service.glowColor}/15 blur-[50px] rounded-full pointer-events-none z-0 group-hover:${service.glowColor}/30 transition-colors duration-700`}></div>
 
-            <h3 className="text-xl md:text-[22px] font-medium text-white mb-6 leading-snug tracking-tight relative z-10">
-              AI-Powered Sales &<br />Marketing
-            </h3>
-            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-8 border border-white/10 shadow-[0_0_30px_rgba(245,158,11,0.1)] relative z-10">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/service-2.png" alt="AI-Powered Sales" className="ken-burns-img w-full h-full object-cover origin-center scale-[1.05]" />
-            </div>
-            <p className="text-[#a1a1aa] text-sm md:text-[15px] leading-relaxed max-w-[280px] relative z-10">
-              Boost sales and marketing results through intelligent automation from leads to campaigns.
-            </p>
-          </div>
-        </Tilt>
+                <h3
+                  className="text-xl md:text-[22px] font-medium text-white mb-6 leading-snug tracking-tight relative z-10"
+                  dangerouslySetInnerHTML={{ __html: service.title }}
+                />
 
-        <Tilt
-          tiltMaxAngleX={5}
-          tiltMaxAngleY={5}
-          perspective={1000}
-          transitionSpeed={1500}
-          scale={1.02}
-          gyroscope={true}
-          className="service-card-wrapper opacity-0 translate-y-16"
-        >
-          <div className="bg-[#121212] rounded-[28px] p-8 md:p-10 flex flex-col items-center text-center transition-shadow duration-300 hover:shadow-2xl hover:bg-[#161616] border border-white/5 h-full relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-[60%] bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_10%,transparent_100%)] pointer-events-none z-0"></div>
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[40%] bg-blue-500/15 blur-[50px] rounded-full pointer-events-none z-0 group-hover:bg-blue-400/30 transition-colors duration-700"></div>
+                <div
+                  className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-8 border border-white/10 relative z-10"
+                  style={{ boxShadow: `0 0 30px ${shadowColorMap[service.glowColor]}` }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={service.image} alt={service.title.replace('<br />', ' ')} className="ken-burns-img w-full h-full object-cover origin-center scale-[1.05]" />
+                </div>
 
-            <h3 className="text-xl md:text-[22px] font-medium text-white mb-6 leading-snug tracking-tight relative z-10">
-              Custom AI Tools<br />Development
-            </h3>
-            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-8 border border-white/10 shadow-[0_0_30px_rgba(59,130,246,0.1)] relative z-10">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/service-3.png" alt="Custom AI Tools" className="ken-burns-img w-full h-full object-cover origin-center scale-[1.05]" />
-            </div>
-            <p className="text-[#a1a1aa] text-sm md:text-[15px] leading-relaxed max-w-[280px] relative z-10">
-              Access bespoke AI solutions for workflow automation, data analysis, and customer engagement.
-            </p>
-          </div>
-        </Tilt>
+                <p className="text-[#a1a1aa] text-sm md:text-[15px] leading-relaxed max-w-[280px] relative z-10 line-clamp-2">
+                  {service.description.split('.')[0]}.
+                </p>
+
+                {/* Arrow indicator for interactivity */}
+                <div className="mt-6 flex items-center gap-2 text-[#E5A800] text-sm font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 relative z-10">
+                  <span>Learn more</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </Tilt>
+          );
+        })}
       </div>
 
       <div className="flex flex-wrap justify-center gap-3 mt-4 custom-service-tags">
@@ -155,6 +164,12 @@ export const Services = () => {
           </>
         )}
       </div>
+
+      <ServiceModal
+        isOpen={!!selectedService}
+        onClose={() => setSelectedService(null)}
+        service={selectedService}
+      />
     </section>
   );
 };

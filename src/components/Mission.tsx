@@ -13,7 +13,7 @@ const Button = ButtonFramerComponent as any;
 
 export const Mission = () => {
   return (
-    <section id="mission" className="pt-[20px] pb-[40px] bg-transparent relative overflow-hidden">
+    <section id="mission" className="pt-[20px] pb-[40px] bg-transparent relative overflow-hidden scroll-mt-32">
       <div className="container mx-auto px-6 max-w-6xl relative z-10 text-center">
 
         <div className="flex flex-col items-center mb-12">
