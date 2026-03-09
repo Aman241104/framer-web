@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { FooterCustom } from '@/components/FooterCustom';
 import { motion } from 'framer-motion';
 
 const fadeUp: any = {
@@ -171,7 +171,7 @@ export default function TermsPage() {
             </section>
 
             {/* Footer */}
-            <Footer />
+            <FooterCustom />
         </main>
     );
 }

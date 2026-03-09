@@ -12,7 +12,7 @@ import { Founder } from '@/components/Founder';
 import { Testimonials } from '@/components/Testimonials';
 import { Pricing } from '@/components/Pricing';
 import { FAQ } from '@/components/FAQ';
-import { Footer } from '@/components/Footer';
+import { FooterCustom } from '@/components/FooterCustom';
 
 const ScrollArrow = ScrollArrowFramerComponent as any;
 const ScrollArrowComp = ScrollArrow?.Responsive || ScrollArrow;
@@ -32,7 +32,7 @@ export default function Home() {
       <Testimonials />
       <Pricing />
       <FAQ />
-      <Footer />
+      <FooterCustom />
     </main>
   );
 }

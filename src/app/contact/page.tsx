@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { FooterCustom } from '@/components/FooterCustom';
 import { FAQ } from '@/components/FAQ';
 import { motion } from 'framer-motion';
 
@@ -233,7 +233,7 @@ export default function ContactPage() {
       <FAQ />
 
       {/* Footer */}
-      <Footer />
+      <FooterCustom />
     </main>
   );
 }
