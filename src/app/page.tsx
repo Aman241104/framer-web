@@ -19,7 +19,7 @@ const ScrollArrowComp = ScrollArrow?.Responsive || ScrollArrow;
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black overflow-x-hidden font-sans relative">
+    <main className="min-h-screen bg-black overflow-x-hidden w-full max-w-[100vw] font-sans relative">
       <Hero />
       <WhyUs />
       <Mission />

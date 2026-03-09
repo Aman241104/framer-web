@@ -57,6 +57,7 @@ export const Testimonials = () => {
                 text={t.text}
                 name1={t.name1}
                 detail={t.detail}
+                style={{ width: '100%', maxWidth: '100%' }}
               />
             </div>
           </motion.div>
