@@ -56,7 +56,12 @@ export const Mission = () => {
           transition={{ delay: 0.4, duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
           className="mt-12 flex justify-center"
         >
-          <Link href="/contact" className="group text-[#10B981] font-bold text-lg hover:text-[#FBBF24] transition-all flex items-center gap-2">
+          <a
+            href="https://calendly.com/vishva-veebran/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group text-[#10B981] font-bold text-lg hover:text-[#FBBF24] transition-all flex items-center gap-2"
+          >
             Book A Call
             <motion.div
               animate={{ x: [0, 5, 0] }}
@@ -67,7 +72,7 @@ export const Mission = () => {
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </motion.div>
-          </Link>
+          </a>
         </motion.div>
 
 

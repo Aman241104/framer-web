@@ -11,7 +11,7 @@ const navLinks = [
     { label: 'Why Us', href: '/#why-us' },
     { label: 'Mission', href: '/#mission' },
     { label: 'Services', href: '/#services' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Book a Call', href: 'https://calendly.com/vishva-veebran/30min' },
     { label: 'Terms & Conditions', href: '/terms' },
 ];
 
@@ -161,8 +161,10 @@ export const FooterCustom = () => {
 
                             {/* Book A Call */}
                             <motion.div {...spring(0.15)} style={{ marginBottom: 52 }}>
-                                <Link
-                                    href="/contact"
+                                <a
+                                    href="https://calendly.com/vishva-veebran/30min"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     style={{
                                         fontFamily: '"Satoshi", sans-serif',
                                         fontWeight: 700,
@@ -195,7 +197,7 @@ export const FooterCustom = () => {
                                         <line x1="7" y1="17" x2="17" y2="7" />
                                         <polyline points="7 7 17 7 17 17" />
                                     </svg>
-                                </Link>
+                                </a>
                             </motion.div>
 
                             {/* Divider */}
@@ -256,10 +258,14 @@ export const FooterCustom = () => {
                                         justifyContent: 'flex-end',
                                     }}
                                 >
-                                    {navLinks.map((link) => (
+                                    {navLinks.map((link) => {
+                                    const isExternal = link.href.startsWith('http');
+                                    return (
                                         <Link
                                             key={link.label}
                                             href={link.href}
+                                            target={isExternal ? "_blank" : undefined}
+                                            rel={isExternal ? "noopener noreferrer" : undefined}
                                             style={{
                                                 fontFamily: '"Satoshi", sans-serif',
                                                 fontSize: 14,
@@ -273,7 +279,8 @@ export const FooterCustom = () => {
                                         >
                                             {link.label}
                                         </Link>
-                                    ))}
+                                    );
+                                })}
                                 </nav>
                             </motion.div>
 

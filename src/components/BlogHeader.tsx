@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export const BlogHeader = () => {
     return (
-        <section className="pt-32 pb-20 bg-background relative overflow-hidden border-b border-white/5">
+        <section className="pt-32 pb-20 bg-black relative overflow-hidden border-b border-white/5">
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <motion.p
                     initial={{ opacity: 0, y: 10 }}

@@ -112,8 +112,10 @@ const ServiceModal = ({ isOpen, onClose, service }: ServiceModalProps) => {
 
                             {/* CTA Area */}
                             <div className="pt-6 mt-auto flex justify-end items-center border-t border-white/5">
-                                <Link
-                                    href="/contact"
+                                <a
+                                    href="https://calendly.com/vishva-veebran/30min"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="group flex gap-2 items-center px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-neutral-200 transition-colors"
                                 >
                                     Get in Touch
@@ -121,7 +123,7 @@ const ServiceModal = ({ isOpen, onClose, service }: ServiceModalProps) => {
                                         <line x1="5" y1="12" x2="19" y2="12"></line>
                                         <polyline points="12 5 19 12 12 19"></polyline>
                                     </svg>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </motion.div>

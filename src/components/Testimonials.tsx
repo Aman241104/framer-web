@@ -10,19 +10,14 @@ const Label = LabelFramerComponent as any;
 
 const testimonials = [
   {
-    text: '"VeeBran completely changed the way we approached LinkedIn. From content to outreach, their systems run like clockwork"',
-    name1: 'Nirav',
-    detail: 'CEO',
-  },
-  {
-    text: '"The AI workflows Vishva and her team built saved us 15+ hours a week. What felt like chaos is now structured, and scalable"',
-    name1: 'Noam',
-    detail: 'Founder',
-  },
-  {
     text: '"VeeBran made personal branding effortless. Now, I get consistent inbound leads just from LinkedIn."',
     name1: 'Ripal',
     detail: 'Coach',
+  },
+  {
+    text: '"The AI workflows Vishva and her team built saved us 15+ hours a week. What felt like chaos is now structured and scalable."',
+    name1: 'Noam',
+    detail: 'Founder',
   },
 ];
 
@@ -41,7 +36,7 @@ export const Testimonials = () => {
       >
         {LabelComp && <LabelComp label="What Our Clients Say" variant="Secondary" />}
       </motion.div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {TestimonialCardComp && testimonials.map((t, i) => (
           <motion.div
             key={i}

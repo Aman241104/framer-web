@@ -300,3 +300,34 @@ body {
 .nav-talk-wrap:hover .nav-talk-btn svg {
   transform: translate(2px, -2px);
 }
+/* Modern Reveal Animations */
+.reveal-blur {
+  filter: blur(10px);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-blur.visible {
+  filter: blur(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-glow {
+  position: relative;
+}
+
+.hover-glow::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(229, 168, 0, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hover-glow:hover::after {
+  opacity: 1;
+}

@@ -17,24 +17,24 @@ const Label = LabelFramerComponent as any;
 const servicesData: ServiceData[] = [
   {
     id: "personal-branding",
-    title: "Personal Branding With<br />AI",
-    description: "Enhance your LinkedIn presence and influence with AI-driven content and optimization. Build a LinkedIn presence and personal brand that attracts clients — consistently and on autopilot.",
+    title: "Personal Branding with AI",
+    description: "Build a LinkedIn presence and personal brand that attracts clients - consistently and on autopilot.",
     tags: ["LinkedIn", "Content", "Thought Leadership"],
     image: "/service-1.png",
     glowColor: "bg-blue-600",
   },
   {
     id: "ai-sales",
-    title: "AI-Powered Sales &<br />Marketing",
-    description: "Boost sales and marketing results through intelligent automation from leads to campaigns. From finding the right leads to keeping your best clients — we build the system that runs your revenue.",
+    title: "AI-Powered Sales & Marketing",
+    description: "From finding the right leads to keeping your best clients - we build the system that runs your revenue.",
     tags: ["Lead Generation", "Sales", "Client Retention"],
     image: "/service-2.png",
     glowColor: "bg-amber-500",
   },
   {
     id: "custom-ai",
-    title: "Custom AI Tools<br />Development",
-    description: "Access bespoke AI solutions for workflow automation, data analysis, and customer engagement. We build AI tools and automation workflows tailored to your business — so you do more with less.",
+    title: "Custom AI Tool Development",
+    description: "We build AI tools and automation workflows tailored to your business - so you do more with less.",
     tags: ["AI Tools", "Automation", "Workflows"],
     image: "/service-3.png",
     glowColor: "bg-blue-500",
@@ -79,14 +79,14 @@ export const Services = () => {
   return (
     <section id="services" ref={containerRef} className="pt-[40px] pb-[60px] container mx-auto px-6 relative z-10 scroll-mt-32">
       <div className="flex flex-col items-center mb-12">
-        {LabelComp && <LabelComp label="Our Services" variant="Secondary" />}
+        {LabelComp && <LabelComp label="What We Do" variant="Secondary" />}
       </div>
       <div className="text-center mb-20">
-        <h2 className="text-4xl md:text-[48px] font-bold text-[#3B82F6] tracking-tight leading-tight mb-4">
+        <h2 className="text-4xl md:text-[48px] font-bold text-[#3B82F6] tracking-tight leading-tight mb-4 uppercase">
           Expertise That Drives Quality
         </h2>
-        <p className="text-zinc-500 max-w-2xl mx-auto text-sm md:text-base font-medium">
-          With deep expertise, we deliver quality solutions that drive success and exceed industry standards consistently.
+        <p className="text-zinc-500 max-w-2xl mx-auto text-base md:text-lg font-medium">
+          Three focused services. One trusted partner.
         </p>
       </div>
 

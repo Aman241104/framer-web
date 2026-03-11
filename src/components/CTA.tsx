@@ -44,7 +44,7 @@ export const CTA = () => {
                 WebkitBackgroundClip: 'text'
               }}
             >
-              LET&apos;S SUCCEED TOGETHER
+              Ready to Grow?
             </motion.h2>
 
             <p className="text-zinc-500 italic max-w-xl mx-auto mb-16 text-lg md:text-xl font-bold uppercase tracking-widest leading-relaxed">
@@ -54,7 +54,7 @@ export const CTA = () => {
 
             <div className="flex justify-center">
               <Link href="/contact" className="text-[#10B981] font-bold text-lg hover:text-[#FBBF24] transition-colors flex items-center gap-2">
-                Book A Call
+                Get in Touch
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>

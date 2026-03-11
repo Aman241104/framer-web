@@ -61,13 +61,13 @@ export const Founder = () => {
             >
               <motion.div
                 variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
-                className="flex items-center gap-2"
+                className="flex items-center mb-4"
               >
-                <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 10L20 35L35 10" stroke="#3B82F6" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M12 10L20 25L28 10" stroke="#D9FF00" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span className="text-[20px] font-black tracking-tighter text-white leading-none">VeeBran</span>
+                <img
+                  src="https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png"
+                  alt="VeeBran Logo"
+                  className="h-[32px] w-auto object-contain"
+                />
               </motion.div>
 
               <motion.h2

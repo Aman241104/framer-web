@@ -5,14 +5,16 @@ import { motion } from 'framer-motion';
 import StatisticFramerComponent from '@/framer/section-work/statistic';
 import LabelFramerComponent from '@/framer/element/label';
 
+import CountUp from './react-bits/CountUp';
+
 const Statistic = StatisticFramerComponent as any;
 const Label = LabelFramerComponent as any;
 
 const statsData = [
-  { amount: "10+", title: "Brands Automated" },
-  { amount: "4.9", title: "Rating out of 5" },
-  { amount: "7k+", title: "AI-Powered Messages" },
-  { amount: "95%", title: "Client Retention" }
+  { amount: 10, suffix: "+", title: "Brands Automated" },
+  { amount: 7000, separator: ",", title: "AI Touchpoints" },
+  { amount: 15, suffix: "+", title: "Hours Saved Weekly" },
+  { amount: 95, suffix: "%", title: "Client Retention" }
 ];
 
 export const Stats = () => {
@@ -59,9 +61,25 @@ export const Stats = () => {
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.25, 1, 0.5, 1] }}
                     whileHover={{ scale: 1.05, transition: { duration: 0.2, ease: "easeOut" } }}
-                    className="w-full md:w-auto flex justify-center"
+                    className="w-full md:w-auto flex justify-center relative group"
                   >
-                    <StatisticComp amount={stat.amount} title={stat.title} />
+                    <div className="relative">
+                      {/* The Framer component provides the styling and title */}
+                      <StatisticComp amount=" " title={stat.title} />
+                      
+                      {/* Overlay the animated number */}
+                      <div className="absolute top-[24px] left-0 w-full flex justify-center pointer-events-none">
+                        <span className="text-[48px] font-bold text-white tracking-tighter leading-none">
+                          <CountUp 
+                            to={stat.amount} 
+                            suffix={stat.suffix || ""} 
+                            separator={stat.separator || ""}
+                            duration={2.5}
+                            delay={idx * 0.1}
+                          />
+                        </span>
+                      </div>
+                    </div>
                   </motion.div>
                   {idx < statsData.length - 1 && (
                     <div className="hidden md:block w-px h-24 bg-gradient-to-b from-transparent via-white/40 to-transparent"></div>

@@ -37,25 +37,68 @@ const infoCards = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.08-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
       </svg>
     ),
-    label: 'WhatsApp',
-    value: '+91 88668 33360',
+    label: 'Schedule',
+    value: 'Book a Call',
+    href: 'https://calendly.com/vishva-veebran/30min'
   },
 ];
 
 const formFields = [
-  { label: 'Name', type: 'text', placeholder: 'David Johnson', span: 1 },
-  { label: 'Email', type: 'email', placeholder: 'example@mail.com', span: 1 },
-  { label: 'Phone', type: 'tel', placeholder: '+91 XXXXX XXXXX', span: 1 },
-  { label: 'Company Name', type: 'text', placeholder: 'Ex. StartoMania', span: 1 },
-  { label: 'Website', type: 'url', placeholder: 'https://example.com', span: 1 },
-  { label: 'Position', type: 'text', placeholder: 'Founder, CEO, etc.', span: 1 },
+  { id: 'name', label: 'Name', type: 'text', placeholder: 'David Johnson' },
+  { id: 'email', label: 'Email', type: 'email', placeholder: 'example@mail.com' },
+  { id: 'companyname', label: 'Company Name', type: 'text', placeholder: 'Ex. StartoMania' },
+  { id: 'website', label: 'Website', type: 'url', placeholder: 'https://example.com' },
+  { id: 'position', label: 'Position', type: 'text', placeholder: 'Founder, CEO, etc.' },
 ];
 
 export default function ContactPage() {
   const [focused, setFocused] = useState<string | null>(null);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    companyname: '',
+    website: '',
+    position: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    console.log('Submitting form data:', formData);
+
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby98WLibYWL_l1Qm4P3mtLK2Mz1KDEJW4g1MY2J8MTvT7iD7kjr_OPeTeLsGTn310GO/exec";
+
+    try {
+      // Use no-cors mode because Google Script doesn't return proper CORS headers for JSON POSTs
+      // and we just need to send the data (fire-and-forget).
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Important for Google Script
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toLocaleString(),
+        }),
+      });
+
+      // Since 'no-cors' doesn't let us read the response, we assume success if no exception was thrown
+      setStatus('success');
+      setFormData({ name: '', email: '', companyname: '', website: '', position: '', message: '' });
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('error');
+    }
+  };
 
   return (
     <main className="min-h-screen bg-[#050505] overflow-x-hidden font-sans relative">
@@ -101,26 +144,38 @@ export default function ContactPage() {
 
       {/* Info Cards */}
       <section className="px-6 pb-12 flex flex-wrap justify-center gap-6">
-        {infoCards.map((card, i) => (
-          <motion.div
-            key={card.label}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={i}
-            whileHover={{ y: -4, borderColor: 'rgba(59,130,246,0.4)' }}
-            className="flex items-center gap-4 bg-[#111] border border-white/8 rounded-2xl px-6 py-4 cursor-default"
-          >
-            <div className="w-10 h-10 rounded-xl bg-[#1a1a1a] border border-white/10 flex items-center justify-center text-white/50">
-              {card.icon}
+        {infoCards.map((card, i) => {
+          const content = (
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-[#1a1a1a] border border-white/10 flex items-center justify-center text-white/50">
+                {card.icon}
+              </div>
+              <div>
+                <p className="text-white/40 text-xs font-medium">{card.label}</p>
+                <p className="text-white text-sm font-semibold">{card.value}</p>
+              </div>
             </div>
-            <div>
-              <p className="text-white/40 text-xs font-medium">{card.label}</p>
-              <p className="text-white text-sm font-semibold">{card.value}</p>
-            </div>
-          </motion.div>
-        ))}
+          );
+
+          return (
+            <motion.div
+              key={card.label}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={i}
+              whileHover={{ y: -4, borderColor: 'rgba(59,130,246,0.4)' }}
+              className="bg-[#111] border border-white/8 rounded-2xl px-6 py-4 cursor-default"
+            >
+              {card.href ? (
+                <a href={card.href} target="_blank" rel="noopener noreferrer">
+                  {content}
+                </a>
+              ) : content}
+            </motion.div>
+          );
+        })}
       </section>
 
       {/* Contact Form */}
@@ -150,82 +205,117 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="text-2xl font-bold text-white mb-8 relative z-10"
           >
-            Send us a message
+            {status === 'success' ? 'Message Sent!' : 'Send us a message'}
           </motion.h2>
 
-          <form className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {formFields.map((field, i) => (
+          {status === 'success' ? (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-12 relative z-10"
+            >
+              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <h3 className="text-white text-xl font-bold mb-2">Thank you for reaching out!</h3>
+              <p className="text-white/60">We&apos;ve received your message and will get back to you shortly.</p>
+              <button 
+                onClick={() => setStatus('idle')}
+                className="mt-8 text-[#3B82F6] font-bold text-sm hover:underline"
+              >
+                Send another message
+              </button>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {formFields.map((field, i) => (
+                <motion.div
+                  key={field.id}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  custom={i * 0.5}
+                  className="flex flex-col gap-2"
+                >
+                  <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">{field.label}</label>
+                  <input
+                    required
+                    name={field.id}
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    value={(formData as any)[field.id]}
+                    onChange={handleChange}
+                    onFocus={() => setFocused(field.id)}
+                    onBlur={() => setFocused(null)}
+                    className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === field.id
+                      ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
+                      : 'border-white/8 hover:border-white/15'
+                      }`}
+                  />
+                </motion.div>
+              ))}
+
+              {/* Textarea */}
               <motion.div
-                key={field.label}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                custom={i * 0.5}
-                className="flex flex-col gap-2"
+                custom={3}
+                className="flex flex-col gap-2 md:col-span-2"
               >
-                <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">{field.label}</label>
-                <input
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  onFocus={() => setFocused(field.label)}
+                <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">What are you looking for?</label>
+                <textarea
+                  required
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell us what you're working on and how we can help..."
+                  rows={4}
+                  onFocus={() => setFocused('message')}
                   onBlur={() => setFocused(null)}
-                  className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === field.label
+                  className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 resize-none ${focused === 'message'
                     ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
                     : 'border-white/8 hover:border-white/15'
                     }`}
                 />
               </motion.div>
-            ))}
 
-            {/* Textarea */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={3}
-              className="flex flex-col gap-2 md:col-span-2"
-            >
-              <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">What are you looking for?</label>
-              <textarea
-                placeholder="Tell us what you're working on and how we can help..."
-                rows={4}
-                onFocus={() => setFocused('message')}
-                onBlur={() => setFocused(null)}
-                className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 resize-none ${focused === 'message'
-                  ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
-                  : 'border-white/8 hover:border-white/15'
-                  }`}
-              />
-            </motion.div>
-
-            {/* Submit Row */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={4}
-              className="md:col-span-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-4"
-            >
-              <motion.button
-                type="button"
-                whileHover={{ scale: 1.03, backgroundColor: '#bce600' }}
-                whileTap={{ scale: 0.97 }}
-                className="px-8 py-3.5 rounded-xl bg-[#D4FF00] text-black font-bold text-sm transition-colors flex items-center gap-2"
+              {/* Submit Row */}
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={4}
+                className="md:col-span-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-4"
               >
-                Send Message
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
-                </svg>
-              </motion.button>
-              <div className="text-white/35 text-xs">
-                <p>WhatsApp: +91 88668 33360</p>
-                <p className="mt-0.5">Mail: vishva@veebran.com</p>
-              </div>
-            </motion.div>
-          </form>
+                <motion.button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  whileHover={{ scale: 1.03, backgroundColor: '#bce600' }}
+                  whileTap={{ scale: 0.97 }}
+                  className={`px-8 py-3.5 rounded-xl bg-[#D4FF00] text-black font-bold text-sm transition-colors flex items-center gap-2 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                >
+                  {status === 'loading' ? 'Sending...' : 'Send Message'}
+                  {status !== 'loading' && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  )}
+                </motion.button>
+                {status === 'error' && (
+                  <p className="text-red-500 text-xs font-medium">Something went wrong. Please try again.</p>
+                )}
+                <div className="text-white/35 text-xs text-right">
+                  <p>Mail: vishva@veebran.com</p>
+                </div>
+              </motion.div>
+            </form>
+          )}
         </motion.div>
       </section>
 

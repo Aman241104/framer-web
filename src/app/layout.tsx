@@ -27,6 +27,12 @@ const instrumentSans = Instrument_Sans({
 export const metadata: Metadata = {
   title: "VeeBran | Personal Branding, Sales & AI Tools for Founders",
   description: "VeeBran helps founders, coaches, and consultants grow with AI-powered personal branding, sales systems, and custom automation. Get in touch today.",
+  keywords: ["personal branding and AI consulting for founders", "pre-sales post-sales consulting India", "custom AI tool development", "business automation for startups"],
+  openGraph: {
+    title: "VeeBran - Grow Your Brand, Pipeline & Business with AI",
+    description: "The growth consulting partner for founders and entrepreneurs. Personal branding, sales systems, and custom AI tools.",
+    type: 'website',
+  }
 };
 
 export default function RootLayout({

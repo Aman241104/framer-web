@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Why Us', href: '/#why-us' },
   { label: 'Mission', href: '/#mission' },
   { label: 'Services', href: '/#services' },
+  { label: 'Blog', href: '/blog' },
 ];
 
 const Navbar = () => {
@@ -36,7 +37,6 @@ const Navbar = () => {
           window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
       }
-      // On other pages, let Next.js navigate to /#section naturally
       closeMobileMenu();
     }
   };
@@ -68,6 +68,7 @@ const Navbar = () => {
               <Link
                 key={item.label}
                 href={item.href}
+                onClick={(e) => handleScroll(e, item.href)}
                 className="text-[#afafaf] hover:text-white transition-colors text-sm font-medium tracking-wide"
               >
                 {item.label}
@@ -112,7 +113,12 @@ const Navbar = () => {
           <div className="flex items-center gap-3 h-full shrink-0">
             {/* Let's Talk button (desktop only) */}
             <div className="hidden md:block">
-              <Link href="/contact" className="nav-talk-wrap group">
+              <a 
+                href="https://calendly.com/vishva-veebran/30min" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="nav-talk-wrap group"
+              >
                 <div className="nav-talk-border"></div>
                 <div className="nav-talk-glow"></div>
                 <div className="nav-talk-btn">
@@ -122,7 +128,7 @@ const Navbar = () => {
                     <polyline points="9 5 19 5 19 15"></polyline>
                   </svg>
                 </div>
-              </Link>
+              </a>
             </div>
 
             {/* Hamburger (mobile only) */}
@@ -132,7 +138,7 @@ const Navbar = () => {
               aria-label="Toggle menu"
             >
               <span className={`block w-[18px] h-[1.5px] bg-white rounded-full transition-all duration-300 origin-center ${isMobileMenuOpen ? 'translate-y-[6.5px] rotate-45' : ''}`} />
-              <span className={`block w-[18px] h-[1.5px] bg-white rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0 scale-x-0' : ''}`} />
+              <span className={`block w-[18px] h-[1.5px] bg-white rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0 scale-x-0' : 'opacity-100'}`} />
               <span className={`block w-[18px] h-[1.5px] bg-white rounded-full transition-all duration-300 origin-center ${isMobileMenuOpen ? '-translate-y-[6.5px] -rotate-45' : ''}`} />
             </button>
           </div>
@@ -143,7 +149,6 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               key="backdrop"
               initial={{ opacity: 0 }}
@@ -154,7 +159,6 @@ const Navbar = () => {
               onClick={closeMobileMenu}
             />
 
-            {/* Drawer */}
             <motion.div
               key="drawer"
               initial={{ opacity: 0, y: -12, scale: 0.98 }}
@@ -217,8 +221,10 @@ const Navbar = () => {
                 </motion.div>
 
                 <div className="pt-2 flex w-full">
-                  <Link
-                    href="/contact"
+                  <a
+                    href="https://calendly.com/vishva-veebran/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={closeMobileMenu}
                     className="nav-talk-wrap group w-full flex"
                   >
@@ -231,7 +237,7 @@ const Navbar = () => {
                         <polyline points="9 5 19 5 19 15"></polyline>
                       </svg>
                     </div>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </motion.div>
