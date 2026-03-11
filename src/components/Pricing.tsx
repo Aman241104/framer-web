@@ -1,277 +1,421 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Check, Shield, TrendingUp, Crown, Users, Building2, Target, GraduationCap, Cpu } from 'lucide-react';
-import ButtonFramerComponent from '@/framer/button/button';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Check, Shield, TrendingUp, Crown, Users, Building2, Target, GraduationCap, Cpu, Zap, Star, Rocket, Sparkles, MessageSquare, ArrowRight } from 'lucide-react';
 
-const Button = ButtonFramerComponent as any;
+type Plan = {
+  name: string;
+  description: string;
+  features: string[];
+  icon: React.ReactNode;
+  popular?: boolean;
+  impact?: string;
+  color: string;
+  ctaLabel?: string;
+};
 
-const brandingPlans = {
-  individual: [
+const pricingData = {
+  branding: {
+    individual: [
+      {
+        name: 'Starter Authority',
+        description: 'Ideal for early-stage founder positioning.',
+        impact: 'Foundation Build',
+        features: [
+          'LinkedIn profile full rewrite & optimization',
+          '8-10 ghostwritten posts/month',
+          'Monthly content calendar',
+          'Headline & banner redesign',
+          'Keyword SEO for LinkedIn discoverability',
+          'Basic engagement management',
+          'Monthly performance report',
+          '1 strategy onboarding call'
+        ],
+        icon: <Shield className="w-5 h-5" />,
+        color: '#3B82F6'
+      },
+      {
+        name: 'Growth Authority',
+        description: 'Strong authority + investor visibility.',
+        impact: 'ROI Focused',
+        features: [
+          'Everything in Starter Authority',
+          '16 ghostwritten posts + 2 long-form articles/month',
+          'AI-powered outreach sequences',
+          'Bi-weekly strategy calls (30 min each)',
+          'Engagement & comment reply management',
+          'Competitor positioning analysis',
+          'Detailed monthly analytics report'
+        ],
+        icon: <TrendingUp className="w-5 h-5" />,
+        popular: true,
+        color: '#3B82F6'
+      },
+      {
+        name: 'Category Leader',
+        description: 'Investor + ecosystem positioning.',
+        impact: 'Scale Ready',
+        features: [
+          'Everything in Growth Authority',
+          'Unlimited content creation',
+          'Full personal brand audit & strategy',
+          'Podcast & speaking outreach',
+          'Dedicated brand manager',
+          'Personal website/bio page creation',
+          'Brand visual identity (banners, headshots brief)',
+          'Weekly strategy calls'
+        ],
+        icon: <Crown className="w-5 h-5" />,
+        color: '#3B82F6'
+      }
+    ],
+    company: [
+      {
+        name: 'Team Presence',
+        description: 'For executive alignment and shared voice.',
+        impact: 'Voice Alignment',
+        features: [
+          '2 founder/executive profiles managed',
+          'Company LinkedIn page full optimisation',
+          'Shared brand voice & content strategy',
+          '24 ghostwritten posts/month (8 per profile)',
+          'Unified content calendar for all profiles',
+          'Cross-profile content alignment & consistency',
+          'Basic engagement management per profile',
+          'Combined monthly analytics report',
+          '1 team strategy call/month'
+        ],
+        icon: <Users className="w-5 h-5" />,
+        color: '#10B981'
+      },
+      {
+        name: 'Corporate Authority',
+        description: 'Full company content engine.',
+        impact: 'Full Engine',
+        features: [
+          'Everything in Team Presence',
+          'Unlimited executive profiles managed',
+          'Full company content engine (posts, articles, newsletters)',
+          'AI-powered thought leadership strategy',
+          'PR & media integration — press releases, features',
+          'Investor & ecosystem visibility campaigns',
+          'Dedicated brand manager + content team',
+          'Weekly executive strategy calls',
+          '24/7 priority support & turnaround'
+        ],
+        icon: <Building2 className="w-5 h-5" />,
+        popular: true,
+        color: '#10B981'
+      }
+    ]
+  },
+  sales: [
     {
-      name: 'Starter Authority',
-      description: 'Ideal for early-stage founder positioning.',
+      name: 'Pre-Sales Systems',
+      description: 'Lead generation and outreach frameworks.',
+      impact: 'Pipeline Growth',
       features: [
-        'LinkedIn profile full rewrite & optimization',
-        '8-10 ghostwritten posts/month',
-        'Monthly content calendar',
-        'Headline & banner redesign',
-        'Keyword SEO for discovery',
-        'Basic engagement management',
-        'Monthly performance report',
-        '1 strategy onboarding call'
+        'Market research & competitive analysis',
+        'Ideal customer profile (ICP) & target persona building',
+        'Cold calling scripts & outreach frameworks',
+        'Cold email sequences — written & automated',
+        'LinkedIn outreach campaigns (connection + DM strategy)',
+        'Lead Generation list building',
+        'CRM setup & configuration (HubSpot / Zoho)',
+        'Sales funnel mapping',
+        'Weekly pipeline review & reporting',
+        '1 strategy call/month'
       ],
-      icon: <Shield className="w-5 h-5 text-blue-400" />
+      icon: <Target className="w-5 h-5" />,
+      color: '#F59E0B'
     },
     {
-      name: 'Growth Authority',
-      description: 'Strong authority + investor visibility.',
+      name: 'Post-Sales & Retention',
+      description: 'Client onboarding and relationship systems.',
+      impact: 'LTV Focused',
       features: [
-        'Everything in Starter Authority',
-        '16 posts + 2 long-form articles/month',
-        'AI-powered outreach sequences',
-        'Bi-weekly strategy calls (30 min)',
-        'Engagement & reply management',
-        'Competitor positioning analysis',
-        'Detailed monthly analytics report'
+        'Client onboarding preparation',
+        'Documentation, SOPs & quotation templates',
+        'Project delivery oversight & milestone tracking',
+        'Client relationship management & check-ins',
+        'Retention strategy design & execution',
+        'Upsell & cross-sell opportunity identification',
+        'Escalation handling & issue resolution workflows',
+        'Monthly client health report'
       ],
-      icon: <TrendingUp className="w-5 h-5 text-blue-500" />,
-      popular: true
+      icon: <Star className="w-5 h-5" />,
+      popular: true,
+      color: '#F59E0B'
     },
     {
-      name: 'Category Leader',
-      description: 'Investor + ecosystem positioning.',
+      name: 'Sales Training',
+      description: 'End-to-end sales cycle mastery.',
+      impact: 'Team Mastery',
       features: [
-        'Everything in Growth Authority',
-        'Unlimited content creation',
-        'Full personal brand audit & strategy',
-        'Podcast & speaking outreach',
-        'Dedicated brand manager',
-        'Personal website/bio page creation',
-        'Brand visual identity brief',
-        'Weekly strategy calls'
+        'End-to-end sales cycle training',
+        'Lead generation to closing techniques',
+        'Inbound & outbound sales methodology',
+        'Objection handling & negotiation skills',
+        'Discovery call & demo best practices',
+        'CRM usage & pipeline hygiene training',
+        'Monthly billing & invoicing workflows',
+        'Custom team sessions tailored to your product',
+        'Role-play exercises & live call reviews',
+        'Post-training performance report'
       ],
-      icon: <Crown className="w-5 h-5 text-blue-600" />
+      icon: <GraduationCap className="w-5 h-5" />,
+      color: '#F59E0B'
     }
   ],
-  company: [
+  ai: [
     {
-      name: 'Team Presence',
-      description: 'For executive alignment and shared voice.',
+      name: 'Total AI Customization',
+      description: 'Bespoke end-to-end AI infrastructure designed for your specific business logic.',
+      impact: 'Bespoke Solutions',
+      ctaLabel: 'Build Your AI Roadmap',
       features: [
-        '2 founder/executive profiles managed',
-        'Company LinkedIn page optimization',
-        'Shared brand voice & strategy',
-        '24 ghostwritten posts/month',
-        'Unified content calendar',
-        'Cross-profile alignment',
-        'Basic engagement management',
-        'Combined monthly analytics',
-        '1 team strategy call/month'
+        'Custom AI Agent & Chatbot development',
+        'Internal Workflow automation design',
+        'Cross-platform Tool integrations',
+        'AI-powered Data Analysis systems',
+        'Scalable Infrastructure architecture',
+        'Legacy System AI modernization',
+        'Custom Team Training & Documentation',
+        'Ongoing ROI Auditing & Support'
       ],
-      icon: <Users className="w-5 h-5 text-emerald-400" />
-    },
-    {
-      name: 'Corporate Authority',
-      description: 'Full company content engine.',
-      features: [
-        'Everything in Team Presence',
-        'Unlimited executive profiles',
-        'Full company content engine',
-        'AI thought leadership strategy',
-        'PR & media integration',
-        'Investor visibility campaigns',
-        'Dedicated manager + content team',
-        'Weekly executive strategy calls',
-        '24/7 priority support'
-      ],
-      icon: <Building2 className="w-5 h-5 text-emerald-500" />
+      icon: <Sparkles className="w-5 h-5" />,
+      popular: true,
+      color: '#A855F7'
     }
   ]
 };
 
-const salesPlans = [
-  {
-    name: 'Pre-Sales Systems',
-    description: 'Lead generation and outreach frameworks.',
-    features: [
-      'Market research & competitive analysis',
-      'Ideal customer profile (ICP) building',
-      'Cold calling & outreach frameworks',
-      'Cold email sequences (written/auto)',
-      'LinkedIn outreach campaigns',
-      'Lead Generation list building',
-      'CRM setup & configuration',
-      'Sales funnel mapping',
-      'Weekly pipeline reporting',
-      '1 strategy call/month'
-    ],
-    icon: <Target className="w-5 h-5 text-amber-400" />
-  },
-  {
-    name: 'Post-Sales & Retention',
-    description: 'Client onboarding and relationship systems.',
-    features: [
-      'Client onboarding preparation',
-      'Documentation, SOPs & templates',
-      'Project delivery oversight',
-      'Relationship management & check-ins',
-      'Retention strategy design',
-      'Upsell & cross-sell identification',
-      'Escalation & resolution workflows',
-      'Monthly client health report'
-    ],
-    icon: <Users className="w-5 h-5 text-amber-500" />
-  },
-  {
-    name: 'Sales Training',
-    description: 'End-to-end sales cycle mastery.',
-    features: [
-      'End-to-end sales cycle training',
-      'Lead generation to closing techniques',
-      'Inbound & outbound methodology',
-      'Objection handling & negotiation',
-      'Discovery call & demo best practices',
-      'CRM usage & pipeline hygiene',
-      'Monthly billing workflows',
-      'Custom team sessions',
-      'Role-play & live call reviews',
-      'Performance assessment reports'
-    ],
-    icon: <GraduationCap className="w-5 h-5 text-amber-600" />
-  }
-];
-
 export const Pricing = () => {
-  const renderCard = (plan: any, index: number, colorClass: string) => (
+  const [activeTab, setActiveTab] = useState<'branding' | 'sales' | 'ai'>('branding');
+  const [brandingType, setBrandingType] = useState<'individual' | 'company'>('individual');
+
+  const CustomCTAButton = ({ label, href, primary, color }: { label: string, href: string, primary?: boolean, color: string }) => (
+    <motion.a
+      href={href}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className={`relative w-full h-14 flex items-center justify-center rounded-2xl font-medium text-sm transition-all duration-300 overflow-hidden group/btn ${
+        primary 
+          ? 'bg-white text-black hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]' 
+          : 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20'
+      }`}
+    >
+      <div className="absolute top-[-50%] left-[-60%] w-[20%] h-[200%] bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-[30deg] transition-all duration-700 group-hover/btn:left-[130%]" />
+      
+      <span className="relative z-10 flex items-center gap-2">
+        {label}
+        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+      </span>
+    </motion.a>
+  );
+
+  const renderCard = (plan: Plan, index: number, isCentered: boolean = false) => (
     <motion.div
       key={plan.name}
+      layout
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      className="flex flex-col h-full p-6 rounded-[2rem] bg-[#080808] border border-white/5 hover:border-white/10 transition-all duration-500 relative group"
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ 
+        delay: index * 0.05,
+        type: 'spring',
+        stiffness: 300,
+        damping: 30
+      }}
+      className={`flex flex-col h-full p-8 rounded-[2.5rem] bg-[#080808] border transition-all duration-500 relative group overflow-hidden ${isCentered ? 'max-w-3xl mx-auto w-full' : ''} ${
+        plan.popular ? 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)]' : 'border-white/5 hover:border-white/10'
+      }`}
     >
       {plan.popular && (
-        <div className={`absolute top-4 right-6 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[9px] font-medium text-blue-400 tracking-widest`}>
-          Recommended
-        </div>
+        <div 
+          className="absolute -top-24 -right-24 w-64 h-64 blur-[100px] rounded-full pointer-events-none opacity-20" 
+          style={{ backgroundColor: plan.color }}
+        />
       )}
-      
-      <div className="mb-6">
-        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+
+      <div className="flex justify-between items-start mb-8 relative z-10">
+        <div 
+          className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110"
+          style={{ backgroundColor: `${plan.color}15`, color: plan.color, border: `1px solid ${plan.color}30` }}
+        >
           {plan.icon}
         </div>
-        <h4 className="text-[20px] font-medium text-white tracking-tight mb-2">{plan.name}</h4>
-        <p className="text-zinc-500 text-[14px] leading-relaxed">{plan.description}</p>
+        <div className="flex flex-col items-end gap-2">
+          {plan.popular && (
+            <span 
+              className="px-3 py-1 rounded-full border text-[9px] font-medium uppercase tracking-widest"
+              style={{ backgroundColor: `${plan.color}10`, borderColor: `${plan.color}30`, color: plan.color }}
+            >
+              {activeTab === 'ai' ? 'Bespoke' : 'Recommended'}
+            </span>
+          )}
+          <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-medium text-zinc-400 uppercase tracking-widest">
+            {plan.impact}
+          </span>
+        </div>
       </div>
 
-      <div className="flex flex-col gap-3 mb-8">
-        {plan.features.slice(0, 8).map((f: string) => (
-          <div key={f} className="flex items-start gap-2.5">
-            <Check className={`w-3.5 h-3.5 ${colorClass} shrink-0 mt-0.5`} />
-            <span className="text-zinc-400 text-[13px] font-medium leading-tight">{f}</span>
+      <div className="mb-8 relative z-10">
+        <h4 className="text-[24px] md:text-[28px] font-medium text-white tracking-tight mb-3">{plan.name}</h4>
+        <p className="text-zinc-500 text-[15px] md:text-[16px] leading-relaxed">{plan.description}</p>
+      </div>
+
+      <div className={`grid ${isCentered ? 'md:grid-cols-2' : 'grid-cols-1'} gap-x-10 gap-y-4 mb-10 relative z-10`}>
+        {plan.features.map((f: string) => (
+          <div key={f} className="flex items-start gap-3 group/item">
+            <div className="mt-1 flex-shrink-0 w-4 h-4 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-white/30 transition-colors">
+              <Check className="w-2.5 h-2.5 text-white" />
+            </div>
+            <span className="text-zinc-400 text-[14px] font-normal leading-tight group-hover/item:text-zinc-200 transition-colors">{f}</span>
           </div>
         ))}
-        {plan.features.length > 8 && (
-          <span className="text-zinc-600 text-[11px] font-medium tracking-wider pl-6">+ More features</span>
-        )}
       </div>
 
-      <div className="mt-auto">
-        <Button.Responsive
-          labelButton="Select Plan"
-          variant={plan.popular ? "Primary" : "Accent"}
-          link="/contact"
-          className="w-full"
+      <div className="mt-auto relative z-10">
+        <CustomCTAButton 
+          label={plan.ctaLabel || "Get Started"} 
+          href="/contact" 
+          primary={plan.popular} 
+          color={plan.color} 
         />
       </div>
     </motion.div>
   );
 
   return (
-    <section id="pricing" className="py-24 bg-black relative overflow-hidden border-t border-white/5">
+    <section id="pricing" className="py-32 bg-black relative overflow-hidden scroll-mt-32">
+      <motion.div 
+        animate={{
+          backgroundColor: activeTab === 'branding' ? 'rgba(59, 130, 246, 0.05)' : activeTab === 'sales' ? 'rgba(245, 158, 11, 0.05)' : 'rgba(168, 85, 247, 0.05)'
+        }}
+        className="absolute top-0 left-1/4 w-[800px] h-[800px] blur-[180px] rounded-full pointer-events-none transition-colors duration-1000" 
+      />
+
       <div className="container mx-auto px-6 relative z-10">
-        
-        {/* Section Heading */}
-        <div className="text-center mb-24">
-          <motion.p
+        <div className="text-center mb-20">
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-blue-500 font-medium tracking-[0.4em] text-[10px] mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6"
           >
-            Investment
-          </motion.p>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E5A800] animate-pulse" />
+            <span className="text-[#E5A800] font-medium tracking-widest text-[10px] uppercase">Investment</span>
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-[48px] font-medium text-white tracking-tighter"
+            className="text-4xl md:text-[56px] font-medium text-white tracking-tight mb-12"
           >
             Choose Your <span className="text-zinc-500">Growth Path.</span>
           </motion.h2>
+
+          <div className="flex flex-wrap justify-center gap-2 p-1.5 bg-white/5 border border-white/10 rounded-3xl w-fit mx-auto backdrop-blur-md">
+            {[
+              { id: 'branding', label: 'Personal Branding', icon: <Star className="w-4 h-4" /> },
+              { id: 'sales', label: 'Sales Systems', icon: <Target className="w-4 h-4" /> },
+              { id: 'ai', label: 'AI Automation', icon: <Zap className="w-4 h-4" /> },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as any)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-2xl text-sm font-medium transition-all duration-300 relative ${
+                  activeTab === tab.id ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'
+                }`}
+              >
+                {activeTab === tab.id && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-white/10 border border-white/10 rounded-2xl"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{tab.icon}</span>
+                <span className="relative z-10">{tab.label}</span>
+              </button>
+            ))}
+          </div>
+
+          <AnimatePresence mode="wait">
+            {activeTab === 'branding' && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="mt-8 flex justify-center items-center gap-4"
+              >
+                <span className={`text-xs uppercase tracking-widest font-medium transition-colors ${brandingType === 'individual' ? 'text-blue-400' : 'text-zinc-600'}`}>For Founders</span>
+                <button
+                  onClick={() => setBrandingType(prev => prev === 'individual' ? 'company' : 'individual')}
+                  className="w-14 h-7 rounded-full bg-white/10 border border-white/10 relative p-1 transition-colors hover:border-white/20"
+                >
+                  <motion.div
+                    animate={{ x: brandingType === 'individual' ? 0 : 28 }}
+                    className="w-5 h-5 rounded-full bg-white shadow-lg"
+                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  />
+                </button>
+                <span className={`text-xs uppercase tracking-widest font-medium transition-colors ${brandingType === 'company' ? 'text-emerald-400' : 'text-zinc-600'}`}>For Teams</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* 1. PERSONAL BRANDING WITH AI */}
-        <div className="mb-32">
-          <div className="mb-12">
-            <h3 className="text-[30px] font-medium text-white tracking-tight mb-2">1. Personal Branding With AI</h3>
-            <p className="text-zinc-500 font-normal">Positioning your brand for the premium market.</p>
-          </div>
-          
-          <div className="mb-8">
-            <span className="text-[10px] font-medium text-zinc-600 tracking-[0.3em] mb-6 block">Individual Plans</span>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {brandingPlans.individual.map((p, i) => renderCard(p, i, 'text-blue-500'))}
+        <div className="relative min-h-[600px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab + (activeTab === 'branding' ? brandingType : '')}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className={`grid gap-8 items-stretch ${activeTab === 'ai' ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}
+            >
+              {activeTab === 'branding' && (
+                <>
+                  {brandingType === 'individual' 
+                    ? pricingData.branding.individual.map((p, i) => renderCard(p as any, i))
+                    : pricingData.branding.company.map((p, i) => renderCard(p as any, i))
+                  }
+                </>
+              )}
+              {activeTab === 'sales' && pricingData.sales.map((p, i) => renderCard(p as any, i))}
+              {activeTab === 'ai' && pricingData.ai.map((p, i) => renderCard(p as any, i, true))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-24 p-12 rounded-[3rem] bg-gradient-to-br from-[#0A0A0A] to-[#050505] border border-white/5 text-center relative overflow-hidden group hover:border-white/10 transition-colors"
+        >
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:scale-110 transition-transform duration-500">
+              <MessageSquare className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="text-3xl font-medium text-white mb-4">Don&apos;t see what you need?</h3>
+            <p className="text-zinc-500 mb-8 text-lg leading-relaxed">We offer custom packages for high-growth startups and unique enterprise requirements. Let&apos;s build a custom roadmap together.</p>
+            
+            <div className="max-w-sm mx-auto">
+              <CustomCTAButton 
+                label="Consult Our Strategy Team" 
+                href="/contact" 
+                primary 
+                color="#ffffff" 
+              />
             </div>
           </div>
-
-          <div>
-            <span className="text-[10px] font-medium text-zinc-600 tracking-[0.3em] mb-6 mt-12 block">Company Plans</span>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-              {brandingPlans.company.map((p, i) => renderCard(p, i, 'text-emerald-500'))}
-            </div>
-          </div>
-        </div>
-
-        {/* 2. SALES & ENGAGEMENT SOLUTIONS */}
-        <div className="mb-32">
-          <div className="mb-12">
-            <h3 className="text-[30px] font-medium text-white tracking-tight mb-2">2. Sales & Engagement Solutions</h3>
-            <p className="text-zinc-500 font-normal">End-to-end sales systems for sustainable revenue.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {salesPlans.map((p, i) => renderCard(p, i, 'text-amber-500'))}
-          </div>
-        </div>
-
-        {/* 3. AI TOOL DEVELOPMENT */}
-        <div>
-          <div className="mb-12">
-            <h3 className="text-[30px] font-medium text-white tracking-tight mb-2">3. AI Tool Development</h3>
-            <p className="text-zinc-500 font-normal">Total Customisation.</p>
-          </div>
-          <div className="max-w-md">
-            {renderCard({
-              name: 'Custom AI Solutions',
-              description: 'Tailored AI tools built specifically for your internal workflows.',
-              features: [
-                'Custom AI Agent development',
-                'Workflow automation design',
-                'Internal tool integration',
-                'AI-powered data analysis',
-                'Scalable system architecture',
-                'Legacy system AI integration',
-                'Custom training & documentation',
-                'Ongoing optimization & support'
-              ],
-              icon: <Cpu className="w-5 h-5 text-purple-500" />
-            }, 0, 'text-purple-500')}
-          </div>
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );
