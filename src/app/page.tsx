@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Hero } from '@/components/Hero';
-import { About } from '@/components/About';
 import { WhyUs } from '@/components/WhyUs';
 import { Mission } from '@/components/Mission';
 import { Stats } from '@/components/Stats';
@@ -45,17 +44,12 @@ export default function Home() {
       {/* 2. Hero */}
       <Hero />
 
-      {/* 3. Who Are We (About) */}
-      <Section id="about">
-        <About />
-      </Section>
-
-      {/* 4. Why Us */}
+      {/* 3. Why Us */}
       <Section id="why-us">
         <WhyUs />
       </Section>
 
-      {/* 5. Mission & Statistics */}
+      {/* 4. Mission & Statistics */}
       <Section id="mission">
         <Mission />
       </Section>
@@ -63,27 +57,27 @@ export default function Home() {
         <Stats />
       </Section>
 
-      {/* 6. What We Do (Services) */}
+      {/* 5. What We Do (Services) */}
       <Section id="services">
         <Services />
       </Section>
 
-      {/* 7. Pricing */}
+      {/* 6. Pricing */}
       <Section id="pricing">
         <Pricing />
       </Section>
 
-      {/* 8. Meet the Founder (Founder) */}
+      {/* 7. Meet the Founder */}
       <Section id="founder">
         <Founder />
       </Section>
 
-      {/* 9. FAQ */}
+      {/* 8. FAQ */}
       <Section id="faq">
         <FAQ />
       </Section>
 
-      {/* 10. Footer */}
+      {/* 9. Footer */}
       <FooterCustom />
     </main>
   );
