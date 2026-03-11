@@ -43,7 +43,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-[854px]">
+      <div className="fixed top-3 md:top-4 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-[854px]">
         <div
           className="w-full h-[56px] flex items-center justify-between px-[18px] rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
           style={{

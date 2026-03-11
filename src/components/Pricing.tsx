@@ -228,7 +228,7 @@ export const Pricing = () => {
         stiffness: 300,
         damping: 30
       }}
-      className={`flex flex-col h-full p-8 rounded-[2.5rem] bg-[#080808] border transition-all duration-500 relative group overflow-hidden ${isCentered ? 'max-w-3xl mx-auto w-full' : ''} ${
+      className={`flex flex-col h-full p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-[#080808] border transition-all duration-500 relative group overflow-hidden ${isCentered ? 'max-w-3xl mx-auto w-full' : ''} ${
         plan.popular ? 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)]' : 'border-white/5 hover:border-white/10'
       }`}
     >
@@ -289,7 +289,7 @@ export const Pricing = () => {
   );
 
   return (
-    <section id="pricing" className="py-32 bg-black relative overflow-hidden scroll-mt-32">
+    <section id="pricing" className="py-20 md:py-32 bg-black relative overflow-hidden scroll-mt-32">
       <motion.div 
         animate={{
           backgroundColor: activeTab === 'branding' ? 'rgba(59, 130, 246, 0.05)' : activeTab === 'sales' ? 'rgba(245, 158, 11, 0.05)' : 'rgba(168, 85, 247, 0.05)'
@@ -317,7 +317,7 @@ export const Pricing = () => {
             Choose Your <span className="text-zinc-500">Growth Path.</span>
           </motion.h2>
 
-          <div className="flex flex-wrap justify-center gap-2 p-1.5 bg-white/5 border border-white/10 rounded-3xl w-fit mx-auto backdrop-blur-md">
+          <div className="flex flex-wrap justify-center gap-2 p-1 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl w-fit mx-auto backdrop-blur-md">
             {[
               { id: 'branding', label: 'Personal Branding', icon: <Star className="w-4 h-4" /> },
               { id: 'sales', label: 'Sales Systems', icon: <Target className="w-4 h-4" /> },
@@ -326,14 +326,14 @@ export const Pricing = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-2xl text-sm font-medium transition-all duration-300 relative ${
+                className={`flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl text-[13px] md:text-sm font-medium transition-all duration-300 relative ${
                   activeTab === tab.id ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'
                 }`}
               >
                 {activeTab === tab.id && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-white/10 border border-white/10 rounded-2xl"
+                    className="absolute inset-0 bg-white/10 border border-white/10 rounded-xl md:rounded-2xl"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}

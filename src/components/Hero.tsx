@@ -57,7 +57,7 @@ export const Hero = () => {
   };
 
   return (
-    <section ref={containerRef} className="relative pt-48 pb-[180px] flex flex-col items-center z-10 overflow-hidden">
+    <section ref={containerRef} className="relative pt-32 md:pt-48 pb-32 md:pb-[180px] flex flex-col items-center z-10 overflow-hidden">
       {/* Hero Background Dots - Absolute to this section only */}
       <div className="absolute inset-0 z-0 pointer-events-none w-full h-full flex justify-center overflow-hidden opacity-50">
         {BackgroundDotsComp && <BackgroundDotsComp className="w-full h-full object-cover" />}
@@ -72,7 +72,7 @@ export const Hero = () => {
         </div>
 
         <h1
-          className="text-[41px] md:text-[72px] font-medium tracking-[-1px] mb-8 leading-[1.25] flex flex-col items-center justify-center relative z-10"
+          className="text-[32px] md:text-[72px] font-medium tracking-[-1px] mb-6 md:mb-8 leading-[1.2] md:leading-[1.25] flex flex-col items-center justify-center relative z-10 px-4"
         >
           {["Grow Your Brand,", "Build Your Pipeline,", "and Scale with AI."].map((line, i) => (
             <div key={i} className="overflow-hidden">
@@ -96,7 +96,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-white/65 text-[16px] md:text-[24px] max-w-[800px] mx-auto mb-10 leading-relaxed font-normal relative z-10 text-center"
+          className="text-white/65 text-[15px] md:text-[24px] max-w-[800px] mx-auto mb-10 leading-relaxed font-normal relative z-10 text-center px-6"
         >
           VeeBran helps founders, coaches, and entrepreneurs build a powerful personal brand, attract the right clients, and grow smarter - with the help of AI.
         </motion.p>

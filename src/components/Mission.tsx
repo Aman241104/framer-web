@@ -26,7 +26,7 @@ export const Mission = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="text-[clamp(40px,5vw,48px)] font-medium leading-[1.25] text-white tracking-tighter max-w-5xl mx-auto"
+          className="text-[clamp(28px,5vw,48px)] font-medium leading-[1.25] text-white tracking-tighter max-w-5xl mx-auto"
         >
           We Help <span className="text-[#3B82F6] relative inline-block group" style={{ textShadow: '0 0 20px rgba(0,140,255,0.4)' }}>
             Founders & Brands

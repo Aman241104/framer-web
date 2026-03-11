@@ -42,7 +42,7 @@ export const About = () => {
   }, { scope: containerRef });
 
   return (
-    <section id="about" ref={containerRef} className="py-32 bg-transparent border-t border-white/5 relative overflow-hidden">
+    <section id="about" ref={containerRef} className="py-20 md:py-32 bg-transparent border-t border-white/5 relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
 
@@ -87,7 +87,7 @@ export const About = () => {
             </motion.div>
 
             <div
-              className="about-image-container mt-4 rounded-3xl overflow-hidden shadow-2xl border border-white/10 relative h-[400px]"
+              className="about-image-container mt-4 rounded-3xl overflow-hidden shadow-2xl border border-white/10 relative h-[300px] md:h-[400px]"
             >
               <motion.img
                 src="/veebran-assets/image_23.jpg"

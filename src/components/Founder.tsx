@@ -34,7 +34,7 @@ const team = [
 
 export const Founder = () => {
   return (
-    <section className="pt-[60px] pb-[80px] bg-transparent relative overflow-hidden">
+    <section className="pt-12 md:pt-[60px] pb-20 md:pb-[80px] bg-transparent relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-blue-600/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center mb-12 text-center">
@@ -45,16 +45,16 @@ export const Founder = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="text-4xl md:text-[48px] font-medium mb-24 text-[#3B82F6] tracking-tight text-center"
+          className="text-3xl md:text-[48px] font-medium mb-16 md:mb-24 text-[#3B82F6] tracking-tight text-center"
         >
           MEET THE FOUNDERS
         </motion.h2>
 
-        <div className="flex flex-col gap-32 max-w-6xl mx-auto">
+        <div className="flex flex-col gap-20 md:gap-32 max-w-6xl mx-auto">
           {team.map((person, index) => (
             <div 
               key={person.name}
-              className={`grid grid-cols-1 md:grid-cols-2 gap-[60px] items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+              className={`grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-[60px] items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, x: index % 2 === 0 ? -20 : 20 }}
