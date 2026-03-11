@@ -1,16 +1,24 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useSpring, useMotionValue } from 'framer-motion';
 
 export const CustomCursor = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    // Smooth spring settings for high-end feel
+    const springConfig = { damping: 25, stiffness: 200, mass: 0.5 };
+    const cursorX = useSpring(mouseX, springConfig);
+    const cursorY = useSpring(mouseY, springConfig);
+
     useEffect(() => {
         const mouseMove = (e: MouseEvent) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
+            mouseX.set(e.clientX);
+            mouseY.set(e.clientY);
             if (!isVisible) setIsVisible(true);
         };
 
@@ -20,7 +28,8 @@ export const CustomCursor = () => {
                 target.tagName.toLowerCase() === 'button' ||
                 target.tagName.toLowerCase() === 'a' ||
                 target.closest('button') ||
-                target.closest('a')
+                target.closest('a') ||
+                target.classList.contains('cursor-pointer')
             ) {
                 setIsHovering(true);
             } else {
@@ -28,37 +37,53 @@ export const CustomCursor = () => {
             }
         };
 
-        const handleMouseLeave = () => {
-            setIsVisible(false);
-        };
+        const handleMouseLeave = () => setIsVisible(false);
+        const handleMouseEnter = () => setIsVisible(true);
 
         window.addEventListener('mousemove', mouseMove);
         window.addEventListener('mouseover', handleMouseOver);
         window.addEventListener('mouseleave', handleMouseLeave);
-        window.addEventListener('mouseenter', () => setIsVisible(true));
+        window.addEventListener('mouseenter', handleMouseEnter);
 
         return () => {
             window.removeEventListener('mousemove', mouseMove);
             window.removeEventListener('mouseover', handleMouseOver);
             window.removeEventListener('mouseleave', handleMouseLeave);
-            window.removeEventListener('mouseenter', () => setIsVisible(true));
+            window.removeEventListener('mouseenter', handleMouseEnter);
         };
-    }, [isVisible]);
+    }, [isVisible, mouseX, mouseY]);
 
     if (!isVisible) return null;
 
     return (
-        <>
-            {/* Outer Trailing Circle */}
+        <div className="fixed inset-0 pointer-events-none z-[9999] hidden sm:block">
+            {/* Outer Ring */}
             <motion.div
-                className="fixed top-0 left-0 w-10 h-10 rounded-full border border-[white]/50 pointer-events-none z-[9998] hidden sm:block"
-                animate={{
-                    x: mousePosition.x - 20,
-                    y: mousePosition.y - 20,
-                    scale: isHovering ? 1.5 : 1,
+                className="absolute top-0 left-0 w-8 h-8 rounded-full border border-white/30"
+                style={{
+                    x: cursorX,
+                    y: cursorY,
+                    translateX: '-50%',
+                    translateY: '-50%',
                 }}
-                transition={{ type: 'spring', stiffness: 250, damping: 20, mass: 0.5 }}
+                animate={{
+                    scale: isHovering ? 1.8 : 1,
+                    borderColor: isHovering ? 'rgba(255, 255, 255, 0.6)' : 'rgba(255, 255, 255, 0.3)',
+                }}
             />
-        </>
+            {/* Inner Dot */}
+            <motion.div
+                className="absolute top-0 left-0 w-1.5 h-1.5 bg-white rounded-full"
+                style={{
+                    x: mouseX,
+                    y: mouseY,
+                    translateX: '-50%',
+                    translateY: '-50%',
+                }}
+                animate={{
+                    scale: isHovering ? 0 : 1,
+                }}
+            />
+        </div>
     );
 };

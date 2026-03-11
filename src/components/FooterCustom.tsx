@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 /* Load Satoshi font from Fontshare — same as Framer original */
-const s = `@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,500&display=swap');`;
+const s = `@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500&display=swap');`;
 
 const navLinks = [
     { label: 'Why Us', href: '/#why-us' },

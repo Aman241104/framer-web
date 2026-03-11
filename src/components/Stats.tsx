@@ -41,7 +41,7 @@ export const Stats = () => {
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
           className="flex flex-col items-center mb-16"
         >
-          <h2 className="text-4xl md:text-[48px] font-bold text-[#3B82F6] tracking-tight uppercase">
+          <h2 className="text-4xl md:text-[48px] font-medium text-[#3B82F6] tracking-tight">
             Real Work. Real Results.
           </h2>
         </motion.div>
@@ -69,7 +69,7 @@ export const Stats = () => {
                       
                       {/* Overlay the animated number */}
                       <div className="absolute top-[24px] left-0 w-full flex justify-center pointer-events-none">
-                        <span className="text-[48px] font-bold text-white tracking-tighter leading-none">
+                        <span className="text-[30px] font-medium text-white tracking-tighter leading-none">
                           <CountUp 
                             to={stat.amount} 
                             suffix={stat.suffix || ""} 

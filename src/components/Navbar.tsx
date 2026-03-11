@@ -69,7 +69,7 @@ const Navbar = () => {
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleScroll(e, item.href)}
-                className="text-[#afafaf] hover:text-white transition-colors text-sm font-medium tracking-wide"
+                className="text-[#afafaf] hover:text-white transition-colors text-base font-normal tracking-wide"
               >
                 {item.label}
               </Link>
@@ -81,7 +81,7 @@ const Navbar = () => {
               onMouseEnter={() => setIsContactDropdownOpen(true)}
               onMouseLeave={() => setIsContactDropdownOpen(false)}
             >
-              <button className="flex items-center gap-1 text-[#afafaf] hover:text-white transition-colors text-sm font-medium tracking-wide py-4 cursor-pointer outline-none">
+              <button className="flex items-center gap-1 text-[#afafaf] hover:text-white transition-colors text-base font-normal tracking-wide py-4 cursor-pointer outline-none">
                 Contact Us
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-200 ${isContactDropdownOpen ? 'rotate-180' : ''}`}>
                   <polyline points="6 9 12 15 18 9"></polyline>
@@ -98,10 +98,10 @@ const Navbar = () => {
                     border: '1px solid rgba(255,255,255,0.06)'
                   }}
                 >
-                  <Link href="/contact" className="px-5 py-3 text-sm text-[#afafaf] hover:text-white hover:bg-[#1a1a1a] transition-colors">
+                  <Link href="/contact" className="px-5 py-3 text-base text-[#afafaf] hover:text-white hover:bg-[#1a1a1a] transition-colors font-normal">
                     Contact Us
                   </Link>
-                  <Link href="/terms" className="px-5 py-3 text-sm text-[#afafaf] hover:text-white hover:bg-[#1a1a1a] transition-colors border-t border-white/5">
+                  <Link href="/terms" className="px-5 py-3 text-base text-[#afafaf] hover:text-white hover:bg-[#1a1a1a] transition-colors border-t border-white/5 font-normal">
                     Terms & Conditions
                   </Link>
                 </div>
@@ -122,7 +122,7 @@ const Navbar = () => {
                 <div className="nav-talk-border"></div>
                 <div className="nav-talk-glow"></div>
                 <div className="nav-talk-btn">
-                  <span>Let's Talk</span>
+                  <span className="font-normal">Let's Talk</span>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="19" x2="19" y2="5"></line>
                     <polyline points="9 5 19 5 19 15"></polyline>
@@ -184,7 +184,7 @@ const Navbar = () => {
                     <Link
                       href={item.href}
                       onClick={(e) => handleScroll(e, item.href)}
-                      className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/5 transition-all text-[15px] font-medium"
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/5 transition-all text-[16px] font-normal"
                     >
                       {item.label}
                     </Link>
@@ -201,7 +201,7 @@ const Navbar = () => {
                   <Link
                     href="/contact"
                     onClick={closeMobileMenu}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/5 transition-all text-[15px] font-medium"
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/5 transition-all text-[16px] font-normal"
                   >
                     Contact Us
                   </Link>
@@ -214,7 +214,7 @@ const Navbar = () => {
                   <Link
                     href="/terms"
                     onClick={closeMobileMenu}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/5 transition-all text-[15px] font-medium"
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/5 transition-all text-[16px] font-normal"
                   >
                     Terms & Conditions
                   </Link>
@@ -230,7 +230,7 @@ const Navbar = () => {
                   >
                     <div className="nav-talk-border"></div>
                     <div className="nav-talk-glow"></div>
-                    <div className="nav-talk-btn w-full flex justify-center py-3">
+                    <div className="nav-talk-btn w-full flex justify-center py-3 font-normal">
                       <span>Let's Talk</span>
                       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="5" y1="19" x2="19" y2="5"></line>

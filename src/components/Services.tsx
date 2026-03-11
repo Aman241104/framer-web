@@ -82,10 +82,10 @@ export const Services = () => {
         {LabelComp && <LabelComp label="What We Do" variant="Secondary" />}
       </div>
       <div className="text-center mb-20">
-        <h2 className="text-4xl md:text-[48px] font-bold text-[#3B82F6] tracking-tight leading-tight mb-4 uppercase">
+        <h2 className="text-4xl md:text-[48px] font-medium text-[#3B82F6] tracking-tight leading-tight mb-4">
           Expertise That Drives Quality
         </h2>
-        <p className="text-zinc-500 max-w-2xl mx-auto text-base md:text-lg font-medium">
+        <p className="text-zinc-500 max-w-2xl mx-auto text-base md:text-lg font-normal">
           Three focused services. One trusted partner.
         </p>
       </div>
@@ -120,7 +120,7 @@ export const Services = () => {
                 <div className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[40%] ${service.glowColor}/15 blur-[50px] rounded-full pointer-events-none z-0 group-hover:${service.glowColor}/30 transition-colors duration-700`}></div>
 
                 <h3
-                  className="text-xl md:text-[22px] font-medium text-white mb-6 leading-snug tracking-tight relative z-10"
+                  className="text-xl md:text-[30px] font-medium text-white mb-6 leading-snug tracking-tight relative z-10"
                   dangerouslySetInnerHTML={{ __html: service.title }}
                 />
 

@@ -117,10 +117,10 @@ const SpotlightCard = ({ feature, index }: any) => {
             </div>
           </div>
 
-          <h3 className="text-[20px] md:text-[22px] font-medium text-white mb-4 leading-snug tracking-tight whitespace-pre-line relative z-10">
+          <h3 className="text-[20px] md:text-[30px] font-medium text-white mb-4 leading-snug tracking-tight whitespace-pre-line relative z-10">
             {feature.title}
           </h3>
-          <p className="text-[#a1a1aa] text-[15px] leading-relaxed max-w-[300px] relative z-10">
+          <p className="text-[#a1a1aa] text-[18px] font-normal leading-relaxed max-w-[300px] relative z-10">
             {feature.description}
           </p>
         </div>
@@ -193,13 +193,13 @@ export const WhyUs = () => {
           </motion.div>
           <motion.h2
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } } }}
-            className="text-4xl md:text-[56px] font-bold mb-4 max-w-4xl mx-auto tracking-tight leading-[1.1] text-white uppercase"
+            className="text-4xl md:text-[48px] font-medium mb-4 max-w-4xl mx-auto tracking-tight leading-[1.25] text-white"
           >
             Experience The Benefits <br /> Of Our Expertise
           </motion.h2>
           <motion.p
             variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] } } }}
-            className="text-zinc-500 text-sm md:text-[15px]"
+            className="text-zinc-500 text-sm md:text-[18px] font-normal tracking-normal"
           >
             Strategies that drive impactful and powerful results
           </motion.p>

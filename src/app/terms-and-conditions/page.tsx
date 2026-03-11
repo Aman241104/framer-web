@@ -58,14 +58,14 @@ export default function TermsAndConditions() {
         <div className="absolute inset-0 z-0 bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:24px_24px]" />
 
         <div className="container mx-auto max-w-4xl relative z-10 text-center mb-20">
-          <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter uppercase mb-8 flex justify-center text-white">
+          <h1 className="text-5xl md:text-7xl font-medium tracking-tighter mb-8 flex justify-center text-white">
             <BlurText text="TERMS & CONDITIONS" delay={40} />
           </h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-zinc-500 font-medium max-w-xl mx-auto italic"
+            className="text-zinc-500 font-medium max-w-xl mx-auto"
           >
             Welcome to VeeBran. By accessing or using our website and services, you <br />
             agree to comply with and be bound by the following terms and conditions.
@@ -84,14 +84,14 @@ export default function TermsAndConditions() {
                 className="bg-[#0d0d0d]/60 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-[2rem] hover:border-white/10 transition-all shadow-xl"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-[#3b82f6]/10 border border-[#3b82f6]/20 flex items-center justify-center text-[#3b82f6] font-black italic">
+                  <div className="w-10 h-10 rounded-xl bg-[#3b82f6]/10 border border-[#3b82f6]/20 flex items-center justify-center text-[#3b82f6] font-medium">
                     {index + 1}
                   </div>
-                  <h2 className="text-xl md:text-2xl font-black italic text-white uppercase tracking-tight">
+                  <h2 className="text-xl md:text-2xl font-medium text-white tracking-tight">
                     {section.title.replace(/^\d+\.\s*/, '')}
                   </h2>
                 </div>
-                <p className="text-zinc-400 font-medium italic leading-relaxed text-sm md:text-base pl-14">
+                <p className="text-zinc-400 font-normal leading-relaxed text-sm md:text-base pl-14">
                   {section.content}
                 </p>
               </motion.div>
@@ -102,7 +102,7 @@ export default function TermsAndConditions() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-20 text-zinc-600 font-medium italic text-xs border-t border-white/5 pt-12"
+            className="mt-20 text-zinc-600 font-medium text-xs border-t border-white/5 pt-12"
           >
             If you have any questions or concerns regarding these Terms & Conditions, Please contact us.
           </motion.p>

@@ -46,7 +46,7 @@ export const Testimonials = () => {
             transition={{ duration: 0.6, delay: i * 0.15, ease: 'easeOut' }}
             whileHover={{ y: -6, transition: { duration: 0.2 } }}
           >
-            <div className="bg-[#0A0A0A] border border-white/5 rounded-[32px] p-8 md:p-10 h-full flex flex-col relative overflow-hidden group hover:border-white/10 transition-all duration-300 shadow-2xl">
+            <div className="bg-[#0A0A0A] border border-white/5 rounded-[32px] p-8 md:p-10 h-full flex flex-col relative overflow-hidden group hover:border-white/10 transition-all duration-300 shadow-2xl font-medium">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#3B82F6]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <TestimonialCardComp
                 text={t.text}

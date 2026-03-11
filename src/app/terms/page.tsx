@@ -88,7 +88,7 @@ export default function TermsPage() {
                     initial="hidden"
                     animate="visible"
                     custom={0}
-                    className="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-4"
+                    className="text-4xl md:text-[72px] font-medium text-white tracking-tight mb-4"
                 >
                     Terms &amp; <span className="text-[#E5A800]">Conditions</span>
                 </motion.h1>
@@ -131,14 +131,14 @@ export default function TermsPage() {
                             className="group flex gap-6 bg-[#0d0d0d] border border-white/6 rounded-2xl p-6 md:p-8 hover:border-[#E5A800]/25 transition-all duration-300"
                         >
                             {/* Number */}
-                            <div className="shrink-0 text-[#E5A800]/30 font-black text-2xl md:text-3xl tabular-nums group-hover:text-[#E5A800]/60 transition-colors duration-300 select-none">
+                            <div className="shrink-0 text-[#E5A800]/30 font-medium text-2xl md:text-3xl tabular-nums group-hover:text-[#E5A800]/60 transition-colors duration-300 select-none">
                                 {s.number}
                             </div>
                             <div>
-                                <h2 className="text-white font-semibold text-base md:text-lg mb-2 group-hover:text-[#E5A800] transition-colors duration-300">
+                                <h2 className="text-white font-medium text-base md:text-[30px] mb-2 group-hover:text-[#E5A800] transition-colors duration-300">
                                     {s.title}
                                 </h2>
-                                <p className="text-[#A6A6A6] text-sm md:text-[15px] leading-relaxed">
+                                <p className="text-[#A6A6A6] text-sm md:text-[16px] leading-relaxed">
                                     {s.body}
                                 </p>
                             </div>
@@ -155,14 +155,14 @@ export default function TermsPage() {
                         className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0d0d0d] border border-[#E5A800]/20 rounded-2xl p-6 md:p-8 mt-4"
                     >
                         <div>
-                            <p className="text-white font-semibold text-sm">Have questions about our terms?</p>
+                            <p className="text-white font-normal text-sm">Have questions about our terms?</p>
                             <p className="text-white/40 text-xs mt-1">We&apos;re happy to clarify anything.</p>
                         </div>
                         <motion.a
                             href="/contact"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.96 }}
-                            className="shrink-0 px-6 py-2.5 bg-[#E5A800] hover:bg-[#d49600] text-black font-bold text-sm rounded-xl transition-colors"
+                            className="shrink-0 px-6 py-2.5 bg-[#E5A800] hover:bg-[#d49600] text-black font-medium text-sm rounded-xl transition-colors"
                         >
                             Contact Us
                         </motion.a>

@@ -55,7 +55,7 @@ export const FAQ = () => {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="text-center mb-20"
       >
-        <h2 className="text-4xl md:text-[48px] font-bold text-[#3B82F6] tracking-tight">
+        <h2 className="text-4xl md:text-[48px] font-medium text-[#3B82F6] tracking-tight">
           Frequently Asked Questions
         </h2>
       </motion.div>
@@ -75,7 +75,7 @@ export const FAQ = () => {
                 className="w-full flex items-center justify-between p-6 md:p-8 text-left outline-none cursor-pointer"
                 onClick={() => toggleOpen(idx)}
               >
-                <h3 className="text-[20px] md:text-[24px] font-bold text-white tracking-tight leading-snug">
+                <h3 className="text-[20px] md:text-[24px] font-medium text-white tracking-tight leading-snug">
                   {faq.question}
                 </h3>
                 <motion.div
@@ -98,7 +98,7 @@ export const FAQ = () => {
                     transition={{ duration: 0.35, ease: 'easeInOut' }}
                     style={{ overflow: 'hidden' }}
                   >
-                    <div className="p-6 md:p-8 pt-0 text-[#888] text-[16px] md:text-[18px] leading-relaxed">
+                    <div className="p-6 md:p-8 pt-0 text-[#888] text-[16px] md:text-[18px] leading-relaxed font-medium">
                       {faq.answer}
                     </div>
                   </motion.div>

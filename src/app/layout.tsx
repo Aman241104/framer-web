@@ -1,27 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Instrument_Sans } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Instrument_Sans, Manrope } from "next/font/google";
 import "./globals.css";
 import "@/framer/styles.css";
 import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
 });
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  weight: 'variable',
 });
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-instrument-sans',
+  weight: 'variable',
 });
 
 export const metadata: Metadata = {
@@ -42,8 +39,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${instrumentSans.variable} font-sans antialiased`}
+        className={`${manrope.variable} ${inter.variable} ${instrumentSans.variable} font-sans antialiased`}
       >
         <Navbar />
         {children}
@@ -51,4 +51,3 @@ export default function RootLayout({
     </html>
   );
 }
-

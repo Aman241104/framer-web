@@ -7,6 +7,7 @@ import { WhyUs } from '@/components/WhyUs';
 import { Mission } from '@/components/Mission';
 import { Stats } from '@/components/Stats';
 import { Services } from '@/components/Services';
+import { Works } from '@/components/Works';
 import { Pricing } from '@/components/Pricing';
 import { Founder } from '@/components/Founder';
 import { FAQ } from '@/components/FAQ';
@@ -14,12 +15,18 @@ import { FooterCustom } from '@/components/FooterCustom';
 import Navbar from '@/components/Navbar';
 
 const revealVariants: Variants = {
-  hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+  hidden: { opacity: 0, y: 30, scale: 0.98, filter: 'blur(8px)' },
   visible: { 
     opacity: 1, 
     y: 0, 
+    scale: 1,
     filter: 'blur(0px)',
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
+    transition: { 
+      duration: 1.2, 
+      ease: [0.22, 1, 0.36, 1],
+      opacity: { duration: 0.8 },
+      filter: { duration: 0.8 }
+    } 
   }
 };
 
@@ -57,27 +64,32 @@ export default function Home() {
         <Stats />
       </Section>
 
-      {/* 5. What We Do (Services) */}
+      {/* 5. Our Portfolio (Works) */}
+      <Section id="works">
+        <Works />
+      </Section>
+
+      {/* 6. What We Do (Services) */}
       <Section id="services">
         <Services />
       </Section>
 
-      {/* 6. Pricing */}
+      {/* 7. Pricing */}
       <Section id="pricing">
         <Pricing />
       </Section>
 
-      {/* 7. Meet the Founder */}
+      {/* 8. Meet the Founder */}
       <Section id="founder">
         <Founder />
       </Section>
 
-      {/* 8. FAQ */}
+      {/* 9. FAQ */}
       <Section id="faq">
         <FAQ />
       </Section>
 
-      {/* 9. Footer */}
+      {/* 10. Footer */}
       <FooterCustom />
     </main>
   );

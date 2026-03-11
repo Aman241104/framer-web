@@ -39,9 +39,9 @@ export default function BlogIndex() {
                                             <div>
                                                 <div className="flex items-center gap-2 mb-2 text-zinc-500">
                                                     <User className="w-4 h-4" />
-                                                    <p className="font-medium italic text-sm">Author</p>
+                                                    <p className="font-normal text-sm">Author</p>
                                                 </div>
-                                                <p className="text-white font-bold tracking-tight">Vishva Ambasana</p>
+                                                <p className="text-white font-normal tracking-tight">Vishva Ambasana</p>
                                                 <p className="text-zinc-500 text-xs mt-1">Founder, VeeBran</p>
                                             </div>
 
@@ -49,9 +49,9 @@ export default function BlogIndex() {
                                             <div>
                                                 <div className="flex items-center gap-2 mb-2 text-zinc-500">
                                                     <Calendar className="w-4 h-4" />
-                                                    <p className="font-medium italic text-sm">Published</p>
+                                                    <p className="font-normal text-sm">Published</p>
                                                 </div>
-                                                <p className="text-white font-bold tracking-tight">
+                                                <p className="text-white font-normal tracking-tight">
                                                     {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                                                 </p>
                                             </div>
@@ -60,20 +60,20 @@ export default function BlogIndex() {
                                             <div>
                                                 <div className="flex items-center gap-2 mb-2 text-zinc-500">
                                                     <Clock className="w-4 h-4" />
-                                                    <p className="font-medium italic text-sm">Read Time</p>
+                                                    <p className="font-normal text-sm">Read Time</p>
                                                 </div>
-                                                <p className="text-white font-bold tracking-tight">{readTime} min read</p>
+                                                <p className="text-white font-normal tracking-tight">{readTime} min read</p>
                                             </div>
 
                                             {/* Topics */}
                                             <div>
                                                 <div className="flex items-center gap-2 mb-3 text-zinc-500">
                                                     <Tag className="w-4 h-4" />
-                                                    <p className="font-medium italic text-sm">Topics</p>
+                                                    <p className="font-normal text-sm">Topics</p>
                                                 </div>
                                                 <div className="flex flex-wrap gap-2">
                                                     {post.tags.map((tag) => (
-                                                        <span key={tag} className="text-[#3B82F6] uppercase tracking-widest text-[10px] font-black bg-[#3B82F6]/10 border border-[#3B82F6]/20 px-3 py-1.5 rounded-full hover:bg-[#3B82F6]/20 transition-colors cursor-default">
+                                                        <span key={tag} className="text-[#3B82F6] tracking-widest text-[10px] font-medium bg-[#3B82F6]/10 border border-[#3B82F6]/20 px-3 py-1.5 rounded-full hover:bg-[#3B82F6]/20 transition-colors cursor-default">
                                                             {tag}
                                                         </span>
                                                     ))}
@@ -104,7 +104,7 @@ export default function BlogIndex() {
                                             </div>
                                             <div className="w-full flex gap-2 mt-2">
                                                 {post.tags.map((tag) => (
-                                                    <span key={tag} className="text-[#3B82F6] uppercase tracking-widest text-[9px] font-black bg-[#3B82F6]/10 border border-[#3B82F6]/20 px-2 py-1 rounded-full">
+                                                    <span key={tag} className="text-[#3B82F6] tracking-widest text-[9px] font-medium bg-[#3B82F6]/10 border border-[#3B82F6]/20 px-2 py-1 rounded-full">
                                                         {tag}
                                                     </span>
                                                 ))}
@@ -112,7 +112,7 @@ export default function BlogIndex() {
                                         </div>
 
                                         {/* Title */}
-                                        <h2 className="text-4xl md:text-[52px] font-black mb-10 text-white tracking-tight italic uppercase leading-[1.05]">
+                                        <h2 className="text-4xl md:text-[52px] font-medium mb-10 text-white tracking-tight leading-[1.05]">
                                             {post.title}
                                         </h2>
 
@@ -130,15 +130,15 @@ export default function BlogIndex() {
 
                                         {/* Content */}
                                         <div className="prose prose-invert max-w-none text-zinc-400 text-lg leading-relaxed 
-                                            prose-headings:font-black prose-headings:italic prose-headings:uppercase prose-headings:tracking-tight prose-headings:text-white 
+                                            prose-headings:font-medium prose-headings:prose-headings:prose-headings:tracking-tight prose-headings:text-white 
                                             prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4
                                             prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-4 prose-h3:text-zinc-200
                                             prose-p:mb-6 prose-p:leading-[1.8]
                                             prose-a:text-[#3B82F6] prose-a:no-underline hover:prose-a:text-[#60a5fa] prose-a:transition-colors prose-a:border-b prose-a:border-[#3B82F6]/30 hover:prose-a:border-[#60a5fa]
-                                            prose-strong:text-white prose-strong:font-bold
+                                            prose-strong:text-white prose-strong:font-medium
                                             prose-ul:list-disc prose-ul:pl-6 prose-li:mb-2 prose-li:marker:text-[#3B82F6]
                                             prose-ol:list-decimal prose-ol:pl-6
-                                            prose-blockquote:border-l-[#3B82F6] prose-blockquote:bg-[#3B82F6]/5 prose-blockquote:px-8 prose-blockquote:py-6 prose-blockquote:rounded-r-2xl prose-blockquote:rounded-l-sm prose-blockquote:font-medium prose-blockquote:not-italic prose-blockquote:text-white prose-blockquote:shadow-xl prose-blockquote:backdrop-blur-sm prose-blockquote:my-10
+                                            prose-blockquote:border-l-[#3B82F6] prose-blockquote:bg-[#3B82F6]/5 prose-blockquote:px-8 prose-blockquote:py-6 prose-blockquote:rounded-r-2xl prose-blockquote:rounded-l-sm prose-blockquote:font-medium prose-blockquote:not-prose-blockquote:text-white prose-blockquote:shadow-xl prose-blockquote:backdrop-blur-sm prose-blockquote:my-10
                                             prose-img:rounded-2xl prose-img:shadow-2xl prose-img:border prose-img:border-white/10 prose-img:my-12
                                             prose-hr:border-white/10 prose-hr:my-16
                                             mx-auto tracking-wide selection:bg-[#3B82F6]/30 selection:text-white"
@@ -162,7 +162,7 @@ export default function BlogIndex() {
 
                     {posts.length === 0 && (
                         <div className="text-center py-32 bg-[#0a0a0a] rounded-3xl border border-white/5">
-                            <p className="text-zinc-500 font-medium italic text-xl">No posts found. Check back soon!</p>
+                            <p className="text-zinc-500 font-normal text-xl">No posts found. Check back soon!</p>
                         </div>
                     )}
                 </div>

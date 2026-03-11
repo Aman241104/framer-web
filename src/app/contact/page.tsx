@@ -126,7 +126,7 @@ export default function ContactPage() {
           initial="hidden"
           animate="visible"
           custom={0}
-          className="text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4"
+          className="text-5xl md:text-6xl font-medium text-white tracking-tight mb-4"
         >
           Let&apos;s <span className="text-[#3B82F6]">Talk</span>
         </motion.h1>
@@ -151,8 +151,8 @@ export default function ContactPage() {
                 {card.icon}
               </div>
               <div>
-                <p className="text-white/40 text-xs font-medium">{card.label}</p>
-                <p className="text-white text-sm font-semibold">{card.value}</p>
+                <p className="text-white/40 text-xs font-normal">{card.label}</p>
+                <p className="text-white text-sm font-normal">{card.value}</p>
               </div>
             </div>
           );
@@ -203,7 +203,7 @@ export default function ContactPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-2xl font-bold text-white mb-8 relative z-10"
+            className="text-2xl font-medium text-white mb-8 relative z-10"
           >
             {status === 'success' ? 'Message Sent!' : 'Send us a message'}
           </motion.h2>
@@ -219,11 +219,11 @@ export default function ContactPage() {
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
-              <h3 className="text-white text-xl font-bold mb-2">Thank you for reaching out!</h3>
+              <h3 className="text-white text-xl font-medium mb-2">Thank you for reaching out!</h3>
               <p className="text-white/60">We&apos;ve received your message and will get back to you shortly.</p>
               <button 
                 onClick={() => setStatus('idle')}
-                className="mt-8 text-[#3B82F6] font-bold text-sm hover:underline"
+                className="mt-8 text-[#3B82F6] font-medium text-sm hover:underline"
               >
                 Send another message
               </button>
@@ -240,7 +240,7 @@ export default function ContactPage() {
                   custom={i * 0.5}
                   className="flex flex-col gap-2"
                 >
-                  <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">{field.label}</label>
+                  <label className="text-xs font-medium text-white/60 tracking-wider">{field.label}</label>
                   <input
                     required
                     name={field.id}
@@ -267,7 +267,7 @@ export default function ContactPage() {
                 custom={3}
                 className="flex flex-col gap-2 md:col-span-2"
               >
-                <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">What are you looking for?</label>
+                <label className="text-xs font-medium text-white/60 tracking-wider">What are you looking for?</label>
                 <textarea
                   required
                   name="message"
@@ -298,7 +298,7 @@ export default function ContactPage() {
                   disabled={status === 'loading'}
                   whileHover={{ scale: 1.03, backgroundColor: '#bce600' }}
                   whileTap={{ scale: 0.97 }}
-                  className={`px-8 py-3.5 rounded-xl bg-[#D4FF00] text-black font-bold text-sm transition-colors flex items-center gap-2 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  className={`px-8 py-3.5 rounded-xl bg-[#D4FF00] text-black font-medium text-sm transition-colors flex items-center gap-2 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {status === 'loading' ? 'Sending...' : 'Send Message'}
                   {status !== 'loading' && (
@@ -308,7 +308,7 @@ export default function ContactPage() {
                   )}
                 </motion.button>
                 {status === 'error' && (
-                  <p className="text-red-500 text-xs font-medium">Something went wrong. Please try again.</p>
+                  <p className="text-red-500 text-xs font-normal">Something went wrong. Please try again.</p>
                 )}
                 <div className="text-white/35 text-xs text-right">
                   <p>Mail: vishva@veebran.com</p>

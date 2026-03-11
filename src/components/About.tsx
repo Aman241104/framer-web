@@ -56,16 +56,16 @@ export const About = () => {
                 className="flex items-center gap-4 mb-4"
               >
                 <div className="w-12 h-px bg-[#E5A800]"></div>
-                <span className="text-[#E5A800] font-bold uppercase tracking-widest text-xs">Who We Are</span>
+                <span className="text-[#E5A800] font-medium tracking-widest text-xs">Who We Are</span>
               </motion.div>
 
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
-                className="text-4xl md:text-6xl font-black text-white tracking-tight italic uppercase leading-[1.1]"
+                className="text-4xl md:text-[48px] font-medium text-white tracking-tight leading-[1.25]"
               >
-                We Help You Grow  -  <br /><span className="text-zinc-600">With Strategy, Systems & AI.</span>
+                We Help You Grow  -  <br /><span className="text-zinc-500">With Strategy, Systems & AI.</span>
               </motion.h2>
             </div>
           </div>
@@ -78,10 +78,10 @@ export const About = () => {
               viewport={{ once: true, margin: "-10%" }}
               className="p-8 md:p-12 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-md"
             >
-              <p className="about-text text-lg md:text-2xl text-zinc-600 font-medium leading-relaxed italic mb-8">
+              <p className="about-text text-lg md:text-[24px] text-zinc-400 font-normal leading-relaxed mb-8">
                 VeeBran is a business consulting partner for founders, coaches, and startup builders. We work at the intersection of personal branding, sales, and AI - helping you show up confidently, attract the right clients, and build systems that scale.
               </p>
-              <p className="about-text text-lg md:text-2xl text-zinc-600 font-medium leading-relaxed italic">
+              <p className="about-text text-lg md:text-[24px] text-zinc-400 font-normal leading-relaxed">
                 Whether you&apos;re just starting out or ready to grow faster - we make it simple, strategic, and real.
               </p>
             </motion.div>
@@ -89,10 +89,17 @@ export const About = () => {
             <div
               className="about-image-container mt-4 rounded-3xl overflow-hidden shadow-2xl border border-white/10 relative h-[400px]"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <motion.img
                 src="/veebran-assets/image_23.jpg"
                 alt="VeeBran Consulting Meeting"
+                animate={{
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
                 className="about-image w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
               />
             </div>

@@ -26,7 +26,7 @@ export const Mission = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="text-[clamp(40px,5vw,64px)] font-bold leading-[1.1] text-white tracking-tighter max-w-5xl mx-auto"
+          className="text-[clamp(40px,5vw,48px)] font-medium leading-[1.25] text-white tracking-tighter max-w-5xl mx-auto"
         >
           We Help <span className="text-[#3B82F6] relative inline-block group" style={{ textShadow: '0 0 20px rgba(0,140,255,0.4)' }}>
             Founders & Brands
@@ -44,7 +44,7 @@ export const Mission = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ delay: 0.2, duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-          className="text-zinc-500 text-lg md:text-[18px] leading-relaxed font-medium mt-12 max-w-2xl mx-auto"
+          className="text-zinc-400 text-lg md:text-[24px] leading-relaxed font-normal mt-12 max-w-3xl mx-auto"
         >
           Because growth shouldn&apos;t mean doing more — it should mean doing it better, faster, and more intentionally.
         </motion.p>
@@ -60,7 +60,7 @@ export const Mission = () => {
             href="https://calendly.com/vishva-veebran/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="group text-[#10B981] font-bold text-lg hover:text-[#FBBF24] transition-all flex items-center gap-2"
+            className="group text-[#10B981] font-medium text-lg hover:text-[#FBBF24] transition-all flex items-center gap-2"
           >
             Book A Call
             <motion.div
