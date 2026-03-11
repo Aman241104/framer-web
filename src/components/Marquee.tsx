@@ -107,10 +107,9 @@ export const LogoMarquee = () => {
               >
                 <div 
                   className="flex items-center gap-4 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-out scale-90 group-hover:scale-105"
-                  style={{ '--hover-color': (logo as any).color || '#ffffff' } as any}
                 >
                   {logo.isSvg ? (
-                    <div className="text-white group-hover:text-[var(--hover-color)] transition-colors duration-500">
+                    <div className="text-white group-hover:text-[var(--hover-color)] transition-colors duration-500" style={{ color: (logo as any).color }}>
                       {logo.icon}
                     </div>
                   ) : (
@@ -121,7 +120,7 @@ export const LogoMarquee = () => {
                       style={logo.invert ? { filter: 'brightness(0) invert(1)' } : {}}
                     />
                   )}
-                  <span className="text-white text-[18px] md:text-[22px] font-medium tracking-tighter transition-colors duration-500">
+                  <span className="text-white text-[18px] md:text-[22px] font-medium tracking-tighter">
                     {logo.name}
                   </span>
                 </div>
