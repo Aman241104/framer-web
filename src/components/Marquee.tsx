@@ -47,13 +47,7 @@ const logos = [
   },
   {
     name: 'TATA',
-    isSvg: true,
-    color: '#005a9c',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 451 414" fill="currentColor">
-        <path d="M225.7 45.4c-58.4 0-105.7 36.8-105.7 82.2 0 24.8 14.1 47 36.6 62.1l-11.4 44.4c-1.1 4.3 2.1 8.5 6.5 8.5h14.1c3.1 0 5.8-2 6.7-5l11.4-44.4c13.1 4.1 27.3 6.4 41.8 6.4s28.7-2.3 41.8-6.4l11.4 44.4c0.9 3 3.6 5 6.7 5h14.1c4.4 0 7.6-4.2 6.5-8.5l-11.4-44.4c22.5-15.1 36.6-37.3 36.6-62.1 0-45.4-47.3-82.2-105.7-82.2zm0 134.4c-41.4 0-75-23.4-75-52.2s33.6-52.2 75-52.2 75 23.4 75 52.2-33.6 52.2-75 52.2z"/>
-      </svg>
-    ),
+    src: '/company/tata.png',
   },
   {
     name: 'ClickUp',
@@ -127,7 +121,7 @@ export const LogoMarquee = () => {
                       style={logo.invert ? { filter: 'brightness(0) invert(1)' } : {}}
                     />
                   )}
-                  <span className="text-white text-[18px] md:text-[22px] font-medium tracking-tighter transition-colors duration-500 group-hover:text-[var(--hover-color)]">
+                  <span className="text-white text-[18px] md:text-[22px] font-medium tracking-tighter transition-colors duration-500">
                     {logo.name}
                   </span>
                 </div>
