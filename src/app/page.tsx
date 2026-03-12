@@ -12,6 +12,7 @@ import { Founder } from '@/components/Founder';
 import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
 import { FooterCustom } from '@/components/FooterCustom';
+import { ContactPopup } from '@/components/ContactPopup';
 import Navbar from '@/components/Navbar';
 
 const revealVariants: Variants = {
@@ -91,6 +92,9 @@ export default function Home() {
 
       {/* 10. Footer */}
       <FooterCustom />
+
+      {/* 11. Exit Intent/Scroll Popup */}
+      <ContactPopup />
     </main>
   );
 }
