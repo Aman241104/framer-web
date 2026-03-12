@@ -46,7 +46,7 @@ export const Stats = () => {
           </h2>
         </motion.div>
 
-        <div className="relative grid grid-cols-2 md:flex md:flex-row justify-between items-center w-full max-w-6xl mx-auto gap-y-12 md:gap-y-0 capitalize-stats py-4">
+        <div className="relative grid grid-cols-2 md:flex md:flex-row justify-between items-center w-full max-w-6xl mx-auto gap-y-8 md:gap-y-0 capitalize-stats py-4">
           {StatisticComp && (
             <>
               {/* Mobile Cross Dividers */}
@@ -61,15 +61,15 @@ export const Stats = () => {
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.25, 1, 0.5, 1] }}
                     whileHover={{ scale: 1.05, transition: { duration: 0.2, ease: "easeOut" } }}
-                    className="w-full md:w-auto flex justify-center relative group"
+                    className="w-full md:w-auto flex justify-center relative group scale-[0.85] md:scale-100"
                   >
                     <div className="relative">
                       {/* The Framer component provides the styling and title */}
                       <StatisticComp amount=" " title={stat.title} />
                       
                       {/* Overlay the animated number */}
-                      <div className="absolute top-[20px] md:top-[24px] left-0 w-full flex justify-center pointer-events-none">
-                        <span className="text-[28px] md:text-[30px] font-medium text-white tracking-tighter leading-none">
+                      <div className="absolute top-[18px] md:top-[24px] left-0 w-full flex justify-center pointer-events-none">
+                        <span className="text-[26px] md:text-[30px] font-medium text-white tracking-tighter leading-none">
                           <CountUp 
                             to={stat.amount} 
                             from={stat.amount > 100 ? Math.floor(stat.amount * 0.8) : 0}

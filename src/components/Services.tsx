@@ -132,6 +132,14 @@ export const Services = () => {
                   <img src={service.image} alt={service.title.replace('<br />', ' ')} className="ken-burns-img w-full h-full object-cover origin-center scale-[1.05]" />
                 </div>
 
+                <div className="flex flex-wrap justify-center gap-2 mb-4 relative z-10 md:hidden">
+                  {service.tags.map(tag => (
+                    <span key={tag} className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] text-zinc-400 font-medium">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
                 <p className="text-[#a1a1aa] text-xs md:text-[15px] leading-relaxed max-w-[280px] relative z-10 line-clamp-2">
                   {service.description.split('.')[0]}.
                 </p>

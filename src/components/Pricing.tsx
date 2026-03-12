@@ -228,7 +228,7 @@ export const Pricing = () => {
         stiffness: 300,
         damping: 30
       }}
-      className={`flex flex-col h-full p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-[#080808] border transition-all duration-500 relative group overflow-hidden ${isCentered ? 'max-w-3xl mx-auto w-full' : ''} ${
+      className={`flex flex-col h-full p-5 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] bg-[#080808] border transition-all duration-500 relative group overflow-hidden ${isCentered ? 'max-w-3xl mx-auto w-full' : ''} ${
         plan.popular ? 'border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.05)]' : 'border-white/5 hover:border-white/10'
       }`}
     >
@@ -246,33 +246,33 @@ export const Pricing = () => {
         >
           {plan.icon}
         </div>
-        <div className="flex flex-col items-end gap-2">
+        <div className="flex flex-col items-end gap-1.5 md:gap-2">
           {plan.popular && (
             <span 
-              className="px-3 py-1 rounded-full border text-[9px] font-medium uppercase tracking-widest"
+              className="px-2.5 py-0.5 md:px-3 md:py-1 rounded-full border text-[8px] md:text-[9px] font-medium uppercase tracking-widest"
               style={{ backgroundColor: `${plan.color}10`, borderColor: `${plan.color}30`, color: plan.color }}
             >
               {activeTab === 'ai' ? 'Bespoke' : 'Recommended'}
             </span>
           )}
-          <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-medium text-zinc-400 uppercase tracking-widest">
+          <span className="px-2.5 py-0.5 md:px-3 md:py-1 rounded-full bg-white/5 border border-white/10 text-[8px] md:text-[9px] font-medium text-zinc-400 uppercase tracking-widest">
             {plan.impact}
           </span>
         </div>
       </div>
 
-      <div className="mb-8 relative z-10">
-        <h4 className="text-[24px] md:text-[28px] font-medium text-white tracking-tight mb-3">{plan.name}</h4>
-        <p className="text-zinc-500 text-[15px] md:text-[16px] leading-relaxed">{plan.description}</p>
+      <div className="mb-6 md:mb-8 relative z-10">
+        <h4 className="text-[22px] md:text-[28px] font-medium text-white tracking-tight mb-2 md:mb-3">{plan.name}</h4>
+        <p className="text-zinc-500 text-[13px] md:text-[16px] leading-relaxed">{plan.description}</p>
       </div>
 
       <div className={`grid ${isCentered ? 'md:grid-cols-2' : 'grid-cols-1'} gap-x-10 gap-y-4 mb-10 relative z-10`}>
         {plan.features.map((f: string) => (
           <div key={f} className="flex items-start gap-3 group/item">
-            <div className="mt-1 flex-shrink-0 w-4 h-4 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-white/30 transition-colors">
-              <Check className="w-2.5 h-2.5 text-white" />
+            <div className="mt-1 flex-shrink-0 w-3.5 h-3.5 md:w-4 md:h-4 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-white/30 transition-colors">
+              <Check className="w-2 md:w-2.5 h-2 md:h-2.5 text-white" />
             </div>
-            <span className="text-zinc-400 text-[14px] font-normal leading-tight group-hover/item:text-zinc-200 transition-colors">{f}</span>
+            <span className="text-zinc-400 text-[13px] md:text-[14px] font-normal leading-tight group-hover/item:text-zinc-200 transition-colors">{f}</span>
           </div>
         ))}
       </div>
@@ -396,7 +396,7 @@ export const Pricing = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-24 p-12 rounded-[3rem] bg-gradient-to-br from-[#0A0A0A] to-[#050505] border border-white/5 text-center relative overflow-hidden group hover:border-white/10 transition-colors"
+          className="mt-16 md:mt-24 p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-gradient-to-br from-[#0A0A0A] to-[#050505] border border-white/5 text-center relative overflow-hidden group hover:border-white/10 transition-colors"
         >
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
           <div className="relative z-10 max-w-2xl mx-auto">

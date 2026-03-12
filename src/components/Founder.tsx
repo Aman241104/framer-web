@@ -56,7 +56,7 @@ export const Founder = () => {
           {team.map((person, index) => (
             <div 
               key={person.name}
-              className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-[60px] items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+              className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-[60px] items-center p-6 md:p-0 rounded-[32px] bg-white/[0.02] md:bg-transparent border border-white/5 md:border-none ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, x: index % 2 === 0 ? -20 : 20 }}
@@ -74,7 +74,7 @@ export const Founder = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               </motion.div>
 
-              <div className={`w-full relative z-10 flex flex-col justify-center ${index % 2 !== 0 ? 'md:order-1' : ''}`}>
+              <div className={`w-full relative z-10 flex flex-col justify-center items-center md:items-start text-center md:text-left ${index % 2 !== 0 ? 'md:order-1' : ''}`}>
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
@@ -86,11 +86,11 @@ export const Founder = () => {
                       transition: { staggerChildren: 0.1, delayChildren: 0.2 }
                     }
                   }}
-                  className="flex flex-col gap-4 md:gap-5"
+                  className="flex flex-col gap-4 md:gap-5 items-center md:items-start"
                 >
                   <motion.div
                     variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
-                    className="flex items-center mb-2 md:mb-4"
+                    className="flex items-center mb-2 md:mb-4 justify-center md:justify-start"
                   >
                     <img
                       src="https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png"
@@ -101,14 +101,14 @@ export const Founder = () => {
 
                   <motion.h2
                     variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                    className="text-xl md:text-[32px] font-manrope font-medium mb-6 md:mb-10 leading-snug text-white tracking-normal"
+                    className="text-xl md:text-[32px] font-manrope font-medium mb-6 md:mb-10 leading-snug text-white tracking-normal text-center md:text-left"
                   >
                     &ldquo;{person.mission}&rdquo;
                   </motion.h2>
 
                   <motion.div
                     variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
-                    className="flex flex-col mb-8 md:mb-12"
+                    className="flex flex-col mb-8 md:mb-12 items-center md:items-start"
                   >
                     <span 
                       className="font-sans font-medium text-[22px] md:text-[26px] tracking-[-1px]"
@@ -123,18 +123,18 @@ export const Founder = () => {
 
                   <motion.div
                     variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] } } }}
-                    className="flex flex-col sm:flex-row gap-6 sm:gap-12 pt-8 md:pt-12 relative w-full items-start"
+                    className="flex flex-col sm:flex-row gap-6 sm:gap-12 pt-8 md:pt-12 relative w-full items-center md:items-start justify-center md:justify-start"
                   >
                     <div className="absolute top-0 left-0 w-full md:w-[200%] h-px bg-gradient-to-r from-white/30 via-white/5 to-transparent"></div>
                     {person.stats.map((stat, sIdx) => (
-                      <div key={sIdx} className="flex items-center gap-4 group cursor-default">
+                      <div key={sIdx} className="flex items-center gap-4 group cursor-default justify-center md:justify-start">
                         <span 
                           className="text-3xl md:text-[48px] font-medium text-white transition-all duration-300" 
                           style={{ textShadow: '0 0 20px rgba(255,255,255,0.1)' }}
                         >
                           {stat.value}
                         </span>
-                        <span className="text-[#afafaf] text-xs md:text-base font-medium tracking-wide max-w-[120px] leading-snug group-hover:text-white transition-all duration-300">
+                        <span className="text-[#afafaf] text-xs md:text-base font-medium tracking-wide max-w-[120px] leading-snug group-hover:text-white transition-all duration-300 text-left">
                           {stat.label}
                         </span>
                       </div>

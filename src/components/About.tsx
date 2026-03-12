@@ -48,7 +48,7 @@ export const About = () => {
 
           {/* Left Sticky Header */}
           <div className="lg:col-span-5 relative">
-            <div className="lg:sticky lg:top-40 flex flex-col gap-4 md:gap-6">
+            <div className="lg:sticky lg:top-40 flex flex-col gap-4 md:gap-6 px-2 md:px-0">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -78,10 +78,10 @@ export const About = () => {
               viewport={{ once: true, margin: "-10%" }}
               className="p-6 md:p-12 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-md"
             >
-              <p className="about-text text-base md:text-[24px] text-zinc-400 font-normal leading-relaxed mb-6 md:mb-8">
+              <p className="about-text text-[15px] md:text-[24px] text-zinc-400 font-normal leading-relaxed mb-6 md:mb-8">
                 VeeBran is a business consulting partner for founders, coaches, and startup builders. We work at the intersection of personal branding, sales, and AI - helping you show up confidently, attract the right clients, and build systems that scale.
               </p>
-              <p className="about-text text-base md:text-[24px] text-zinc-400 font-normal leading-relaxed">
+              <p className="about-text text-[15px] md:text-[24px] text-zinc-400 font-normal leading-relaxed">
                 Whether you&apos;re just starting out or ready to grow faster - we make it simple, strategic, and real.
               </p>
             </motion.div>
