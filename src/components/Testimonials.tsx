@@ -26,17 +26,17 @@ export const Testimonials = () => {
   const LabelComp = Label?.Responsive || Label;
 
   return (
-    <section id="testimonials" className="pt-[20px] pb-[60px] container mx-auto px-6 relative z-10 scroll-mt-32 bg-black">
+    <section id="testimonials" className="pt-[40px] pb-[60px] container mx-auto px-6 relative z-10 scroll-mt-32 bg-black">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col items-center mb-20"
+        className="flex flex-col items-center mb-12 md:mb-20"
       >
         {LabelComp && <LabelComp label="What Our Clients Say" variant="Secondary" />}
       </motion.div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
         {TestimonialCardComp && testimonials.map((t, i) => (
           <motion.div
             key={i}
@@ -46,7 +46,7 @@ export const Testimonials = () => {
             transition={{ duration: 0.6, delay: i * 0.15, ease: 'easeOut' }}
             whileHover={{ y: -6, transition: { duration: 0.2 } }}
           >
-            <div className="bg-[#0A0A0A] border border-white/5 rounded-[32px] p-8 md:p-10 h-full flex flex-col relative overflow-hidden group hover:border-white/10 transition-all duration-300 shadow-2xl font-medium">
+            <div className="bg-[#0A0A0A] border border-white/5 rounded-[24px] md:rounded-[32px] p-6 md:p-10 h-full flex flex-col relative overflow-hidden group hover:border-white/10 transition-all duration-300 shadow-2xl font-medium">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#3B82F6]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <TestimonialCardComp
                 text={t.text}

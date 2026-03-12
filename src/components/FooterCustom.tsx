@@ -111,32 +111,35 @@ export const FooterCustom = () => {
                                 flexDirection: 'column',
                                 alignItems: 'center',
                                 textAlign: 'center',
-                                padding: '72px 48px 52px',
+                                padding: '48px 24px 40px',
                             }}
+                            className="md:!py-[72px] md:!px-[48px] md:!pb-[52px]"
                         >
                             {/* Logo */}
-                            <motion.div {...spring(0)} style={{ marginBottom: 48 }}>
+                            <motion.div {...spring(0)} style={{ marginBottom: 32 }} className="md:!mb-[48px]">
                                 <img
                                     src="https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png"
                                     alt="VeeBran"
-                                    style={{ height: 52, width: 'auto', objectFit: 'contain' }}
+                                    style={{ height: 32, width: 'auto', objectFit: 'contain' }}
+                                    className="md:!h-[52px]"
                                 />
                             </motion.div>
 
                             {/* LET'S SUCCEED TOGETHER headline */}
-                            <motion.div {...spring(0.05)} style={{ marginBottom: 24, width: '100%' }}>
+                            <motion.div {...spring(0.05)} style={{ marginBottom: 20, width: '100%' }} className="md:!mb-[24px]">
                                 <h2
                                     style={{
                                         fontFamily: '"Satoshi", "Satoshi Placeholder", sans-serif',
                                         fontWeight: 700,
                                         fontStyle: 'italic',
-                                        fontSize: 'clamp(40px, 6.5vw, 88px)',
-                                        lineHeight: 1.05,
-                                        letterSpacing: '-2px',
+                                        fontSize: 'clamp(32px, 8vw, 88px)',
+                                        lineHeight: 1.1,
+                                        letterSpacing: '-1px',
                                         margin: 0,
                                         textTransform: 'uppercase',
                                         color: '#fff',
                                     }}
+                                    className="md:!letter-spacing-[-2px] md:!line-height-[1.05]"
                                 >
                                     <span style={{ color: '#004aad' }}>LET&apos;S SUCCEED </span>
                                     TOGETHER
@@ -149,18 +152,19 @@ export const FooterCustom = () => {
                                 style={{
                                     fontFamily: '"Satoshi", sans-serif',
                                     fontWeight: 500,
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     color: 'rgba(255,255,255,0.6)',
                                     maxWidth: 420,
-                                    marginBottom: 32,
-                                    lineHeight: 1.6,
+                                    marginBottom: 24,
+                                    lineHeight: 1.5,
                                 }}
+                                className="md:!font-size-[16px] md:!mb-[32px] md:!line-height-[1.6]"
                             >
                                 We bring your vision to life with creativity and precision. Let&apos;s make it happen.
                             </motion.p>
 
                             {/* Book A Call */}
-                            <motion.div {...spring(0.15)} style={{ marginBottom: 52 }}>
+                            <motion.div {...spring(0.15)} style={{ marginBottom: 40 }} className="md:!mb-[52px]">
                                 <a
                                     href="https://calendly.com/vishva-veebran/30min"
                                     target="_blank"
@@ -168,7 +172,7 @@ export const FooterCustom = () => {
                                     style={{
                                         fontFamily: '"Satoshi", sans-serif',
                                         fontWeight: 700,
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         color: '#E5A800',
                                         display: 'inline-flex',
                                         alignItems: 'center',
@@ -176,6 +180,7 @@ export const FooterCustom = () => {
                                         textDecoration: 'none',
                                         transition: 'gap 0.3s ease',
                                     }}
+                                    className="md:!font-size-[18px]"
                                     onMouseEnter={(e) => {
                                         (e.currentTarget as HTMLAnchorElement).style.gap = '12px';
                                     }}
@@ -185,14 +190,15 @@ export const FooterCustom = () => {
                                 >
                                     Book A Call
                                     <svg
-                                        width="18"
-                                        height="18"
+                                        width="16"
+                                        height="16"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
                                         strokeWidth="2.5"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
+                                        className="md:!w-[18px] md:!h-[18px]"
                                     >
                                         <line x1="7" y1="17" x2="17" y2="7" />
                                         <polyline points="7 7 17 7 17 17" />
@@ -207,8 +213,9 @@ export const FooterCustom = () => {
                                     width: '100%',
                                     height: 1,
                                     background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
-                                    marginBottom: 32,
+                                    marginBottom: 24,
                                 }}
+                                className="md:!mb-[32px]"
                             />
 
                             {/* Bottom row: contact + nav */}
@@ -218,11 +225,12 @@ export const FooterCustom = () => {
                                     width: '100%',
                                     display: 'flex',
                                     flexWrap: 'wrap',
-                                    justifyContent: 'space-between',
+                                    justifyContent: 'center',
                                     alignItems: 'center',
                                     gap: '16px 24px',
-                                    marginBottom: 28,
+                                    marginBottom: 24,
                                 }}
+                                className="md:!justify-between md:!mb-[28px]"
                             >
                                 {/* Email + Location */}
                                 <div
@@ -231,10 +239,12 @@ export const FooterCustom = () => {
                                         flexWrap: 'wrap',
                                         gap: '8px 20px',
                                         alignItems: 'center',
+                                        justifyContent: 'center',
                                         fontFamily: '"Satoshi", sans-serif',
-                                        fontSize: 14,
+                                        fontSize: 13,
                                         color: 'rgba(255,255,255,0.4)',
                                     }}
+                                    className="md:!font-size-[14px]"
                                 >
                                     <span>
                                         Email:{' '}
@@ -245,7 +255,7 @@ export const FooterCustom = () => {
                                             vishva@veebran.com
                                         </a>
                                     </span>
-                                    <span style={{ color: 'rgba(255,255,255,0.15)' }}>|</span>
+                                    <span style={{ color: 'rgba(255,255,255,0.15)' }} className="hidden sm:inline">|</span>
                                     <span>Location: India</span>
                                 </div>
 
@@ -254,9 +264,10 @@ export const FooterCustom = () => {
                                     style={{
                                         display: 'flex',
                                         flexWrap: 'wrap',
-                                        gap: '8px 20px',
-                                        justifyContent: 'flex-end',
+                                        gap: '8px 16px',
+                                        justifyContent: 'center',
                                     }}
+                                    className="md:!gap-[20px] md:!justify-end"
                                 >
                                     {navLinks.map((link) => {
                                     const isExternal = link.href.startsWith('http');
@@ -268,12 +279,13 @@ export const FooterCustom = () => {
                                             rel={isExternal ? "noopener noreferrer" : undefined}
                                             style={{
                                                 fontFamily: '"Satoshi", sans-serif',
-                                                fontSize: 14,
+                                                fontSize: 13,
                                                 color: 'rgba(255,255,255,0.4)',
                                                 textDecoration: 'none',
                                                 transition: 'color 0.2s ease',
                                                 whiteSpace: 'nowrap',
                                             }}
+                                            className="md:!font-size-[14px]"
                                             onMouseEnter={(e) => { (e.currentTarget).style.color = '#fff'; }}
                                             onMouseLeave={(e) => { (e.currentTarget).style.color = 'rgba(255,255,255,0.4)'; }}
                                         >

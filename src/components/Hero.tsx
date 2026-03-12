@@ -57,22 +57,22 @@ export const Hero = () => {
   };
 
   return (
-    <section ref={containerRef} className="relative pt-32 md:pt-48 pb-32 md:pb-[180px] flex flex-col items-center z-10 overflow-hidden">
+    <section ref={containerRef} className="relative pt-24 md:pt-48 pb-20 md:pb-[180px] flex flex-col items-center z-10 overflow-hidden">
       {/* Hero Background Dots - Absolute to this section only */}
       <div className="absolute inset-0 z-0 pointer-events-none w-full h-full flex justify-center overflow-hidden opacity-50">
         {BackgroundDotsComp && <BackgroundDotsComp className="w-full h-full object-cover" />}
       </div>
 
       <div className="container mx-auto text-center relative z-10">
-        <div className="flex flex-col items-center mb-10">
-          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-[rgba(33,33,33,0.4)] backdrop-blur-md text-sm font-medium text-white/80 shrink-0">
+        <div className="flex flex-col items-center mb-8 md:mb-10">
+          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-[rgba(33,33,33,0.4)] backdrop-blur-md text-xs md:text-sm font-medium text-white/80 shrink-0">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
             We Are Online To Chat
           </div>
         </div>
 
         <h1
-          className="text-[32px] md:text-[72px] font-medium tracking-[-1px] mb-6 md:mb-8 leading-[1.2] md:leading-[1.25] flex flex-col items-center justify-center relative z-10 px-4"
+          className="text-[32px] md:text-[72px] font-medium tracking-tight mb-6 md:mb-8 leading-[1.2] md:leading-[1.25] flex flex-col items-center justify-center relative z-10 px-4"
         >
           {["Grow Your Brand,", "Build Your Pipeline,", "and Scale with AI."].map((line, i) => (
             <div key={i} className="overflow-hidden">
@@ -105,7 +105,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-col items-center gap-4 relative z-10 mb-24"
+          className="flex flex-col items-center gap-4 relative z-10 mb-16 md:mb-24"
         >
           <a
             ref={buttonRef}
@@ -125,7 +125,7 @@ export const Hero = () => {
       </div>
 
       {/* Logos inserted into bottom of Hero Background */}
-      <div className="absolute bottom-6 w-full z-0">
+      <div className="absolute bottom-4 md:bottom-6 w-full z-0">
         <LogoMarquee />
       </div>
 

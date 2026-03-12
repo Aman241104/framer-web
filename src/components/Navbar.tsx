@@ -54,11 +54,11 @@ const Navbar = () => {
           }}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center h-full shrink-0" onClick={closeMobileMenu}>
+          <Link href="/" className="absolute md:relative left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 flex items-center h-full shrink-0" onClick={closeMobileMenu}>
             <img
               src="https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png"
               alt="VeeBran"
-              className="h-[26px] w-auto object-contain"
+              className="h-[24px] md:h-[26px] w-auto object-contain"
             />
           </Link>
 

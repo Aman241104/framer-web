@@ -42,46 +42,46 @@ export const About = () => {
   }, { scope: containerRef });
 
   return (
-    <section id="about" ref={containerRef} className="py-20 md:py-32 bg-transparent border-t border-white/5 relative overflow-hidden">
+    <section id="about" ref={containerRef} className="py-12 md:py-32 bg-transparent border-t border-white/5 relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
 
           {/* Left Sticky Header */}
           <div className="lg:col-span-5 relative">
-            <div className="lg:sticky lg:top-40 flex flex-col gap-6">
+            <div className="lg:sticky lg:top-40 flex flex-col gap-4 md:gap-6">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
-                className="flex items-center gap-4 mb-4"
+                className="flex items-center gap-4 mb-2 md:mb-4"
               >
-                <div className="w-12 h-px bg-[#E5A800]"></div>
-                <span className="text-[#E5A800] font-medium tracking-widest text-xs">Who We Are</span>
+                <div className="w-8 md:w-12 h-px bg-[#E5A800]"></div>
+                <span className="text-[#E5A800] font-medium tracking-widest text-[10px] md:text-xs">Who We Are</span>
               </motion.div>
 
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
-                className="text-4xl md:text-[48px] font-medium text-white tracking-tight leading-[1.25]"
+                className="text-3xl md:text-[48px] font-medium text-white tracking-tight leading-[1.2] md:leading-[1.25]"
               >
-                We Help You Grow  -  <br /><span className="text-zinc-500">With Strategy, Systems & AI.</span>
+                We Help You Grow  -  <br className="hidden md:block" /><span className="text-zinc-500">With Strategy, Systems & AI.</span>
               </motion.h2>
             </div>
           </div>
 
           {/* Right Scrolling Content */}
-          <div className="lg:col-span-7 flex flex-col gap-8 lg:pt-20">
+          <div className="lg:col-span-7 flex flex-col gap-6 lg:gap-8 lg:pt-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
-              className="p-8 md:p-12 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-md"
+              className="p-6 md:p-12 rounded-3xl bg-white/[0.02] border border-white/5 backdrop-blur-md"
             >
-              <p className="about-text text-lg md:text-[24px] text-zinc-400 font-normal leading-relaxed mb-8">
+              <p className="about-text text-base md:text-[24px] text-zinc-400 font-normal leading-relaxed mb-6 md:mb-8">
                 VeeBran is a business consulting partner for founders, coaches, and startup builders. We work at the intersection of personal branding, sales, and AI - helping you show up confidently, attract the right clients, and build systems that scale.
               </p>
-              <p className="about-text text-lg md:text-[24px] text-zinc-400 font-normal leading-relaxed">
+              <p className="about-text text-base md:text-[24px] text-zinc-400 font-normal leading-relaxed">
                 Whether you&apos;re just starting out or ready to grow faster - we make it simple, strategic, and real.
               </p>
             </motion.div>

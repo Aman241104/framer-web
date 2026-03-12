@@ -188,24 +188,24 @@ export const WhyUs = () => {
           }}
           className="flex flex-col items-center mb-16"
         >
-          <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="mb-12">
+          <motion.div variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }} className="mb-8 md:mb-12">
             {LabelComp && <LabelComp label="Why VeeBran?" variant="Secondary" />}
           </motion.div>
           <motion.h2
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } } }}
-            className="text-4xl md:text-[48px] font-medium mb-4 max-w-4xl mx-auto tracking-tight leading-[1.25] text-white"
+            className="text-3xl md:text-[48px] font-medium mb-4 max-w-4xl mx-auto tracking-tight leading-[1.2] md:leading-[1.25] text-white"
           >
-            Experience The Benefits <br /> Of Our Expertise
+            Experience The Benefits <br className="hidden md:block" /> Of Our Expertise
           </motion.h2>
           <motion.p
             variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] } } }}
-            className="text-zinc-500 text-sm md:text-[18px] font-normal tracking-normal"
+            className="text-zinc-500 text-xs md:text-[18px] font-normal tracking-normal"
           >
             Strategies that drive impactful and powerful results
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1200px] mx-auto px-4 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-[1200px] mx-auto px-4 md:px-0">
           {features.map((feature, index) => (
             <SpotlightCard key={index} feature={feature} index={index} />
           ))}

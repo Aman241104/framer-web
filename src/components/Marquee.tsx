@@ -73,20 +73,20 @@ export const LogoMarquee = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <div className="w-full flex justify-center pb-8 pt-0 z-0 opacity-90 overflow-hidden">
+    <div className="w-full flex justify-center pb-4 md:pb-8 pt-0 z-0 opacity-90 overflow-hidden">
       <div className="flex flex-col items-center w-full max-w-[1400px]">
-        <p className="text-[#E5A800] text-center text-[12px] md:text-[14px] font-normal tracking-[0.2em] mb-10">
+        <p className="text-[#E5A800] text-center text-[10px] md:text-[14px] font-normal tracking-[0.2em] mb-4 md:mb-10">
           Our Solutions Leverage Tools Trusted By
         </p>
 
         <div 
-          className="w-full relative flex items-center overflow-hidden h-[80px]"
+          className="w-full relative flex items-center overflow-hidden h-[60px] md:h-[80px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
           {/* Enhanced Fading Mask */}
-          <div className="absolute inset-y-0 left-0 w-24 md:w-64 bg-gradient-to-r from-black via-black/90 to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 md:w-64 bg-gradient-to-l from-black via-black/90 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-16 md:w-64 bg-gradient-to-r from-black via-black/90 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-16 md:w-64 bg-gradient-to-l from-black via-black/90 to-transparent z-10 pointer-events-none" />
 
           <motion.div
             animate={{
@@ -103,24 +103,24 @@ export const LogoMarquee = () => {
             {[...logos, ...logos, ...logos, ...logos].map((logo, index) => (
               <div
                 key={`${logo.name}-${index}`}
-                className="flex items-center justify-center shrink-0 px-10 md:px-16 group"
+                className="flex items-center justify-center shrink-0 px-6 md:px-16 group"
               >
                 <div 
-                  className="flex items-center gap-4 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-out scale-90 group-hover:scale-105"
+                  className="flex items-center gap-2 md:gap-4 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-out scale-[0.8] md:scale-90 group-hover:scale-105"
                 >
                   {logo.isSvg ? (
-                    <div className="text-white group-hover:text-[var(--hover-color)] transition-colors duration-500" style={{ color: (logo as any).color }}>
+                    <div className="text-white group-hover:text-[var(--hover-color)] transition-colors duration-500 scale-90 md:scale-100" style={{ color: (logo as any).color }}>
                       {logo.icon}
                     </div>
                   ) : (
                     <img 
                       src={logo.src} 
                       alt={logo.name} 
-                      className={`h-[32px] md:h-[40px] w-auto object-contain transition-all duration-500`}
+                      className={`h-[24px] md:h-[40px] w-auto object-contain transition-all duration-500`}
                       style={logo.invert ? { filter: 'brightness(0) invert(1)' } : {}}
                     />
                   )}
-                  <span className="text-white text-[18px] md:text-[22px] font-medium tracking-tighter">
+                  <span className="text-white text-[14px] md:text-[22px] font-medium tracking-tighter">
                     {logo.name}
                   </span>
                 </div>

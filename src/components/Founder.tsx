@@ -47,16 +47,16 @@ export const Founder = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="text-3xl md:text-[48px] font-medium mb-16 md:mb-24 text-[#3B82F6] tracking-tight text-center"
+          className="text-3xl md:text-[48px] font-medium mb-12 md:mb-24 text-[#3B82F6] tracking-tight text-center"
         >
           MEET THE FOUNDERS
         </motion.h2>
 
-        <div className="flex flex-col gap-20 md:gap-32 max-w-6xl mx-auto">
+        <div className="flex flex-col gap-16 md:gap-32 max-w-6xl mx-auto">
           {team.map((person, index) => (
             <div 
               key={person.name}
-              className={`grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-[60px] items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+              className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-[60px] items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, x: index % 2 === 0 ? -20 : 20 }}
@@ -86,55 +86,55 @@ export const Founder = () => {
                       transition: { staggerChildren: 0.1, delayChildren: 0.2 }
                     }
                   }}
-                  className="flex flex-col gap-5"
+                  className="flex flex-col gap-4 md:gap-5"
                 >
                   <motion.div
                     variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
-                    className="flex items-center mb-4"
+                    className="flex items-center mb-2 md:mb-4"
                   >
                     <img
                       src="https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png"
                       alt="VeeBran Logo"
-                      className="h-[32px] w-auto object-contain"
+                      className="h-[24px] md:h-[32px] w-auto object-contain"
                     />
                   </motion.div>
 
                   <motion.h2
                     variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                    className="text-2xl md:text-[32px] font-manrope font-medium mb-10 leading-snug text-white tracking-normal"
+                    className="text-xl md:text-[32px] font-manrope font-medium mb-6 md:mb-10 leading-snug text-white tracking-normal"
                   >
                     &ldquo;{person.mission}&rdquo;
                   </motion.h2>
 
                   <motion.div
                     variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
-                    className="flex flex-col mb-12"
+                    className="flex flex-col mb-8 md:mb-12"
                   >
                     <span 
-                      className="font-sans font-medium text-[26px] tracking-[-1px]"
+                      className="font-sans font-medium text-[22px] md:text-[26px] tracking-[-1px]"
                       style={{ color: person.accent }}
                     >
                       {person.name}
                     </span>
-                    <span className="text-zinc-500 font-manrope font-normal text-[18px] tracking-normal">
+                    <span className="text-zinc-500 font-manrope font-normal text-[16px] md:text-[18px] tracking-normal">
                       {person.role}
                     </span>
                   </motion.div>
 
                   <motion.div
                     variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] } } }}
-                    className="flex flex-col sm:flex-row gap-8 sm:gap-12 pt-12 relative w-full items-start"
+                    className="flex flex-col sm:flex-row gap-6 sm:gap-12 pt-8 md:pt-12 relative w-full items-start"
                   >
                     <div className="absolute top-0 left-0 w-full md:w-[200%] h-px bg-gradient-to-r from-white/30 via-white/5 to-transparent"></div>
                     {person.stats.map((stat, sIdx) => (
                       <div key={sIdx} className="flex items-center gap-4 group cursor-default">
                         <span 
-                          className="text-4xl md:text-[48px] font-medium text-white transition-all duration-300" 
+                          className="text-3xl md:text-[48px] font-medium text-white transition-all duration-300" 
                           style={{ textShadow: '0 0 20px rgba(255,255,255,0.1)' }}
                         >
                           {stat.value}
                         </span>
-                        <span className="text-[#afafaf] text-sm md:text-base font-medium tracking-wide max-w-[120px] leading-snug group-hover:text-white transition-all duration-300">
+                        <span className="text-[#afafaf] text-xs md:text-base font-medium tracking-wide max-w-[120px] leading-snug group-hover:text-white transition-all duration-300">
                           {stat.label}
                         </span>
                       </div>

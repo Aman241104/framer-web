@@ -312,28 +312,28 @@ export const Pricing = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-[56px] font-medium text-white tracking-tight mb-12"
+            className="text-3xl md:text-[56px] font-medium text-white tracking-tight mb-8 md:mb-12"
           >
             Choose Your <span className="text-zinc-500">Growth Path.</span>
           </motion.h2>
 
-          <div className="flex flex-wrap justify-center gap-2 p-1 bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl w-fit mx-auto backdrop-blur-md">
+          <div className="flex flex-wrap justify-center gap-1.5 p-1 bg-white/5 border border-white/10 rounded-xl md:rounded-3xl w-fit mx-auto backdrop-blur-md">
             {[
-              { id: 'branding', label: 'Personal Branding', icon: <Star className="w-4 h-4" /> },
-              { id: 'sales', label: 'Sales Systems', icon: <Target className="w-4 h-4" /> },
-              { id: 'ai', label: 'AI Automation', icon: <Zap className="w-4 h-4" /> },
+              { id: 'branding', label: 'Branding', icon: <Star className="w-3.5 h-3.5" /> },
+              { id: 'sales', label: 'Sales', icon: <Target className="w-3.5 h-3.5" /> },
+              { id: 'ai', label: 'AI Tools', icon: <Zap className="w-3.5 h-3.5" /> },
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl text-[13px] md:text-sm font-medium transition-all duration-300 relative ${
+                className={`flex items-center gap-1.5 px-3 md:px-6 py-2 md:py-3 rounded-lg md:rounded-2xl text-[12px] md:text-sm font-medium transition-all duration-300 relative ${
                   activeTab === tab.id ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'
                 }`}
               >
                 {activeTab === tab.id && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-white/10 border border-white/10 rounded-xl md:rounded-2xl"
+                    className="absolute inset-0 bg-white/10 border border-white/10 rounded-lg md:rounded-2xl"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
