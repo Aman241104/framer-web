@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 const navLinks = [
   { label: 'Why Us', href: '/#why-us' },
@@ -168,9 +169,9 @@ const Navbar = () => {
               className="fixed top-[76px] left-1/2 -translate-x-1/2 w-[95%] max-w-[400px] z-[99] md:hidden rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
               style={{
                 background: 'rgba(8, 8, 8, 0.95)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255,255,255,0.07)'
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+                border: '1px solid rgba(255,255,255,0.08)'
               }}
             >
               <div className="p-5 flex flex-col gap-1">
@@ -184,60 +185,63 @@ const Navbar = () => {
                     <Link
                       href={item.href}
                       onClick={(e) => handleScroll(e, item.href)}
-                      className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/5 transition-all text-[16px] font-normal"
+                      className="group flex items-center justify-between px-4 py-3.5 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/[0.03] transition-all text-[17px] font-medium"
                     >
-                      {item.label}
+                      <span>{item.label}</span>
+                      <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#E5A800]" />
                     </Link>
                   </motion.div>
                 ))}
 
-                <div className="h-px bg-white/5 my-2" />
+                <div className="h-px bg-white/5 my-3" />
 
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navLinks.length * 0.05 + 0.05 }}
-                >
-                  <Link
-                    href="/contact"
-                    onClick={closeMobileMenu}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/5 transition-all text-[16px] font-normal"
-                  >
-                    Contact Us
-                  </Link>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: (navLinks.length + 1) * 0.05 + 0.05 }}
-                >
-                  <Link
-                    href="/terms"
-                    onClick={closeMobileMenu}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-[#afafaf] hover:text-white hover:bg-white/5 transition-all text-[16px] font-normal"
-                  >
-                    Terms & Conditions
-                  </Link>
-                </motion.div>
+                <div className="flex flex-col gap-1">
+                  {[
+                    { label: 'Contact Us', href: '/contact' },
+                    { label: 'Terms & Conditions', href: '/terms' }
+                  ].map((item, i) => (
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: (navLinks.length + i) * 0.05 + 0.05 }}
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={closeMobileMenu}
+                        className="flex items-center px-4 py-2.5 rounded-xl text-[#71717a] hover:text-white hover:bg-white/[0.03] transition-all text-[15px] font-normal"
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
 
-                <div className="pt-2 flex w-full">
-                  <a
-                    href="https://calendly.com/vishva-veebran/30min"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={closeMobileMenu}
-                    className="nav-talk-wrap group w-full flex"
+                <div className="pt-4 flex w-full">
+                  <motion.div 
+                    className="w-full"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: (navLinks.length + 2) * 0.05 + 0.1 }}
                   >
-                    <div className="nav-talk-border"></div>
-                    <div className="nav-talk-glow"></div>
-                    <div className="nav-talk-btn w-full flex justify-center py-3 font-normal">
-                      <span>Let's Talk</span>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="19" x2="19" y2="5"></line>
-                        <polyline points="9 5 19 5 19 15"></polyline>
-                      </svg>
-                    </div>
-                  </a>
+                    <a
+                      href="https://calendly.com/vishva-veebran/30min"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMobileMenu}
+                      className="nav-talk-wrap group w-full flex active:scale-[0.98] transition-transform"
+                    >
+                      <div className="nav-talk-border"></div>
+                      <div className="nav-talk-glow"></div>
+                      <div className="nav-talk-btn w-full flex justify-center py-3.5 font-bold tracking-tight">
+                        <span>Book Strategy Call</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="5" y1="19" x2="19" y2="5"></line>
+                          <polyline points="9 5 19 5 19 15"></polyline>
+                        </svg>
+                      </div>
+                    </a>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
