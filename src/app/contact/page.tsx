@@ -49,9 +49,16 @@ const infoCards = [
 const formFields = [
   { id: 'name', label: 'Name', type: 'text', placeholder: 'David Johnson' },
   { id: 'email', label: 'Email', type: 'email', placeholder: 'example@mail.com' },
+  { id: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+1 (555) 000-0000' },
   { id: 'companyname', label: 'Company Name', type: 'text', placeholder: 'Ex. StartoMania' },
   { id: 'website', label: 'Website', type: 'url', placeholder: 'https://example.com' },
-  { id: 'position', label: 'Position', type: 'text', placeholder: 'Founder, CEO, etc.' },
+];
+
+const serviceOptions = [
+  "Personal Branding with AI",
+  "AI-Powered Sales & Marketing",
+  "Custom AI Tool Development",
+  "Other"
 ];
 
 export default function ContactPage() {
@@ -60,13 +67,14 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     companyname: '',
     website: '',
-    position: '',
+    service: serviceOptions[0],
     message: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -76,24 +84,25 @@ export default function ContactPage() {
     setStatus('loading');
     console.log('Submitting form data:', formData);
 
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby98WLibYWL_l1Qm4P3mtLK2Mz1KDEJW4g1MY2J8MTvT7iD7kjr_OPeTeLsGTn310GO/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3XHG8UTiToZZA4TmfAR0WyXYJ6jtuxyaHmzzcKr3LHVNx_Uj-ED2f7mEi89OQ_HhnQA/exec";
 
     try {
-      // Use no-cors mode because Google Script doesn't return proper CORS headers for JSON POSTs
-      // and we just need to send the data (fire-and-forget).
+      // Use URLSearchParams for much more reliable delivery to Google Apps Script
+      const params = new URLSearchParams();
+      Object.entries(formData).forEach(([key, value]) => {
+        params.append(key, value);
+      });
+      params.append('timestamp', new Date().toLocaleString());
+
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors', // Important for Google Script
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          timestamp: new Date().toLocaleString(),
-        }),
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
       });
 
-      // Since 'no-cors' doesn't let us read the response, we assume success if no exception was thrown
       setStatus('success');
-      setFormData({ name: '', email: '', companyname: '', website: '', position: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', companyname: '', website: '', service: serviceOptions[0], message: '' });
     } catch (error) {
       console.error('Submission error:', error);
       setStatus('error');
@@ -257,6 +266,37 @@ export default function ContactPage() {
                   />
                 </motion.div>
               ))}
+
+              {/* Services Dropdown */}
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={2.5}
+                className="flex flex-col gap-2 md:col-span-2"
+              >
+                <label className="text-xs font-medium text-white/60 tracking-wider">Interested Service</label>
+                <select
+                  required
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  onFocus={() => setFocused('service')}
+                  onBlur={() => setFocused(null)}
+                  className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 appearance-none ${focused === 'service'
+                    ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
+                    : 'border-white/8 hover:border-white/15'
+                    }`}
+                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1em' }}
+                >
+                  {serviceOptions.map(option => (
+                    <option key={option} value={option} className="bg-[#0a0a0a]">
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </motion.div>
 
               {/* Textarea */}
               <motion.div

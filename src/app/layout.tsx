@@ -29,7 +29,16 @@ export const metadata: Metadata = {
     title: "VeeBran - Grow Your Brand, Pipeline & Business with AI",
     description: "The growth consulting partner for founders and entrepreneurs. Personal branding, sales systems, and custom AI tools.",
     type: 'website',
-  }
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180' },
+    ],
+  },
 };
 
 export default function RootLayout({

@@ -26,7 +26,7 @@ export const Testimonials = () => {
   const LabelComp = Label?.Responsive || Label;
 
   return (
-    <section id="testimonials" className="pt-[20px] pb-[60px] container mx-auto px-6 relative z-10 scroll-mt-32">
+    <section id="testimonials" className="pt-[20px] pb-[60px] container mx-auto px-6 relative z-10 scroll-mt-32 bg-black">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

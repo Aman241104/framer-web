@@ -9,6 +9,7 @@ import { Stats } from '@/components/Stats';
 import { Services } from '@/components/Services';
 import { Pricing } from '@/components/Pricing';
 import { Founder } from '@/components/Founder';
+import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
 import { FooterCustom } from '@/components/FooterCustom';
 import Navbar from '@/components/Navbar';
@@ -34,7 +35,7 @@ const Section = ({ children, id }: { children: React.ReactNode, id?: string }) =
     id={id}
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true, amount: 0.1 }}
+    viewport={{ once: true, amount: 0.01 }}
     variants={revealVariants}
   >
     {children}
@@ -51,39 +52,44 @@ export default function Home() {
       <Hero />
 
       {/* 3. Why Us */}
-      <Section id="why-us">
+      <Section>
         <WhyUs />
       </Section>
 
       {/* 4. Mission & Statistics */}
-      <Section id="mission">
+      <Section>
         <Mission />
       </Section>
-      <Section id="stats">
+      <Section>
         <Stats />
       </Section>
 
       {/* 5. What We Do (Services) */}
-      <Section id="services">
+      <Section>
         <Services />
       </Section>
 
       {/* 6. Pricing */}
-      <Section id="pricing">
+      <Section>
         <Pricing />
       </Section>
 
       {/* 7. Meet the Founder */}
-      <Section id="founder">
+      <Section>
         <Founder />
       </Section>
 
-      {/* 8. FAQ */}
-      <Section id="faq">
+      {/* 8. Testimonials */}
+      <Section>
+        <Testimonials />
+      </Section>
+
+      {/* 9. FAQ */}
+      <Section>
         <FAQ />
       </Section>
 
-      {/* 9. Footer */}
+      {/* 10. Footer */}
       <FooterCustom />
     </main>
   );

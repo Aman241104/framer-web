@@ -17,7 +17,8 @@ const team = [
       { label: "Sales increase in first 3 months.", value: "73%" },
       { label: "Faster customer resolutions.", value: "2X" }
     ],
-    accent: "#3B82F6"
+    accent: "#3B82F6",
+    objectPosition: "object-top"
   },
   {
     name: "Gaurav",
@@ -28,13 +29,14 @@ const team = [
       { label: "Efficiency gain with automation.", value: "40%" },
       { label: "Seamless system integrations.", value: "100%" }
     ],
-    accent: "#E5A800"
+    accent: "#E5A800",
+    objectPosition: "object-top"
   }
 ];
 
 export const Founder = () => {
   return (
-    <section className="pt-12 md:pt-[60px] pb-20 md:pb-[80px] bg-transparent relative overflow-hidden">
+    <section id="founder" className="pt-12 md:pt-[60px] pb-20 md:pb-[80px] bg-transparent relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-blue-600/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center mb-12 text-center">
@@ -67,7 +69,7 @@ export const Founder = () => {
                   src={person.image}
                   alt={person.name}
                   fill
-                  className="object-cover"
+                  className={`object-cover ${person.objectPosition || 'object-center'}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               </motion.div>
