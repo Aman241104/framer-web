@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Shield, TrendingUp, Crown, Users, Building2, Target, GraduationCap, Cpu, Zap, Star, Rocket, Sparkles, MessageSquare, ArrowRight } from 'lucide-react';
+import { Check, Shield, TrendingUp, Crown, Users, Building2, Target, GraduationCap, Cpu, Zap, Star, Rocket, Sparkles, ArrowRight } from 'lucide-react';
 
 type Plan = {
   name: string;
@@ -391,31 +391,6 @@ export const Pricing = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 md:mt-24 p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-gradient-to-br from-[#0A0A0A] to-[#050505] border border-white/5 text-center relative overflow-hidden group hover:border-white/10 transition-colors"
-        >
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:scale-110 transition-transform duration-500">
-              <MessageSquare className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="text-3xl font-medium text-white mb-4">Don&apos;t see what you need?</h3>
-            <p className="text-zinc-500 mb-8 text-lg leading-relaxed">We offer custom packages for high-growth startups and unique enterprise requirements. Let&apos;s build a custom roadmap together.</p>
-            
-            <div className="max-w-sm mx-auto">
-              <CustomCTAButton 
-                label="Consult Our Strategy Team" 
-                href="/contact" 
-                primary 
-                color="#ffffff" 
-              />
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
