@@ -573,7 +573,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												pixelWidth: 7801,
 												positionX: "center",
 												positionY: "center",
-												src: "https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png",
+												src: "/VB1.png",
 											}}
 											className={"framer-guex1l"}
 											data-framer-name={"Logo"}
@@ -604,7 +604,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 															pixelWidth: 7801,
 															positionX: "center",
 															positionY: "center",
-															src: "https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png",
+															src: "/VB1.png",
 														},
 													},
 													OYezazs8l: {
@@ -630,7 +630,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 															pixelWidth: 7801,
 															positionX: "center",
 															positionY: "center",
-															src: "https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png",
+															src: "/VB1.png",
 														},
 													},
 													p4KNEh_xU: {
@@ -656,7 +656,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 															pixelWidth: 7801,
 															positionX: "center",
 															positionY: "center",
-															src: "https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png",
+															src: "/VB1.png",
 														},
 													},
 												},

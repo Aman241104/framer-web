@@ -93,7 +93,7 @@ export const Founder = () => {
                     className="flex items-center mb-2 md:mb-4 justify-center md:justify-start"
                   >
                     <img
-                      src="https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png"
+                      src="/VB1.png"
                       alt="VeeBran Logo"
                       className="h-[24px] md:h-[32px] w-auto object-contain"
                     />

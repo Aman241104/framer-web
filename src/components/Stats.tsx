@@ -46,12 +46,12 @@ export const Stats = () => {
           </h2>
         </motion.div>
 
-        <div className="relative grid grid-cols-2 md:flex md:flex-row justify-between items-center w-full max-w-6xl mx-auto gap-y-8 md:gap-y-0 capitalize-stats py-4">
+        <div className="relative grid grid-cols-2 lg:flex lg:flex-row justify-between items-center w-full max-w-6xl mx-auto gap-y-8 md:gap-y-12 lg:gap-y-0 capitalize-stats py-4">
           {StatisticComp && (
             <>
               {/* Mobile Cross Dividers */}
-              <div className="absolute top-0 bottom-0 left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/20 to-transparent md:hidden pointer-events-none"></div>
-              <div className="absolute top-1/2 left-4 right-4 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent md:hidden pointer-events-none"></div>
+              <div className="absolute top-0 bottom-0 left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/20 to-transparent lg:hidden pointer-events-none"></div>
+              <div className="absolute top-1/2 left-4 right-4 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent lg:hidden pointer-events-none"></div>
 
               {statsData.map((stat, idx) => (
                 <React.Fragment key={idx}>
@@ -61,7 +61,7 @@ export const Stats = () => {
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.25, 1, 0.5, 1] }}
                     whileHover={{ scale: 1.05, transition: { duration: 0.2, ease: "easeOut" } }}
-                    className="w-full md:w-auto flex justify-center relative group scale-[0.85] md:scale-100"
+                    className="w-full md:w-1/2 lg:w-auto flex justify-center relative group scale-[0.85] md:scale-95 lg:scale-100"
                   >
                     <div className="relative">
                       {/* The Framer component provides the styling and title */}
@@ -83,7 +83,7 @@ export const Stats = () => {
                     </div>
                   </motion.div>
                   {idx < statsData.length - 1 && (
-                    <div className="hidden md:block w-px h-24 bg-gradient-to-b from-transparent via-white/40 to-transparent"></div>
+                    <div className="hidden lg:block w-px h-24 bg-gradient-to-b from-transparent via-white/40 to-transparent"></div>
                   )}
                 </React.Fragment>
               ))}

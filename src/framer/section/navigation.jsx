@@ -376,9 +376,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												positionX: "left",
 												positionY: "center",
 												sizes: "104px",
-												src: "https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png",
-												srcSet:
-													"https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=512 512w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=1024 1024w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=2048 2048w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=4096 4096w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png 7801w",
+												src: "/VB1.png", srcSet: "",
 											}}
 											className={"framer-1xrbt6z framer-13l2shf"}
 											data-framer-name={"Logo"}
@@ -404,9 +402,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 															positionX: "left",
 															positionY: "center",
 															sizes: "90px",
-															src: "https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png",
-															srcSet:
-																"https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=512 512w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=1024 1024w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=2048 2048w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=4096 4096w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png 7801w",
+															src: "/VB1.png", srcSet: "",
 														},
 													},
 													mTNdKI81R: {
@@ -428,9 +424,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 															positionX: "left",
 															positionY: "center",
 															sizes: "90px",
-															src: "https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png",
-															srcSet:
-																"https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=512 512w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=1024 1024w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=2048 2048w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=4096 4096w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png 7801w",
+															src: "/VB1.png", srcSet: "",
 														},
 													},
 													rlsa9jKwo: {
@@ -454,9 +448,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 															positionX: "left",
 															positionY: "center",
 															sizes: "104px",
-															src: "https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png",
-															srcSet:
-																"https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=512 512w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=1024 1024w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=2048 2048w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png?scale-down-to=4096 4096w,https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png 7801w",
+															src: "/VB1.png", srcSet: "",
 														},
 													},
 												},

@@ -74,7 +74,7 @@ export const Hero = () => {
         <h1
           className="text-[32px] md:text-[72px] font-medium tracking-tight mb-6 md:mb-8 leading-[1.2] md:leading-[1.25] flex flex-col items-center justify-center relative z-10 px-4"
         >
-          {["Grow Your Brand,", "Build Your Pipeline,", "and Scale with AI."].map((line, i) => (
+          {["Branding & Automation", "That Moves Business", "Forward"].map((line, i) => (
             <div key={i} className="overflow-hidden">
               <motion.span
                 initial={{ y: "100%" }}
@@ -98,7 +98,7 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-white/65 text-[15px] md:text-[24px] max-w-[800px] mx-auto mb-10 leading-relaxed font-normal relative z-10 text-center px-6"
         >
-          VeeBran helps founders, coaches, and entrepreneurs build a powerful personal brand, attract the right clients, and grow smarter - with the help of AI.
+          We blend human - first strategy with AI - powered systems to grow your brand, automate your sales, and help you scale with clarity
         </motion.p>
 
         <motion.div

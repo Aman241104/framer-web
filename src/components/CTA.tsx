@@ -24,10 +24,7 @@ export const CTA = () => {
             {/* Logo Lockup replacing Label */}
             <div className="flex flex-col items-center mb-10">
               <div className="flex items-center gap-2 mb-2">
-                <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 10L20 35L35 10" stroke="#3B82F6" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M12 10L20 25L28 10" stroke="#10B981" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <img src="/VB1.png" alt="VeeBran" className="h-[28px] w-auto object-contain" />
                 <span className="text-[24px] font-medium tracking-tighter text-white leading-none">VeeBran</span>
               </div>
               <span className="text-[#afafaf] text-sm tracking-[0.2em] font-medium">Business Consulting</span>

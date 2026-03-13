@@ -1,4 +1,4 @@
-# Execution Plan - VeeBran Rebuild
+`# Execution Plan - VeeBran Rebuild
 
 ## Phase 1: Global Theme & Assets
 - [ ] Update `globals.css` with the exact dot grid pattern and radial glow utilities.

@@ -11,7 +11,8 @@ const navLinks = [
     { label: 'Why Us', href: '/#why-us' },
     { label: 'Mission', href: '/#mission' },
     { label: 'Services', href: '/#services' },
-    { label: 'Book a Call', href: 'https://calendly.com/vishva-veebran/30min' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact Us', href: '/contact' },
     { label: 'Terms & Conditions', href: '/terms' },
 ];
 
@@ -80,7 +81,7 @@ export const FooterCustom = () => {
                             }}
                         >
                             <img
-                                src="https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png"
+                                src="/VB1.png"
                                 alt=""
                                 style={{ width: '100%', objectFit: 'contain' }}
                             />
@@ -118,7 +119,7 @@ export const FooterCustom = () => {
                             {/* Logo */}
                             <motion.div {...spring(0)} style={{ marginBottom: 32 }} className="md:!mb-[48px]">
                                 <img
-                                    src="https://framerusercontent.com/images/Z6aYVOMp3JvPzbDPEtSwnu3aEmQ.png"
+                                    src="/VB1.png"
                                     alt="VeeBran"
                                     style={{ height: 32, width: 'auto', objectFit: 'contain' }}
                                     className="md:!h-[52px]"
@@ -163,12 +164,10 @@ export const FooterCustom = () => {
                                 We bring your vision to life with creativity and precision. Let&apos;s make it happen.
                             </motion.p>
 
-                            {/* Book A Call */}
+                            {/* Contact Us */}
                             <motion.div {...spring(0.15)} style={{ marginBottom: 40 }} className="md:!mb-[52px]">
-                                <a
-                                    href="https://calendly.com/vishva-veebran/30min"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <Link
+                                    href="/contact"
                                     style={{
                                         fontFamily: '"Satoshi", sans-serif',
                                         fontWeight: 700,
@@ -188,7 +187,7 @@ export const FooterCustom = () => {
                                         (e.currentTarget as HTMLAnchorElement).style.gap = '8px';
                                     }}
                                 >
-                                    Book A Call
+                                    Get in Touch
                                     <svg
                                         width="16"
                                         height="16"
@@ -203,7 +202,7 @@ export const FooterCustom = () => {
                                         <line x1="7" y1="17" x2="17" y2="7" />
                                         <polyline points="7 7 17 7 17 17" />
                                     </svg>
-                                </a>
+                                </Link>
                             </motion.div>
 
                             {/* Divider */}

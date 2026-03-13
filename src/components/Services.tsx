@@ -18,7 +18,7 @@ const servicesData: ServiceData[] = [
   {
     id: "personal-branding",
     title: "Personal Branding with AI",
-    description: "Build a LinkedIn presence and personal brand that attracts clients - consistently and on autopilot.",
+    description: "Build a LinkedIn presence and personal brand that attracts clients — consistently and on autopilot.",
     tags: ["LinkedIn", "Content", "Thought Leadership"],
     image: "/service-1.png",
     glowColor: "bg-blue-600",
@@ -26,7 +26,7 @@ const servicesData: ServiceData[] = [
   {
     id: "ai-sales",
     title: "AI-Powered Sales & Marketing",
-    description: "From finding the right leads to keeping your best clients - we build the system that runs your revenue.",
+    description: "From finding the right leads to keeping your best clients — we build the system that runs your revenue.",
     tags: ["Lead Generation", "Sales", "Client Retention"],
     image: "/service-2.png",
     glowColor: "bg-amber-500",
@@ -34,8 +34,8 @@ const servicesData: ServiceData[] = [
   {
     id: "custom-ai",
     title: "Custom AI Tool Development",
-    description: "We build AI tools and automation workflows tailored to your business - so you do more with less.",
-    tags: ["AI Tools", "Automation", "Workflows"],
+    description: "We build AI tools and automation workflows tailored to your business — so you do more with less.",
+    tags: ["AI Tools", "Automation", "Workflow"],
     image: "/service-3.png",
     glowColor: "bg-blue-500",
   }
@@ -86,11 +86,12 @@ export const Services = () => {
           Expertise That Drives Quality
         </h2>
         <p className="text-zinc-500 max-w-2xl mx-auto text-sm md:text-lg font-normal">
-          Three focused services. One trusted partner.
+          Three focused services. One trusted partner.<br />
+          <span className="text-zinc-400 mt-2 block">With deep expertise, we deliver quality solutions that drive success and exceed industry standards consistently.</span>
         </p>
       </div>
 
-      <div className="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-20 w-full max-w-6xl mx-auto">
+      <div className="services-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-20 w-full max-w-6xl mx-auto">
         {servicesData.map((service, index) => {
           // Dynamic shadow colors derived from glowColor class for Tilt wrapper
           const shadowColorMap: Record<string, string> = {
@@ -132,21 +133,21 @@ export const Services = () => {
                   <img src={service.image} alt={service.title.replace('<br />', ' ')} className="ken-burns-img w-full h-full object-cover origin-center scale-[1.05]" />
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-2 mb-4 relative z-10 md:hidden">
+                <div className="flex flex-wrap justify-center gap-2 mb-4 relative z-10">
                   {service.tags.map(tag => (
-                    <span key={tag} className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] text-zinc-400 font-medium">
+                    <span key={tag} className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs text-zinc-400 font-medium">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <p className="text-[#a1a1aa] text-xs md:text-[15px] leading-relaxed max-w-[280px] relative z-10 line-clamp-2">
-                  {service.description.split('.')[0]}.
+                <p className="text-[#a1a1aa] text-xs md:text-[15px] leading-relaxed max-w-[280px] relative z-10">
+                  {service.description}
                 </p>
 
                 {/* Arrow indicator for interactivity */}
-                <div className="mt-4 md:mt-6 flex items-center gap-2 text-[#E5A800] text-xs md:text-sm font-medium opacity-100 md:opacity-0 translate-y-0 md:translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 relative z-10">
-                  <span>Learn more</span>
+                <div className="mt-4 md:mt-6 flex items-center gap-2 text-[#E5A800] text-xs md:text-sm font-medium opacity-100 relative z-10">
+                  <span>Get in Touch</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 md:w-4 md:h-4">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>

@@ -85,8 +85,8 @@ export const LogoMarquee = () => {
           onMouseLeave={() => setIsPaused(false)}
         >
           {/* Enhanced Fading Mask */}
-          <div className="absolute inset-y-0 left-0 w-16 md:w-64 bg-gradient-to-r from-black via-black/90 to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-16 md:w-64 bg-gradient-to-l from-black via-black/90 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-8 md:w-32 lg:w-64 bg-gradient-to-r from-black via-black/90 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-8 md:w-32 lg:w-64 bg-gradient-to-l from-black via-black/90 to-transparent z-10 pointer-events-none" />
 
           <motion.div
             animate={{
