@@ -11,13 +11,6 @@ export const ContactPopup = () => {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    // Check if already shown in this session
-    const shown = sessionStorage.getItem('contact_popup_shown');
-    if (shown) {
-      setHasShown(true);
-      return;
-    }
-
     const handleScroll = () => {
       if (hasShown) return;
 
@@ -42,7 +35,6 @@ export const ContactPopup = () => {
         const timer = setTimeout(() => {
           setIsVisible(true);
           setHasShown(true);
-          sessionStorage.setItem('contact_popup_shown', 'true');
         }, 1500);
         
         return () => clearTimeout(timer);

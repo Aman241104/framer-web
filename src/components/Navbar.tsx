@@ -234,7 +234,7 @@ const Navbar = () => {
                       <div className="nav-talk-border"></div>
                       <div className="nav-talk-glow"></div>
                       <div className="nav-talk-btn w-full flex justify-center py-3.5 font-bold tracking-tight">
-                        <span>Book Strategy Call</span>
+                        <span>Let's Talk</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                           <line x1="5" y1="19" x2="19" y2="5"></line>
                           <polyline points="9 5 19 5 19 15"></polyline>
