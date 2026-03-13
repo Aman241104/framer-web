@@ -12,38 +12,36 @@ export const ContactPopup = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (hasShown) return;
+      const pricingSection = document.getElementById('pricing');
+      if (!pricingSection) return;
 
+      const rect = pricingSection.getBoundingClientRect();
       const currentScrollY = window.scrollY;
       const scrollingDown = currentScrollY > lastScrollY.current;
       lastScrollY.current = currentScrollY;
-
-      const servicesSection = document.getElementById('services');
-      if (!servicesSection) return;
-
-      const rect = servicesSection.getBoundingClientRect();
       
       // TRIGGER CONDITION:
-      // 1. Bottom of services is above the viewport (scrolled past it)
-      // 2. We are scrolling DOWN (to avoid popping when scrolling back up)
+      // 1. Bottom of pricing is above the viewport (scrolled past it)
+      // 2. We are scrolling DOWN
       // 3. We are NOT yet at the very bottom (footer area)
-      const isPastServices = rect.bottom < 0;
+      const isPastPricing = rect.bottom < 0;
       const isNotAtBottom = (window.innerHeight + window.scrollY) < document.documentElement.scrollHeight - 300;
 
-      if (isPastServices && scrollingDown && isNotAtBottom && !hasShown) {
-        // Wait 1.5 seconds before showing to make it feel less like a "jump scare"
-        const timer = setTimeout(() => {
+      if (isPastPricing && scrollingDown && isNotAtBottom) {
+        if (!isVisible && !hasShown) {
           setIsVisible(true);
           setHasShown(true);
-        }, 1500);
-        
-        return () => clearTimeout(timer);
+        }
+      } else if (!isPastPricing) {
+        // Reset hasShown if we scroll back up into or above pricing
+        // so it can trigger again when we leave next time
+        setHasShown(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasShown]);
+  }, [isVisible, hasShown]);
 
   const closePopup = () => {
     setIsVisible(false);
