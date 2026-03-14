@@ -271,7 +271,7 @@ export default function ContactPage() {
           className="inline-flex items-center gap-2 bg-[#111] border border-white/10 rounded-full px-4 py-1.5 mb-6"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-white/60 text-xs font-medium tracking-wide">Strategy Team is Live</span>
+          <span className="text-white/60 text-xs font-medium tracking-wide">We are online to chat</span>
         </motion.div>
 
         <motion.h1
@@ -279,9 +279,9 @@ export default function ContactPage() {
           initial="hidden"
           animate="visible"
           custom={0}
-          className="text-5xl md:text-7xl font-medium text-white tracking-tight mb-4"
+          className="text-5xl md:text-6xl font-medium text-white tracking-tight mb-4"
         >
-          Let&apos;s Build <span className="text-[#3B82F6]">Something Big</span>
+          Let&apos;s <span className="text-[#3B82F6]">Talk</span>
         </motion.h1>
 
         <motion.p
@@ -289,10 +289,9 @@ export default function ContactPage() {
           initial="hidden"
           animate="visible"
           custom={1}
-          className="text-[#A6A6A6] text-base md:text-lg max-w-2xl mx-auto"
+          className="text-[#A6A6A6] text-base max-w-xl mx-auto"
         >
-          Ready to scale your business with custom AI solutions? 
-          Drop us a message and we&apos;ll get back to you within 24 hours.
+          Tell us about your business and what you&apos;re working on. We&apos;ll take it from there.
         </motion.p>
       </section>
 
@@ -305,8 +304,8 @@ export default function ContactPage() {
                 {card.icon}
               </div>
               <div>
-                <p className="text-white/40 text-[10px] uppercase tracking-wider font-semibold">{card.label}</p>
-                <p className="text-white text-sm font-medium">{card.value}</p>
+                <p className="text-white/40 text-xs font-normal">{card.label}</p>
+                <p className="text-white text-sm font-normal">{card.value}</p>
               </div>
             </div>
           );
@@ -357,9 +356,9 @@ export default function ContactPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-3xl font-medium text-white mb-10 relative z-10 tracking-tight"
+            className="text-2xl font-medium text-white mb-8 relative z-10"
           >
-            {status === 'success' ? 'Message Sent Successfully' : 'Tell us about your project'}
+            {status === 'success' ? 'Message Sent!' : 'Send us a message'}
           </motion.h2>
 
           {status === 'success' ? (
@@ -368,22 +367,22 @@ export default function ContactPage() {
               animate={{ opacity: 1, scale: 1 }}
               className="text-center py-12 relative z-10"
             >
-              <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-green-500/20">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
-              <h3 className="text-white text-2xl font-medium mb-3">Check your inbox!</h3>
-              <p className="text-white/60 max-w-md mx-auto">We&apos;ve received your message and will review it with our strategy team. Expect a response shortly.</p>
+              <h3 className="text-white text-xl font-medium mb-2">Thank you for reaching out!</h3>
+              <p className="text-white/60">We&apos;ve received your message and will get back to you shortly.</p>
               <button 
                 onClick={() => setStatus('idle')}
-                className="mt-10 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium text-sm hover:bg-white/10 transition-all"
+                className="mt-8 text-[#3B82F6] font-medium text-sm hover:underline"
               >
                 Send another message
               </button>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6" noValidate>
+            <form onSubmit={handleSubmit} className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6" noValidate>
               {/* Honeypot field - hidden from users */}
               <div className="hidden" aria-hidden="true">
                 <input 
@@ -398,9 +397,9 @@ export default function ContactPage() {
 
               {/* Name */}
               <motion.div variants={fadeUp} className="flex flex-col gap-2">
-                <label htmlFor="name" className="text-xs font-semibold text-white/50 uppercase tracking-widest flex items-center gap-1">
-                  Full Name
-                  <span className="text-[#3B82F6]" aria-hidden="true">*</span>
+                <label htmlFor="name" className="text-xs font-medium text-white/60 tracking-wider flex items-center gap-1">
+                  Name
+                  <span className="text-red-500" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="name"
@@ -414,230 +413,225 @@ export default function ContactPage() {
                   onBlur={() => setFocused(null)}
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
-                  className={`w-full bg-[#0a0a0a] border rounded-2xl px-5 py-3.5 text-white text-[15px] placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'name'
-                    ? 'border-[#3B82F6]/60 bg-[#0c0c0c] shadow-[0_0_0_4px_rgba(59,130,246,0.06)]'
+                  className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'name'
+                    ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
                     : errors.name ? 'border-red-500/50' : 'border-white/8 hover:border-white/15'
                     }`}
                 />
                 {errors.name && (
-                  <span id="name-error" className="text-[11px] text-red-500/80 font-medium ml-1">{errors.name}</span>
+                  <span id="name-error" className="text-[10px] text-red-500 font-medium">{errors.name}</span>
                 )}
               </motion.div>
 
               {/* Email */}
               <motion.div variants={fadeUp} className="flex flex-col gap-2">
-                <label htmlFor="email" className="text-xs font-semibold text-white/50 uppercase tracking-widest flex items-center gap-1">
-                  Work Email
-                  <span className="text-[#3B82F6]" aria-hidden="true">*</span>
+                <label htmlFor="email" className="text-xs font-medium text-white/60 tracking-wider flex items-center gap-1">
+                  Email
+                  <span className="text-red-500" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="email"
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="david@company.com"
+                  placeholder="example@mail.com"
                   value={formData.email}
                   onChange={handleChange}
                   onFocus={() => setFocused('email')}
                   onBlur={() => setFocused(null)}
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
-                  className={`w-full bg-[#0a0a0a] border rounded-2xl px-5 py-3.5 text-white text-[15px] placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'email'
-                    ? 'border-[#3B82F6]/60 bg-[#0c0c0c] shadow-[0_0_0_4px_rgba(59,130,246,0.06)]'
+                  className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'email'
+                    ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
                     : errors.email ? 'border-red-500/50' : 'border-white/8 hover:border-white/15'
                     }`}
                 />
                 {errors.email && (
-                  <span id="email-error" className="text-[11px] text-red-500/80 font-medium ml-1">{errors.email}</span>
+                  <span id="email-error" className="text-[10px] text-red-500 font-medium">{errors.email}</span>
                 )}
               </motion.div>
 
               {/* Phone */}
               <motion.div variants={fadeUp} className="flex flex-col gap-2">
-                <label htmlFor="phone" className="text-xs font-semibold text-white/50 uppercase tracking-widest flex items-center gap-1">
+                <label htmlFor="phone" className="text-xs font-medium text-white/60 tracking-wider flex items-center gap-1">
                   Phone Number
-                  <span className="text-[#3B82F6]" aria-hidden="true">*</span>
+                  <span className="text-red-500" aria-hidden="true">*</span>
                 </label>
                 <div className="flex gap-2">
-                  <div className="relative group/select min-w-[110px]">
-                    <select
-                      name="countryCode"
-                      aria-label="Country Code"
-                      value={formData.countryCode}
-                      onChange={handleChange}
-                      className="w-full bg-[#0a0a0a] border border-white/8 rounded-2xl pl-4 pr-8 py-3.5 text-white text-sm focus:outline-none focus:border-[#3B82F6]/60 transition-all appearance-none cursor-pointer"
-                    >
-                      {countryCodes.map(c => (
-                        <option key={`${c.country}-${c.code}`} value={c.code}>
-                          {c.flag} {c.code}
-                        </option>
-                      ))}
-                    </select>
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                    </div>
-                  </div>
+                  <select
+                    name="countryCode"
+                    aria-label="Country Code"
+                    value={formData.countryCode}
+                    onChange={handleChange}
+                    className="w-24 bg-[#0a0a0a] border border-white/8 rounded-xl px-2 py-3 text-white text-sm focus:outline-none focus:border-[#3B82F6]/60 transition-all"
+                  >
+                    {countryCodes.map(c => (
+                      <option key={`${c.country}-${c.code}`} value={c.code}>
+                        {c.flag} {c.code}
+                      </option>
+                    ))}
+                  </select>
                   <input
                     id="phone"
                     name="phone"
                     type="tel"
                     autoComplete="tel"
-                    placeholder="555-0123"
+                    placeholder="555-000-0000"
                     value={formData.phone}
                     onChange={handleChange}
                     onFocus={() => setFocused('phone')}
                     onBlur={() => setFocused(null)}
                     aria-invalid={!!errors.phone}
                     aria-describedby={errors.phone ? "phone-error" : undefined}
-                    className={`flex-1 bg-[#0a0a0a] border rounded-2xl px-5 py-3.5 text-white text-[15px] placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'phone'
-                      ? 'border-[#3B82F6]/60 bg-[#0c0c0c] shadow-[0_0_0_4px_rgba(59,130,246,0.06)]'
+                    className={`flex-1 bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'phone'
+                      ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
                       : errors.phone ? 'border-red-500/50' : 'border-white/8 hover:border-white/15'
                       }`}
                   />
                 </div>
                 {errors.phone && (
-                  <span id="phone-error" className="text-[11px] text-red-500/80 font-medium ml-1">{errors.phone}</span>
+                  <span id="phone-error" className="text-[10px] text-red-500 font-medium">{errors.phone}</span>
                 )}
               </motion.div>
 
               {/* Website */}
               <motion.div variants={fadeUp} className="flex flex-col gap-2">
-                <label htmlFor="website" className="text-xs font-semibold text-white/50 uppercase tracking-widest flex items-center gap-1">
-                  Company Website
-                  <span className="text-[#3B82F6]" aria-hidden="true">*</span>
+                <label htmlFor="website" className="text-xs font-medium text-white/60 tracking-wider flex items-center gap-1">
+                  Website
+                  <span className="text-red-500" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="website"
                   name="website"
                   type="text"
-                  placeholder="yourcompany.com"
+                  placeholder="https://example.com"
                   value={formData.website}
                   onChange={handleChange}
                   onFocus={() => setFocused('website')}
                   onBlur={() => setFocused(null)}
                   aria-invalid={!!errors.website}
                   aria-describedby={errors.website ? "website-error" : undefined}
-                  className={`w-full bg-[#0a0a0a] border rounded-2xl px-5 py-3.5 text-white text-[15px] placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'website'
-                    ? 'border-[#3B82F6]/60 bg-[#0c0c0c] shadow-[0_0_0_4px_rgba(59,130,246,0.06)]'
+                  className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'website'
+                    ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
                     : errors.website ? 'border-red-500/50' : 'border-white/8 hover:border-white/15'
                     }`}
                 />
                 {errors.website && (
-                  <span id="website-error" className="text-[11px] text-red-500/80 font-medium ml-1">{errors.website}</span>
+                  <span id="website-error" className="text-[10px] text-red-500 font-medium">{errors.website}</span>
                 )}
               </motion.div>
 
-              {/* Services */}
-              <motion.div variants={fadeUp} className="flex flex-col gap-2 md:col-span-2">
-                <label htmlFor="service" className="text-xs font-semibold text-white/50 uppercase tracking-widest flex items-center gap-1">
-                  How can we help?
-                  <span className="text-[#3B82F6]" aria-hidden="true">*</span>
+              {/* Services Dropdown */}
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="flex flex-col gap-2 md:col-span-2"
+              >
+                <label htmlFor="service" className="text-xs font-medium text-white/60 tracking-wider flex items-center gap-1">
+                  Interested Service
+                  <span className="text-red-500" aria-hidden="true">*</span>
                 </label>
-                <div className="relative group/select">
-                  <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    onFocus={() => setFocused('service')}
-                    onBlur={() => setFocused(null)}
-                    className={`w-full bg-[#0a0a0a] border rounded-2xl px-5 py-3.5 text-white text-[15px] focus:outline-none transition-all duration-300 appearance-none cursor-pointer ${focused === 'service'
-                      ? 'border-[#3B82F6]/60 bg-[#0c0c0c] shadow-[0_0_0_4px_rgba(59,130,246,0.06)]'
-                      : 'border-white/8 hover:border-white/15'
-                      }`}
-                  >
-                    {serviceOptions.map(option => (
-                      <option key={option} value={option} className="bg-[#0a0a0a]">
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                  </div>
-                </div>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  onFocus={() => setFocused('service')}
+                  onBlur={() => setFocused(null)}
+                  className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 appearance-none ${focused === 'service'
+                    ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
+                    : 'border-white/8 hover:border-white/15'
+                    }`}
+                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1em' }}
+                >
+                  {serviceOptions.map(option => (
+                    <option key={option} value={option} className="bg-[#0a0a0a]">
+                      {option}
+                    </option>
+                  ))}
+                </select>
               </motion.div>
 
               {/* Company Name */}
               <motion.div variants={fadeUp} className="flex flex-col gap-2 md:col-span-2">
-                <label htmlFor="companyname" className="text-xs font-semibold text-white/50 uppercase tracking-widest flex items-center gap-1">
+                <label htmlFor="companyname" className="text-xs font-medium text-white/60 tracking-wider flex items-center gap-1">
                   Company Name
-                  <span className="text-[#3B82F6]" aria-hidden="true">*</span>
+                  <span className="text-red-500" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="companyname"
                   name="companyname"
                   type="text"
-                  placeholder="StartoMania Inc."
+                  placeholder="Ex. StartoMania"
                   value={formData.companyname}
                   onChange={handleChange}
                   onFocus={() => setFocused('companyname')}
                   onBlur={() => setFocused(null)}
                   aria-invalid={!!errors.companyname}
                   aria-describedby={errors.companyname ? "company-error" : undefined}
-                  className={`w-full bg-[#0a0a0a] border rounded-2xl px-5 py-3.5 text-white text-[15px] placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'companyname'
-                    ? 'border-[#3B82F6]/60 bg-[#0c0c0c] shadow-[0_0_0_4px_rgba(59,130,246,0.06)]'
+                  className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'companyname'
+                    ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
                     : errors.companyname ? 'border-red-500/50' : 'border-white/8 hover:border-white/15'
                     }`}
                 />
                 {errors.companyname && (
-                  <span id="company-error" className="text-[11px] text-red-500/80 font-medium ml-1">{errors.companyname}</span>
+                  <span id="company-error" className="text-[10px] text-red-500 font-medium">{errors.companyname}</span>
                 )}
               </motion.div>
 
               {/* Message */}
               <motion.div variants={fadeUp} className="flex flex-col gap-2 md:col-span-2">
-                <label htmlFor="message" className="text-xs font-semibold text-white/50 uppercase tracking-widest flex items-center gap-1">
-                  Project Details
-                  <span className="text-[#3B82F6]" aria-hidden="true">*</span>
+                <label htmlFor="message" className="text-xs font-medium text-white/60 tracking-wider flex items-center gap-1">
+                  What are you looking for?
+                  <span className="text-red-500" aria-hidden="true">*</span>
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your goals and what you're looking to achieve with AI..."
-                  rows={5}
+                  placeholder="Tell us what you're working on and how we can help..."
+                  rows={4}
                   onFocus={() => setFocused('message')}
                   onBlur={() => setFocused(null)}
                   aria-invalid={!!errors.message}
                   aria-describedby={errors.message ? "message-error" : undefined}
-                  className={`w-full bg-[#0a0a0a] border rounded-2xl px-5 py-4 text-white text-[15px] placeholder-white/20 focus:outline-none transition-all duration-300 resize-none ${focused === 'message'
-                    ? 'border-[#3B82F6]/60 bg-[#0c0c0c] shadow-[0_0_0_4px_rgba(59,130,246,0.06)]'
+                  className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 resize-none ${focused === 'message'
+                    ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
                     : errors.message ? 'border-red-500/50' : 'border-white/8 hover:border-white/15'
                     }`}
                 />
                 {errors.message && (
-                  <span id="message-error" className="text-[11px] text-red-500/80 font-medium ml-1">{errors.message}</span>
+                  <span id="message-error" className="text-[10px] text-red-500 font-medium">{errors.message}</span>
                 )}
               </motion.div>
 
               {/* Submit Row */}
               <motion.div
                 variants={fadeUp}
-                className="md:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-8 mt-4"
+                className="md:col-span-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-4"
               >
                 <motion.button
                   type="submit"
                   disabled={status === 'loading'}
-                  whileHover={{ scale: 1.02, backgroundColor: '#D4FF00', color: '#000' }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`group relative overflow-hidden px-10 py-4 rounded-2xl bg-white text-black font-bold text-sm tracking-wide transition-all ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  whileHover={{ scale: 1.03, backgroundColor: '#bce600' }}
+                  whileTap={{ scale: 0.97 }}
+                  className={`px-8 py-3.5 rounded-xl bg-[#D4FF00] text-black font-medium text-sm transition-colors flex items-center gap-2 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
-                  <span className="relative z-10 flex items-center gap-3">
-                    {status === 'loading' ? 'Processing...' : 'Schedule Strategy Call'}
-                    <svg className="group-hover:translate-x-1 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  {status === 'loading' ? 'Sending...' : 'Send Message'}
+                  {status !== 'loading' && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                     </svg>
-                  </span>
+                  )}
                 </motion.button>
-
-                <div className="flex flex-col items-end text-white/30 text-[11px] tracking-wide uppercase font-bold">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    <p>Response time: ~2 Hours</p>
-                  </div>
-                  <p>Email: vishva@veebran.com</p>
+                {status === 'error' && (
+                  <p className="text-red-500 text-xs font-normal">Something went wrong. Please try again.</p>
+                )}
+                <div className="text-white/35 text-xs text-right">
+                  <p>Mail: vishva@veebran.com</p>
                 </div>
               </motion.div>
             </form>
