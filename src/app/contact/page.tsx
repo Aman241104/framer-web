@@ -140,7 +140,7 @@ export default function ContactPage() {
       newErrors.name = 'Name is too short';
     }
     
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i;
     if (!formData.email.trim()) {
       newErrors.email = 'Email address is required';
     } else if (!emailRegex.test(formData.email)) {
@@ -161,7 +161,8 @@ export default function ContactPage() {
     if (!formData.companyname.trim()) newErrors.companyname = 'Company name is required';
     
     if (formData.website.trim()) {
-      const urlPattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/i;
+      // Improved URL pattern to allow modern TLDs and ensure a dot is present
+      const urlPattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,})([/\w .-]*)*\/?$/i;
       if (!urlPattern.test(formData.website)) {
         newErrors.website = 'Please enter a valid URL (e.g., example.com)';
       }
@@ -212,13 +213,17 @@ export default function ContactPage() {
     setStatus('loading');
     
     const submissionData = {
-      name: formData.name,
-      email: formData.email,
-      phone: `${formData.countryCode} ${formData.phone}`,
-      company: formData.companyname,
-      website: formData.website,
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      // Prepend a single quote to prevent Google Sheets from interpreting + as a formula
+      phone: `'${formData.countryCode} ${formData.phone.trim()}`,
+      company: formData.companyname.trim(),
+      // Ensure website has a protocol for clickability in Sheets and trim it
+      website: formData.website.trim().startsWith('http') 
+        ? formData.website.trim() 
+        : `https://${formData.website.trim()}`,
       service: formData.service,
-      message: formData.message,
+      message: formData.message.trim(),
       timestamp: new Date().toLocaleString()
     };
     
