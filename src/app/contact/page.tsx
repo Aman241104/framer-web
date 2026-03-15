@@ -46,14 +46,6 @@ const infoCards = [
   },
 ];
 
-const formFields = [
-  { id: 'name', label: 'Name', type: 'text', placeholder: 'David Johnson' },
-  { id: 'email', label: 'Email', type: 'email', placeholder: 'example@mail.com' },
-  { id: 'phone', label: 'Phone Number', type: 'tel', placeholder: '555-000-0000' },
-  { id: 'companyname', label: 'Company Name', type: 'text', placeholder: 'Ex. StartoMania' },
-  { id: 'website', label: 'Website', type: 'url', placeholder: 'https://example.com' },
-];
-
 const countryCodes = [
   { code: '+91', country: 'India', flag: '🇮🇳' },
   { code: '+1', country: 'USA', flag: '🇺🇸' },
@@ -139,7 +131,7 @@ export default function ContactPage() {
     // Check honeypot
     if (formData._hp) {
       console.warn('Spam detected via honeypot');
-      return false; 
+      return { isValid: false, errors: {} }; 
     }
 
     if (!formData.name.trim()) {
@@ -158,6 +150,10 @@ export default function ContactPage() {
     const phoneClean = formData.phone.replace(/[^0-9]/g, '');
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
+    } else if (formData.countryCode === '+91') {
+      if (phoneClean.length !== 10) {
+        newErrors.phone = 'India phone number must be exactly 10 digits';
+      }
     } else if (phoneClean.length < 7 || phoneClean.length > 15) {
       newErrors.phone = 'Please enter a valid phone number (7-15 digits)';
     }
@@ -165,7 +161,7 @@ export default function ContactPage() {
     if (!formData.companyname.trim()) newErrors.companyname = 'Company name is required';
     
     if (formData.website.trim()) {
-      const urlPattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+      const urlPattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/i;
       if (!urlPattern.test(formData.website)) {
         newErrors.website = 'Please enter a valid URL (e.g., example.com)';
       }
@@ -180,12 +176,19 @@ export default function ContactPage() {
     }
     
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return { isValid: Object.keys(newErrors).length === 0, errors: newErrors };
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type } = e.target;
+    
+    // Sanitize phone input to only allow numbers, spaces, and hyphens
+    let finalValue = value;
+    if (type === 'tel') {
+      finalValue = value.replace(/[^0-9\s-]/g, '');
+    }
+
+    setFormData(prev => ({ ...prev, [name]: finalValue }));
     if (errors[name]) {
       setErrors(prev => {
         const next = { ...prev };
@@ -198,8 +201,9 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!validateForm()) {
-      const firstError = Object.keys(errors)[0];
+    const validation = validateForm();
+    if (!validation.isValid) {
+      const firstError = Object.keys(validation.errors)[0];
       const element = document.getElementsByName(firstError)[0];
       if (element) element.focus();
       return;
@@ -410,7 +414,7 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleChange}
                   onFocus={() => setFocused('name')}
-                  onBlur={() => setFocused(null)}
+                  onBlur={() => setTimeout(() => setFocused(null), 100)}
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
                   className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'name'
@@ -438,7 +442,7 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   onFocus={() => setFocused('email')}
-                  onBlur={() => setFocused(null)}
+                  onBlur={() => setTimeout(() => setFocused(null), 100)}
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
                   className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'email'
@@ -476,11 +480,11 @@ export default function ContactPage() {
                     name="phone"
                     type="tel"
                     autoComplete="tel"
-                    placeholder="555-000-0000"
+                    placeholder="98765 43210"
                     value={formData.phone}
                     onChange={handleChange}
                     onFocus={() => setFocused('phone')}
-                    onBlur={() => setFocused(null)}
+                    onBlur={() => setTimeout(() => setFocused(null), 100)}
                     aria-invalid={!!errors.phone}
                     aria-describedby={errors.phone ? "phone-error" : undefined}
                     className={`flex-1 bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'phone'
@@ -508,7 +512,7 @@ export default function ContactPage() {
                   value={formData.website}
                   onChange={handleChange}
                   onFocus={() => setFocused('website')}
-                  onBlur={() => setFocused(null)}
+                  onBlur={() => setTimeout(() => setFocused(null), 100)}
                   aria-invalid={!!errors.website}
                   aria-describedby={errors.website ? "website-error" : undefined}
                   className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'website'
@@ -539,7 +543,7 @@ export default function ContactPage() {
                   value={formData.service}
                   onChange={handleChange}
                   onFocus={() => setFocused('service')}
-                  onBlur={() => setFocused(null)}
+                  onBlur={() => setTimeout(() => setFocused(null), 100)}
                   className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 appearance-none ${focused === 'service'
                     ? 'border-[#3B82F6]/60 shadow-[0_0_0_3px_rgba(59,130,246,0.08)]'
                     : 'border-white/8 hover:border-white/15'
@@ -568,7 +572,7 @@ export default function ContactPage() {
                   value={formData.companyname}
                   onChange={handleChange}
                   onFocus={() => setFocused('companyname')}
-                  onBlur={() => setFocused(null)}
+                  onBlur={() => setTimeout(() => setFocused(null), 100)}
                   aria-invalid={!!errors.companyname}
                   aria-describedby={errors.companyname ? "company-error" : undefined}
                   className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 ${focused === 'companyname'
@@ -595,7 +599,7 @@ export default function ContactPage() {
                   placeholder="Tell us what you're working on and how we can help..."
                   rows={4}
                   onFocus={() => setFocused('message')}
-                  onBlur={() => setFocused(null)}
+                  onBlur={() => setTimeout(() => setFocused(null), 100)}
                   aria-invalid={!!errors.message}
                   aria-describedby={errors.message ? "message-error" : undefined}
                   className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder-white/20 focus:outline-none transition-all duration-300 resize-none ${focused === 'message'
