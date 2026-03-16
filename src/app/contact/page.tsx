@@ -217,7 +217,7 @@ export default function ContactPage() {
       email: formData.email.trim(),
       // Prepend a single quote to prevent Google Sheets from interpreting + as a formula
       phone: `'${formData.countryCode} ${formData.phone.trim()}`,
-      company: formData.companyname.trim(),
+      companyname: formData.companyname.trim(),
       // Ensure website has a protocol for clickability in Sheets and trim it
       website: formData.website.trim().startsWith('http') 
         ? formData.website.trim() 
