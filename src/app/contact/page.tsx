@@ -161,10 +161,10 @@ export default function ContactPage() {
     if (!formData.companyname.trim()) newErrors.companyname = 'Company name is required';
     
     if (formData.website.trim()) {
-      // Improved URL pattern to allow modern TLDs and ensure a dot is present
-      const urlPattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,})([/\w .-]*)*\/?$/i;
-      if (!urlPattern.test(formData.website)) {
-        newErrors.website = 'Please enter a valid URL (e.g., example.com)';
+      // Stricter URL pattern: requires a domain and at least a 2-character TLD (e.g., .com, .in, .co)
+      const urlPattern = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/.*)?$/i;
+      if (!urlPattern.test(formData.website.trim())) {
+        newErrors.website = 'Enter a valid format (e.g., www.example.com or example.in)';
       }
     } else {
       newErrors.website = 'Website URL is required';
