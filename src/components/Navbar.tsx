@@ -9,7 +9,6 @@ const navLinks = [
   { label: 'Why Us', href: '/#why-us' },
   { label: 'Mission', href: '/#mission' },
   { label: 'Services', href: '/#services' },
-  { label: 'Blog', href: '/blog' },
 ];
 
 const Navbar = () => {
